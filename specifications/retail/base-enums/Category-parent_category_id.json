@@ -1,0 +1,7 @@
+{
+  "enum": [
+            "Grocery",
+            "F&B",
+            "Home & Decor"
+          ]
+}

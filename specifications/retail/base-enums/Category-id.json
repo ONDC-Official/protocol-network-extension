@@ -1,3 +1,9 @@
 {
-  "enum": ["Grocery", "Packaged Commodities", "Packaged Foods", "Fruits and Vegetables", "F&B", "Home & Decor"]
+  "enum": [
+            "Packaged Commodities",
+            "Packaged Foods",
+            "Fruits and Vegetables",
+            "F&B",
+            "Home & Decor"
+          ]
 }
