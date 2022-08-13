@@ -1,0 +1,12 @@
+{
+  "enum": [
+            "Created",
+            "Packed",
+            "Shipped",
+            "Out for Delivery",
+            "Delivered",
+            "RTO initiated",
+            "RTO delivered",
+            "Cancelled"
+          ]
+}
