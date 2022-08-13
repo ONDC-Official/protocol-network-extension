@@ -1,0 +1,8 @@
+{
+  "enum": [
+            "CoD",
+            "Prepaid",
+            "RTO",
+            "Reverse QC"
+          ]
+}
