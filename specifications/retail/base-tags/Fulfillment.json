@@ -1,8 +1,13 @@
 {
   "tags":
   {
-    "category": "Immediate Delivery",
-    "turnaround": "PT45M",
-    "provider_name": "Loadshare"
+    "_comment1": "logistics category",
+    "@ondc/org/category": "Immediate Delivery",
+
+    "_comment2": "logistics provider turnaround time in ISO8601 duration format",
+    "@ondc/org/turnaround_time": "PT45M",
+
+    "_comment3": "logistics provider name",
+    "@ondc/org/provider_name": "Loadshare"
   }
 }
