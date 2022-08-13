@@ -1,0 +1,10 @@
+{
+  "tags":
+  {
+    "_comment1": "Buyer App finder fee type",
+    "@ondc/org/buyer_app_finder_fee_type": "Percent",
+
+    "_comment2": "Buyer App finder fee amount",
+    "@ondc/org/buyer_app_finder_fee_amount": "3"
+  }
+}
