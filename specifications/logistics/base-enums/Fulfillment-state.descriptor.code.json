@@ -1,0 +1,11 @@
+{
+  "enum": [
+            "Searching for Agent",
+            "Agent assigned",
+            "At pickup location",
+            "Order picked up",
+            "At drop location",
+            "Order delivered",
+            "Cancelled"
+          ]
+}
