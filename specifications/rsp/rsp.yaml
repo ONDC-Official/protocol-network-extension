@@ -1,0 +1,373 @@
+openapi: 3.0.0
+info:
+  title: Reconciliation and settlement service provider (RSP)
+  description: RSP API Specification
+  version: 0.1.0-draft
+security:
+  - SubscriberAuth: []
+externalDocs:
+  description: Decentralized reconciliation and settlement process flow
+  url: https://github.com/Open-network-for-digital-commerce/protocol-network-extension/blob/main/docs/draft/RSP-flow.pdf
+paths:
+  /recon:
+    post:
+      tags:
+        - Collector
+        - RSP
+      description: reconciliation of payment for order book - called by collector (Step 1)
+      requestBody:
+        description: Collector sends order book for payment reconciliation and settlement
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    orderbook:
+                      $ref: '#/components/schemas/OrderBook'
+              required:
+                - context
+                - message
+                - message.orderbook.orders.id
+                - message.orderbook.orders.invoice_no
+                - message.orderbook.orders.buyer_app_id
+                - message.orderbook.orders.seller_app_id
+                - message.orderbook.orders.value
+                - message.orderbook.orders.state
+                - message.orderbook.orders.provider
+                - message.orderbook.orders.payment
+                - message.orderbook.orders.created_at
+                - message.orderbook.orders.updated_at
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /settle:
+    post:
+      tags:
+        - RSP
+      description: settlement of payment for different receivers - called by RSP (Step 2a)
+      requestBody:
+        description: RSP asking settlement agency to settle receiver payments
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    settlement:
+                      $ref: '#/components/schemas/Settlement'
+              required:
+                - context
+                - message
+                - message.settlement.id
+                - message.settlement.invoice_no
+                - message.settlement.buyer_app_id
+                - message.settlement.seller_app_id
+                - message.settlement.settlement_id
+                - message.settlement.settlement_details
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_settle:
+    post:
+      tags:
+        - SettlementAgency
+      description: settlement status for payments to different receivers (Step 2b)
+      requestBody:
+        description: Settlement Agency responding to RSP with settlement status
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    settlement:
+                      $ref: '#/components/schemas/Settlement'
+              required:
+                - context
+                - message
+                - message.settlement.id
+                - message.settlement.transaction_id
+                - message.settlement.seller_app_id
+                - message.settlement.settlement_id
+                - message.settlement.settlement_status
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_recon:
+    post:
+      tags:
+        - RSP
+      description: payment reconciliation and settlement status for Order Book (Step 4a, 4b)
+      requestBody:
+        description: Updating recon and settlement status for Order Book
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    orderbook:
+                      $ref: '#/components/schemas/OrderBook'
+              required:
+                - context
+                - message
+                - message.orderbook.orders.id
+                - message.orderbook.orders.transaction_id
+                - message.orderbook.orders.seller_app_id
+                - message.orderbook.orders.recon_status
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+components:
+  securitySchemes:
+    SubscriberAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Signature of message body using Buyer App or Seller App subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
+  schemas:
+    SettlementDetails:
+      description: Settlement Details for payout
+      type: object
+      required:
+        - payer_account_no
+        - amount
+        - time
+        - payee_name
+        - payee_account_no
+        - payee_bank_code
+        - payment_type
+        - purpose_code
+        - payee_account_type
+      properties:
+        payer_account_no:
+          type: number
+          description: "Debit Account Number of the client. This field is used when client maintains multiple debit account number with Bank."
+        amount:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+        time:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time'
+        payee_name:
+          type: string
+          description: "Payee name. Except for . @ ! , : |~ - _ # & /  no other special characters are accepted"
+          example: "A to Z Printing Solutions Pvt. Ltd"
+        payee_address:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address'
+        payee_account_no:
+          type: string
+          description: "The account number of the beneficiary in which credit is to be given. Without Specail charcters and can be alpha numeric"
+        payee_bank_code:
+          type:  string
+          description: "Bank Code of Payee e.g. IFSC code"
+        payee_virtual_payment_address:
+          type: string
+          pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
+        payment_type:
+          type: string
+          description: "This is the payment type allocated by the bank"
+          enum:
+            - RTGS
+            - NEFT
+        purpose_code:
+          type: string
+          maxLength: 10
+          description: "For RTGS / IFT transaction it should contain CMS and for NEFT it should be OTH"
+          enum:
+            - CMS
+            - OTH
+        payee_account_type:
+          type: string
+          description: "Type of Beneficiary Account"
+          enum:
+           - 10
+           - 11
+           - 12
+           - 13
+           - 14
+        remarks:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
+    OrderBook:
+      description: Describes the payment and settlement contract for an order
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/id'
+              invoice_no:
+                type: string
+                description: Invoice Number of the Order
+                pattern: '[\da-zA-Z\-\/]{16}$'
+                example: "2022/XYZ/12345-2"
+              buyer_app_id:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
+              seller_app_id:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bpp_id'
+              value:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
+              state:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/state'
+              provider:
+                $ref: '#/components/schemas/Provider'
+              payment:
+                $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Payment'
+              transaction_id:
+                type: string
+                description: Unique identifier for transaction
+              settlement_id:
+                type: string
+                description: "Unique identifier for each settlement"
+                example: "121313"
+              settlement_reference_no:
+                type: string
+                description: "Reference number, incase of successful settlement"
+                example: "3718683618631"
+              recon_status:
+                type: string
+                enum:
+                  - paid
+                  - overpaid
+                  - underpaid
+                  - not paid
+              diff_amount:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              message:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
+              created_at:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/created_at'
+              updated_at:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/updated_at'
+    Provider:
+      description: Provider for Order
+      type: object
+      properties:
+        name:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Provider/properties/descriptor'
+        address:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Provider/properties/locations'
+      required:
+        - name
+        - address
+    Settlement:
+      description: Settlement details
+      type: object
+      properties:
+        id:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/id'
+        invoice_no:
+          type: string
+          description: Invoice Number of the Order
+          pattern: '[\da-zA-Z\-\/]{16}$'
+          example: "2022/XYZ/12345-2"
+        buyer_app_id:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
+        seller_app_id:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bpp_id'
+        settlement_details:
+          $ref: '#/components/schemas/SettlementDetails'
+        transaction_id:
+          type: string
+          description: Unique identifier for transaction
+        settlement_id:
+          type: string
+          description: "Unique identifier for each settlement"
+          example: "121313"
+        settlement_status:
+          type: string
+          enum:
+            - paid
+            - not paid
+            - ready
+            - error
+        settlement_reference_no:
+          type: string
+          description: "Reference number, incase of successful settlement"
+          example: "3718683618631"
+        message:
+          type: string
+          description: Message for Failure/ error on settlement. Only required if settlement_status = error
+          example: "Account not active/ not found"
