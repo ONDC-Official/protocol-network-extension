@@ -281,7 +281,7 @@ components:
               invoice_no:
                 type: string
                 description: Invoice Number of the Order
-                pattern: '[\da-zA-Z\-\/]{16}$'
+                pattern: '[\da-zA-Z\-\/]{3,16}$'
                 example: "2022/XYZ/12345-2"
               buyer_app_id:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
@@ -358,7 +358,7 @@ components:
               invoice_no:
                 type: string
                 description: Invoice Number of the Order
-                pattern: '[\da-zA-Z\-\/]{16}$'
+                pattern: '[\da-zA-Z\-\/]{3,16}$'
                 example: "2022/XYZ/12345-2"
               buyer_app_id:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
