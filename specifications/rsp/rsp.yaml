@@ -207,8 +207,8 @@ components:
       name: Authorization
       description: 'Signature of message body using Buyer App or Seller App subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
   schemas:
-    SettlementDetails:
-      description: Settlement Details for payout
+    payout_metadata:
+      description: Settlement bank Details for the payout
       type: object
       required:
         - payer_account_no
@@ -248,7 +248,10 @@ components:
           description: "This is the payment type allocated by the bank"
           enum:
             - RTGS
-            - NEFT
+            - NEFT 
+            - IMPFS
+            - IFT
+            - UPI
         purpose_code:
           type: string
           maxLength: 10
@@ -305,8 +308,12 @@ components:
                 format: uri
                 description: URI of the RSP Module.
                 example: "https://somersp.com/rsp/v1"
+              rsp_id:
+                type: string
+                description: Unique id of the RSP Block
+                example: "ABF428684"
               correction: 
-                 $ref: '#/components/schemas/correctionObject'
+                 $ref: '#/components/schemas/correction'
               transaction_id:
                 type: string
                 description: Unique identifier for transaction
@@ -353,22 +360,8 @@ components:
           items:
             type: object
             properties:
-              id:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/id'
-              invoice_no:
-                type: string
-                description: Invoice Number of the Order
-                pattern: '[\da-zA-Z\-\/]{3,16}$'
-                example: "2022/XYZ/12345-2"
-              buyer_app_id:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
-              seller_app_id:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bpp_id'
-              settlement_details:
-                $ref: '#/components/schemas/SettlementDetails'
-              transaction_id:
-                type: string
-                description: Unique identifier for transaction
+              payout_metadata:
+                $ref: '#/components/schemas/payout_metadata'
               settlement_id:
                 type: string
                 description: "Unique identifier for each settlement"
@@ -376,53 +369,63 @@ components:
               settlement_status:
                 type: string
                 enum:
-                  - paid
-                  - not paid
-                  - ready
-                  - error
+                  - SETTLED
+                  - PENDING
+                  - ERROR
               settlement_reference_no:
                 type: string
                 description: "Reference number, incase of successful settlement"
                 example: "3718683618631"
-              message:
-                type: string
-                description: Message for Failure/ error on settlement. Only required if settlement_status = error
-                example: "Account not active/ not found"
-    correctionObject: 
+              error_messsage: 
+                type: object
+                properties:
+                  error_code: 
+                    type: string
+                    description: "Error Message Code, to be provided by bank. Only required if settlement_status = error"
+                    enum: 
+                      - 01
+                      - 02
+                      - 03
+                      - 04
+                  error_message:
+                    type: string
+                    description: Message for Failure/ error on settlement. Only required if settlement_status = error
+                    example: "Account not active/ not found"
+    correction: 
       description:  Correct Object, which will be added in recon object after dispute resolution
       type: object
       properties:
-        grievance_holder_reference: 
+        issue_initiator_ref: 
           type: string
-          description: "CRM ID or Ticket Number of Grievance holding system"
+          description: "CRM ID or Ticket Number of Grievance/Issue holding system"
           example: "1243242GQT$"
-        grievance_redresser_reference: 
+        issue_responder_ref: 
           type: string
-          description: "CRM ID or Ticket Number No. of Grievance Redresser"
+          description: "CRM ID or Ticket Number No. of Grievance/Issue Redresser"
           example: "122424HGYG98"
-        grievance_type:
+        issue_type:
           type: string
-          description: "Type of Grievance"
+          description: "Type of Issue"
           enum: 
             - Payment
             - Delivery
             - Quality
-        grievance_subtype: 
+        issue_subtype: 
           anyOf: 
            - type: string
-             description: "Subtype of Grievance"
+             description: "Subtype of Issue"
              enum: 
               - Short Payment
               - Over Payment
               - No Payment
            - type: string
-             description: "Subtype of Grievance"
+             description: "Subtype of Issue"
              enum: 
               - Wrong Shipped 
               - Incorrect Quality
         order_id: 
           type: string
-          description: "ArrayOf[List of cascaded Order IDs]"
+          description: "Original Order ID"
         order_amount: 
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
         order_correction_amount: 
@@ -438,6 +441,8 @@ components:
             - RTO initiated
             - RTO delivered
             - Cancelled
+        previous_settled_amount: 
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
         settlement_id:
           type: string
           description: "Unique identifier for each settlement"
