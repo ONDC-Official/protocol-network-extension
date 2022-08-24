@@ -12,7 +12,6 @@ paths:
   /settle:
     post:
       tags:
-        - RSP
         - SettlementAgency
       description: settlement of payment for different receivers - called by RSP (Step 2a)
       requestBody:

@@ -12,7 +12,6 @@ paths:
   /recon:
     post:
       tags:
-        - Collector
         - RSP
       description: reconciliation of payment for order book - called by collector (Step 1)
       requestBody:
@@ -65,7 +64,6 @@ paths:
     post:
       tags:
         - RSP
-        - SettlementAgency
       description: settlement status for payments to different receivers (Step 2b)
       requestBody:
         description: Settlement Agency responding to RSP with settlement status
@@ -113,7 +111,6 @@ paths:
       tags:
         - Collector
         - Receiver
-        - RSP
       description: payment reconciliation and settlement status for Order Book (Step 4a, 4b)
       requestBody:
         description: Updating recon and settlement status for Order Book
