@@ -1,31 +1,258 @@
 openapi: 3.0.0
 info:
-  title: ONDC Protocol API
-  description: ONDC Protocol API
+  title: ONDC Protocol API for IGM
+  description: ONDC Protocol API for IGM
   version: 0.1.0-draft
 security:
   - SubscriberAuth: []
+externalDocs:
+  description: Issue and Grievance Management process flow
+  url: https://docs.google.com/document/d/1b5w4FnmxKvs1sqQdzYcfhP09JITeRO4rZl58z3ZA5Yg/edit
 paths:
   /report:
     post:
       tags:
-        - ONDC Buyer App
-        - ONDC Seller App
+        - Responder
       description: Report issue
       requestBody:
-        description: Affected party reports issue to party responsible for issue
+        description: Initiator (buyer or seller app) reports issue to responder (buyer or seller app responsible for issue resolution)
         content:
           application/json:
             schema:
               type: object
               properties:
                 context:
-                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Context'
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
                 message:
                   type: object
                   properties:
                     issue:
                       $ref: '#/components/schemas/Issue'
+              required:
+                - context
+                - message.issue.id
+                - message.issue.category_id
+                - message.issue.details.name
+                - message.issue.details.code
+                - message.issue.details.short_desc
+                - message.issue.created_by
+                - message.issue.created_for
+                - message.issue.severity
+                - message.issue.state
+                - message.issue.created_at
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_report:
+    post:
+      tags:
+        - Initiator
+      description: Send response for issue reported
+      requestBody:
+        description: Responder (buyer or seller app) sends response to initiator (buyer or seller app that raised the issue)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    issue:
+                      $ref: '#/components/schemas/Issue'
+                error:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+              required:
+                - context
+                - message.issue.id
+                - message.issue.state
+                - message.issue.updated_at
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                        - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /monitor:
+    post:
+      tags:
+        - Responder
+      description: Monitor status of issue
+      requestBody:
+        description: Initiator (buyer or seller app) requests latest status of issue from responder (buyer or seller app responsible for issue resolution)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/Issue/properties/id'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_monitor:
+    post:
+      tags:
+        - Initiator
+      description: Send status for issue
+      requestBody:
+        description: Responder (buyer or seller app) sends status of issue to initiator (buyer or seller app that raised the issue)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    issue:
+                      $ref: '#/components/schemas/Issue'
+                error:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+              required:
+                - context
+                - message.issue.id
+                - message.issue.state
+                - message.issue.response
+                - message.issue.updated_at
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                        - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /evidence:
+    post:
+      tags:
+        - ODR
+      description: Request order details
+      requestBody:
+        description: ODR mediator or arbitrator requests order object from participant
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    subscriber_id:
+                      type: string
+                    order_id:
+                      type: string
+              required:
+                - context
+                - message.subscriber_id
+                - message.order_id
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_evidence:
+    post:
+      tags:
+        - ODR
+      description: Send order details
+      requestBody:
+        description: Participant sends order details requested to ODR mediator or arbitrator
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    order:
+                      $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order'
+                error:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
               required:
                 - context
                 - message
@@ -41,52 +268,11 @@ paths:
                     type: object
                     properties:
                       ack:
-                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Ack'
-                    required:
-                      - ack
-                  error:
-                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Error'
-                required:
-                  - message
-  /on_report:
-    post:
-      tags:
-        - ONDC Buyer App
-        - ONDC Seller App
-      description: Party responsible for issue provides response
-      requestBody:
-        description: Party responsible for issue provides response to affected party that raised issue
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                context:
-                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Context'
-                message:
-                  type: object
-                  properties:
-                    state:
-                      $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Issue/properties/state'
-                error:
-                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Error'
-      responses:
-        '200':
-          description: Acknowledgement of message received
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      ack:
-                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Ack'
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
                     required:
                         - ack
                   error:
-                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Error'
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
                 required:
                   - message
 components:
@@ -95,7 +281,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: 'Signature of message body using Buyer App or Seller App subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
+      description: 'Signature of message body using initiator or responder subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
   schemas:
     Issue:
       description: Describes an issue
@@ -105,30 +291,49 @@ components:
           type: string
           description: issue id
         category_id:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Category/properties/id'
+          type: string
+          description: issue category
+          enum:
+            - order
+            - billing
+            - fulfillment
+            - operations
+            - compliance
+            - contract
+            - settlement
+        details:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
         order_id:
           type: string
-          description: order id
-        evidence:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Descriptor'
-        created_for:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Context/properties/domain'
+          description: ONDC order id
+        response:
+          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
         created_by:
           type: string
-          description: subscriber id for party that created issue
+          description: subscriber id for initiator
+        created_for:
+          type: string
+          description: subscriber id for responder
+        severity:
+          type: string
+          description: issue severity
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
         state:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/ecosystem-fixes/core/v0/api/core.yaml#/components/schemas/Descriptor'
+          type: string
+          description: issue state
+          enum:
+            - initiated
+            - registered
+            - processing
+            - escalated
+            - resolved
         created_at:
           type: string
           format: date-time
         updated_at:
           type: string
           format: date-time
-      required:
-        - category_id
-        - evidence
-        - created_for
-        - created_by
-        - state
-        - created_at
-        - updated_at
