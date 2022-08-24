@@ -191,7 +191,7 @@ paths:
   /evidence:
     post:
       tags:
-        - ODR
+        - Participant
       description: Request order details
       requestBody:
         description: ODR mediator or arbitrator requests order object from participant
