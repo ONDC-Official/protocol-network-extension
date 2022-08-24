@@ -318,10 +318,10 @@ components:
           type: string
           description: issue severity
           enum:
-            - 0
-            - 1
-            - 2
-            - 3
+            - critical
+            - high
+            - medium
+            - low
         state:
           type: string
           description: issue state
