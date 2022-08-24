@@ -61,56 +61,10 @@ paths:
                     $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
                 required:
                   - message
-  /settle:
-    post:
-      tags:
-        - RSP
-      description: settlement of payment for different receivers - called by RSP (Step 2a)
-      requestBody:
-        description: RSP asking settlement agency to settle receiver payments
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                context:
-                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
-                message:
-                  type: object
-                  properties:
-                    settlement:
-                      $ref: '#/components/schemas/Settlement'
-              required:
-                - context
-                - message
-                - message.settlement.id
-                - message.settlement.invoice_no
-                - message.settlement.buyer_app_id
-                - message.settlement.seller_app_id
-                - message.settlement.settlement_id
-                - message.settlement.settlement_details
-      responses:
-        '200':
-          description: Acknowledgement of message received
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      ack:
-                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
-                    required:
-                      - ack
-                  error:
-                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
-                required:
-                  - message
   /on_settle:
     post:
       tags:
+        - RSP
         - SettlementAgency
       description: settlement status for payments to different receivers (Step 2b)
       requestBody:
@@ -157,6 +111,8 @@ paths:
   /on_recon:
     post:
       tags:
+        - Collector
+        - Receiver
         - RSP
       description: payment reconciliation and settlement status for Order Book (Step 4a, 4b)
       requestBody:
@@ -248,7 +204,7 @@ components:
           description: "This is the payment type allocated by the bank"
           enum:
             - RTGS
-            - NEFT 
+            - NEFT
             - IMPFS
             - IFT
             - UPI
@@ -298,7 +254,7 @@ components:
                 $ref: '#/components/schemas/Provider'
               payment:
                 $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Payment'
-              payout_bank_uri: 
+              payout_bank_uri:
                 type: string
                 format: uri
                 description: URI of the Payout Bank.
@@ -312,7 +268,7 @@ components:
                 type: string
                 description: Unique id of the RSP Block
                 example: "ABF428684"
-              correction: 
+              correction:
                  $ref: '#/components/schemas/correction'
               transaction_id:
                 type: string
@@ -376,13 +332,13 @@ components:
                 type: string
                 description: "Reference number, incase of successful settlement"
                 example: "3718683618631"
-              error_messsage: 
+              error_messsage:
                 type: object
                 properties:
-                  error_code: 
+                  error_code:
                     type: string
                     description: "Error Message Code, to be provided by bank. Only required if settlement_status = error"
-                    enum: 
+                    enum:
                       - 01
                       - 02
                       - 03
@@ -391,46 +347,46 @@ components:
                     type: string
                     description: Message for Failure/ error on settlement. Only required if settlement_status = error
                     example: "Account not active/ not found"
-    correction: 
-      description:  Correct Object, which will be added in recon object after dispute resolution
+    correction:
+      description:  Correction Object, which will be added in recon object after dispute resolution
       type: object
       properties:
-        issue_initiator_ref: 
+        issue_initiator_ref:
           type: string
           description: "CRM ID or Ticket Number of Grievance/Issue holding system"
           example: "1243242GQT$"
-        issue_responder_ref: 
+        issue_responder_ref:
           type: string
           description: "CRM ID or Ticket Number No. of Grievance/Issue Redresser"
           example: "122424HGYG98"
         issue_type:
           type: string
           description: "Type of Issue"
-          enum: 
+          enum:
             - Payment
             - Delivery
             - Quality
-        issue_subtype: 
-          anyOf: 
+        issue_subtype:
+          anyOf:
            - type: string
              description: "Subtype of Issue"
-             enum: 
+             enum:
               - Short Payment
               - Over Payment
               - No Payment
            - type: string
              description: "Subtype of Issue"
-             enum: 
-              - Wrong Shipped 
+             enum:
+              - Wrong Shipped
               - Incorrect Quality
-        order_id: 
+        order_id:
           type: string
           description: "Original Order ID"
-        order_amount: 
+        order_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
-        order_correction_amount: 
+        order_correction_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
-        order_status: 
+        order_status:
           type: string
           enum:
             - Created
@@ -441,7 +397,7 @@ components:
             - RTO initiated
             - RTO delivered
             - Cancelled
-        previous_settled_amount: 
+        previous_settled_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
         settlement_id:
           type: string
@@ -462,5 +418,3 @@ components:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
         message:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
-              
-            
