@@ -246,7 +246,7 @@ components:
               value:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
               state:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order/properties/state'
+                $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Order/properties/state'
               provider:
                 $ref: '#/components/schemas/Provider'
               payment:
@@ -383,17 +383,8 @@ components:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
         order_correction_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
-        order_status:
-          type: string
-          enum:
-            - Created
-            - Packed
-            - Shipped
-            - Out for Delivery
-            - Delivered
-            - RTO initiated
-            - RTO delivered
-            - Cancelled
+        order_state:
+          $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Order/properties/state'
         previous_settled_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
         settlement_id:
