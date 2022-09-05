@@ -160,69 +160,6 @@ components:
       name: Authorization
       description: 'Signature of message body using Buyer App or Seller App subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
   schemas:
-    payout_metadata:
-      description: Settlement bank Details for the payout
-      type: object
-      required:
-        - payer_account_no
-        - amount
-        - time
-        - payee_name
-        - payee_account_no
-        - payee_bank_code
-        - payment_type
-        - purpose_code
-        - payee_account_type
-      properties:
-        payer_account_no:
-          type: number
-          description: "Debit Account Number of the client. This field is used when client maintains multiple debit account number with Bank."
-        amount:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
-        time:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time'
-        payee_name:
-          type: string
-          description: "Payee name. Except for . @ ! , : |~ - _ # & /  no other special characters are accepted"
-          example: "A to Z Printing Solutions Pvt. Ltd"
-        payee_address:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address'
-        payee_account_no:
-          type: string
-          description: "The account number of the beneficiary in which credit is to be given. Without Specail charcters and can be alpha numeric"
-        payee_bank_code:
-          type:  string
-          description: "Bank Code of Payee e.g. IFSC code"
-        payee_virtual_payment_address:
-          type: string
-          pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
-        payment_type:
-          type: string
-          description: "This is the payment type allocated by the bank"
-          enum:
-            - RTGS
-            - NEFT
-            - IMPFS
-            - IFT
-            - UPI
-        purpose_code:
-          type: string
-          maxLength: 10
-          description: "For RTGS / IFT transaction it should contain CMS and for NEFT it should be OTH"
-          enum:
-            - CMS
-            - OTH
-        payee_account_type:
-          type: string
-          description: "Type of Beneficiary Account"
-          enum:
-           - 10
-           - 11
-           - 12
-           - 13
-           - 14
-        remarks:
-          $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
     OrderBook:
       description: Describes the payment and settlement contract for an order
       type: object
@@ -313,8 +250,57 @@ components:
           items:
             type: object
             properties:
-              payout_metadata:
-                $ref: '#/components/schemas/payout_metadata'
+              payer_account_no:
+                type: number
+                description: "Debit Account Number of the client. This field is used when client maintains multiple debit account number with Bank."
+              amount_currency:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price/properties/currency'
+              amount_value:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price/properties/value'
+              timestamp:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time/properties/timestamp'
+              payee_name:
+                type: string
+                description: "Payee name. Except for . @ ! , : |~ - _ # & /  no other special characters are accepted"
+                example: "A to Z Printing Solutions Pvt. Ltd"
+              payee_address:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address/properties/full'
+              payee_account_no:
+                type: string
+                description: "The account number of the beneficiary in which credit is to be given. Without Specail charcters and can be alpha numeric"
+              payee_bank_code:
+                type:  string
+                description: "Bank Code of Payee e.g. IFSC code"
+              payee_virtual_payment_address:
+                type: string
+                pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
+              payment_type:
+                type: string
+                description: "This is the payment type allocated by the bank"
+                enum:
+                  - RTGS
+                  - NEFT
+                  - IMPFS
+                  - IFT
+                  - UPI
+              purpose_code:
+                type: string
+                maxLength: 10
+                description: "For RTGS / IFT transaction it should contain CMS and for NEFT it should be OTH"
+                enum:
+                  - CMS
+                  - OTH
+              payee_account_type:
+                type: string
+                description: "Type of Beneficiary Account"
+                enum:
+                - 10
+                - 11
+                - 12
+                - 13
+                - 14
+              remarks:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor/properties/name'
               settlement_id:
                 type: string
                 description: "Unique identifier for each settlement"
@@ -329,21 +315,30 @@ components:
                 type: string
                 description: "Reference number, incase of successful settlement"
                 example: "3718683618631"
-              error_messsage:
-                type: object
-                properties:
-                  error_code:
-                    type: string
-                    description: "Error Message Code, to be provided by bank. Only required if settlement_status = error"
-                    enum:
-                      - 01
-                      - 02
-                      - 03
-                      - 04
-                  error_message:
-                    type: string
-                    description: Message for Failure/ error on settlement. Only required if settlement_status = error
-                    example: "Account not active/ not found"
+              error_code:
+                type: string
+                description: "Error Message Code, to be provided by bank. Only required if settlement_status = error"
+                enum:
+                  - "01"
+                  - "02"
+                  - "03"
+                  - "04"
+              error_message:
+                type: string
+                description: Message for Failure/ error on settlement. Only required if settlement_status = error
+                example: "Account not active/ not found"
+            required:
+              - payer_account_no
+              - amount_currency
+              - amount_value
+              - timestamp
+              - payee_name
+              - payee_account_no
+              - payee_bank_code
+              - payment_type
+              - purpose_code
+              - payee_account_type
+
     correction:
       description:  Correction Object, which will be added in recon object after dispute resolution
       type: object
