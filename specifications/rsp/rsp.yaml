@@ -39,6 +39,8 @@ paths:
                 - message.orderbook.orders.state
                 - message.orderbook.orders.provider
                 - message.orderbook.orders.payment
+                - message.orderbook.orders.settlement_reason
+
                 - message.orderbook.orders.created_at
                 - message.orderbook.orders.updated_at
       responses:
@@ -188,6 +190,14 @@ components:
                 $ref: '#/components/schemas/Provider'
               payment:
                 $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Payment'
+              settlement_reason: 
+                type: string
+                description: "Reason of the Settlement"
+                enum:
+                  - Order payment
+                  - Part Refund
+                  - Refund
+                  - Correction
               payout_bank_uri:
                 type: string
                 format: uri
@@ -224,6 +234,16 @@ components:
                   - not paid
               diff_amount:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              counterparty_recon_status:
+                type: string
+                enum:
+                  - paid
+                  - overpaid
+                  - underpaid
+                  - not paid
+              counterparty_diff_amount:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              
               message:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
               created_at:
@@ -338,7 +358,6 @@ components:
               - payment_type
               - purpose_code
               - payee_account_type
-
     correction:
       description:  Correction Object, which will be added in recon object after dispute resolution
       type: object
