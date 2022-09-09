@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "ba03940f-ab78-4b50-b5c8-01040e833f05",
+		"name": "Registration Scenarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21473794"
+	},
+	"item": [
+		{
+			"name": "1- Buyer New entity registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"context\": {\r\n    \"operation\": {\r\n      \"ops_no\": 1\r\n    }\r\n  },\r\n  \"message\": {\r\n    \"entity\": {\r\n      \"gst\": {\r\n        \"legal_entity_name\": \"nsdlprotean\",\r\n        \"business_address\": \"1st Floor, Times Tower,  Kamala Mills Compound, Senapati Bapat Marg,  Lower Parel, Mumbai 013.\",\r\n        \"city_code\": [\r\n          \"std:080\"\r\n        ],\r\n        \"gst_no\": \"27AAACN2082N1Z8\"\r\n      },\r\n      \"pan\": {\r\n        \"name_as_per_pan\": \"NSDL\",\r\n        \"pan_no\": \"AALCM8972B\",\r\n        \"date_of_incorporation\": \"03/07/2022\"\r\n      },\r\n      \"name_of_authorised_signatory\": \"NSDL\",\r\n      \"address_of_authorised_signatory\": \"Lower Parel,\",\r\n      \"email_id\": \"contact@nsdl.co.in\",\r\n      \"mobile_no\": \"8734598345\",\r\n      \"country\": \"IND\",\r\n      \"subscriber_id\": \"pilot-gateway-1.beckn.nsdl.co.in/option1\",\r\n      \"callback_url\": \"/test\",\r\n      \"key_pair\": {\r\n        \"signing_public_key\": \"h0r7qMCFrTyNHVvxDiiv8kTX8kErXU477XZDCI0Glm0=\",\r\n        \"encryption_public_key\": \"MCowBQYDK2VuAyEAIVVAhAc3Fp6FA/Y56eHYzMDI5FRArxJJnKMnbg3Z1WM=\",\r\n        \"valid_from\": \"2022-07-07T06:27:54.101Z\",\r\n        \"valid_until\": \"2023-07-08T06:27:54.101Z\"\r\n      }\r\n    },\r\n    \"network_participant\": [\r\n      {\r\n        \"subscriber_url\": \"pilot-gateway-1.beckn.nsdl.co.in/\",\r\n        \"domain\": \"nic2004:52110\",\r\n        \r\n        \"type\": \"buyerApp\",\r\n        \"msn\": false,\r\n        \"city_code\": [\r\n          \"std:080\"\r\n        ]\r\n      }\r\n    ],\r\n \r\n    \"timestamp\": \"2022-07-08T13:44:54.101Z\",\r\n    \"request_id\":\"27baa06d-f90a-486c-85e5-cc621b787f04\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/ondc/subscribe/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"subscribe",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2- Non-MSN Seller New entity registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"context\": {\r\n        \"operation\": {\r\n            \"ops_no\": 2\r\n        }\r\n    },\r\n    \"message\": {\r\n        \"entity\": {\r\n            \"gst\": {\r\n                \"legal_entity_name\": \"nsdlprotean\",\r\n                \"business_address\": \"1st Floor, Times Tower,  Kamala Mills Compound, Senapati Bapat Marg,  Lower Parel, Mumbai 013.\",\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"gst_no\": \"27AAACN2082N1Z8 \"\r\n            },\r\n            \"pan\": {\r\n                \"name_as_per_pan\": \"NSDL\",\r\n                \"pan_no\": \"AALCM8972B\",\r\n                \"date_of_incorporation\": \"03/07/2022\"\r\n            },\r\n            \"name_of_authorised_signatory\": \"NSDL\",\r\n            \"address_of_authorised Signatory\": \"Lower Parel,\",\r\n            \"email_id\": \"contact@nsdl.co.in\",\r\n            \"mobile_no\": \"8734598345\",\r\n            \"country\": \"IND\",\r\n            \"subscriber_id\": \"pilot-gateway-1.beckn.nsdl.co.in/option2\",\r\n            \"callback_url\": \"/test\",\r\n            \"key_pair\": {\r\n                \"signing_public_key\": \"Mpql1gt/Ct9pQ1HzfjaO08BtzzCGh6jyWhE92FMQZqM=\",\r\n                \"encryption_public_key\": \"MCowBQYDK2VuAyEAfs8HYNlFiioFzSbq9lMruBZcYWyigOawGcNFv2d3ewo=\",\r\n                \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n            }\r\n        },\r\n        \"network_participant\": [\r\n            {\r\n                \"subscriber_url\": \"/subscriber1\",\r\n                \"domain\": \"nic2004:60232\",\r\n                \"type\": \"sellerApp\",\r\n                \"msn\": false,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ]\r\n            }\r\n        ],\r\n        \"timestamp\": \"2022-07-08T13:45:54.101Z\",\r\n        \"request_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/ondc/subscribe/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"subscribe",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-MSN Seller New entity registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"context\": {\r\n        \"operation\": {\r\n            \"ops_no\": 3\r\n        }\r\n    },\r\n    \"message\": {\r\n        \"entity\": {\r\n            \"gst\": {\r\n                \"legal_entity_name\": \"nsdlprotean\",\r\n                \"business_address\": \"1st Floor, Times Tower,  Kamala Mills Compound, Senapati Bapat Marg,  Lower Parel, Mumbai 013.\",\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"gst_no\": \"27AAACN2082N1Z8 \"\r\n            },\r\n            \"pan\": {\r\n                \"name_as_per_pan\": \"NSDL\",\r\n                \"pan_no\": \"AALCM8972B\",\r\n                \"date_of_incorporation\": \"03/07/2022\"\r\n            },\r\n            \"name_of_authorised_signatory\": \"NSDL\",\r\n            \"address_of_authorised Signatory\": \"Lower Parel,\",\r\n            \"email_id\": \"contact@nsdl.co.in\",\r\n            \"mobile_no\": \"8734598345\",\r\n            \"country\": \"IND\",\r\n            \"subscriber_id\": \"pilot-gateway-1.beckn.nsdl.co.in/option3\",\r\n            \"callback_url\": \"/test\",\r\n            \"key_pair\": {\r\n                \"signing_public_key\": \"Px3Ku4+U1KzXq1d3UFRoLuKctN51kImm1MYuKFPN1r8=\",\r\n                \"encryption_public_key\": \"MCowBQYDK2VuAyEAcK3rnU8kKHYLZ5PKuoin+ESGLdQtIsmtXbFw3RbEgxA=\",\r\n                \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n            }\r\n        },\r\n        \"network_participant\": [\r\n            {\r\n                \"subscriber_url\": \"/subscriber2\",\r\n                \"domain\": \"nic2004:52110\",\r\n                \r\n                \"type\": \"sellerApp\",\r\n                \"msn\": true,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"seller_on_record\": [\r\n                    {\r\n                        \"unique_key_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\",\r\n                        \"key_pair\": {\r\n                            \"signing_public_key\": \"Px3Ku4+U1KzXq1d3UFRoLuKctN51kImm1MYuKFPN1r8=\",\r\n                            \"encryption_public_key\": \"MCowBQYDK2VuAyEAcK3rnU8kKHYLZ5PKuoin+ESGLdQtIsmtXbFw3RbEgxA=\",\r\n                            \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                            \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n                        },\r\n                        \"city_code\": [\r\n                            \"std:080\"\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"timestamp\": \"2022-07-08T13:50:54.101Z\",\r\n        \"request_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/ondc/subscribe/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"subscribe",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4- Buyer and Non-MSN Seller new registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"context\": {\r\n        \"operation\": {\r\n            \"ops_no\": 4\r\n        }\r\n    },\r\n    \"message\": {\r\n        \"entity\": {\r\n            \"gst\": {\r\n                \"legal_entity_name\": \"nsdlprotean\",\r\n                \"business_address\": \"1st Floor, Times Tower,  Kamala Mills Compound, Senapati Bapat Marg,  Lower Parel, Mumbai 013.\",\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"gst_no\": \"27AAACN2082N1Z8 \"\r\n            },\r\n            \"pan\": {\r\n                \"name_as_per_pan\": \"NSDL\",\r\n                \"pan_no\": \"AALCM8972B\",\r\n                \"date_of_incorporation\": \"03/07/2022\"\r\n            },\r\n            \"name_of_authorised_signatory\": \"NSDL\",\r\n            \"address_of_authorised Signatory\": \"Lower Parel,\",\r\n            \"email_id\": \"contact@nsdl.co.in\",\r\n            \"mobile_no\": \"8734598345\",\r\n            \"callback_url\": \"/test\",\r\n            \"country\": \"IND\",\r\n            \"subscriber_id\": \"pilot-gateway-1.beckn.nsdl.co.in/option4\",\r\n            \"key_pair\": {\r\n                \"signing_public_key\": \"K/W7iB1Q1ir9VV9PS12mmKvp1Md08Sw6dIJJye6BMgE=\",\r\n                \"encryption_public_key\": \"MCowBQYDK2VuAyEA6ag5EDiHEVtvwljt1NH4GSjjXEzGVInUAMbIHVAdXiE=\",\r\n                \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n            }\r\n        },\r\n        \"network_participant\": [\r\n            {\r\n                \"subscriber_url\": \"/subscriber3\",\r\n                \"domain\": \"nic2004:60232\",\r\n                \r\n                \"type\": \"sellerApp\",\r\n                \"msn\": false,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ]\r\n            },\r\n            {\r\n                \"subscriber_url\": \"https://pilot-gateway-1.beckn.nsdl.co.in/\",\r\n                \"domain\": \"nic2004:60232\",\r\n                \"callback_url\": \"/test\",\r\n                \"type\": \"buyerApp\",\r\n                \"msn\": false,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ]\r\n            }\r\n        ],\r\n        \"timestamp\": \"2022-07-08T13:53:54.101Z\",\r\n        \"request_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/ondc/subscribe/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"subscribe",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5- Buyer and MSN Seller new registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"context\": {\r\n        \"operation\": {\r\n            \"ops_no\": 5\r\n        }\r\n    },\r\n    \"message\": {\r\n        \"entity\": {\r\n            \"gst\": {\r\n                \"legal_entity_name\": \"nsdlprotean\",\r\n                \"business_address\": \"1st Floor, Times Tower,  Kamala Mills Compound, Senapati Bapat Marg,  Lower Parel, Mumbai 013.\",\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"gst_no\": \"27AAACN2082N1Z8 \"\r\n            },\r\n            \"pan\": {\r\n                \"name_as_per_pan\": \"NSDL\",\r\n                \"pan_no\": \"AALCM8972B\",\r\n                \"date_of_incorporation\": \"03/07/2022\"\r\n            },\r\n            \"name_of_authorised_signatory\": \"NSDL\",\r\n            \"address_of_authorised Signatory\": \"Lower Parel,\",\r\n            \"email_id\": \"contact@nsdl.co.in\",\r\n            \"mobile_no\": \"8734598345\",\r\n            \"country\": \"IND\",\r\n            \"subscriber_id\": \"pilot-gateway-1.beckn.nsdl.co.in/option5\",\r\n            \"callback_url\": \"/test\",\r\n            \"key_pair\": {\r\n                \"signing_public_key\": \"gX32E5Oqi/luK39HZSzaoGfb0n3rFpe/ajvE5masiEI=\",\r\n                \"encryption_public_key\": \"MCowBQYDK2VuAyEAVNZjTdWl2kbBRyYHWP921j4aWi0BPpf7pZPWtMDiiBM=\",\r\n                \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n            }\r\n        },\r\n        \"network_participant\": [\r\n            {\r\n                \"subscriber_url\": \"/subscriber4\",\r\n                \"domain\": \"nic2004:60232\",\r\n                \r\n                \"type\": \"sellerApp\",\r\n                \"msn\": true,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"seller_on_record\": [\r\n                    {\r\n                        \"unique_key_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\",\r\n                        \"key_pair\": {\r\n                            \"signing_public_key\": \"gX32E5Oqi/luK39HZSzaoGfb0n3rFpe/ajvE5masiEI=\",\r\n                            \"encryption_public_key\": \"MCowBQYDK2VuAyEAVNZjTdWl2kbBRyYHWP921j4aWi0BPpf7pZPWtMDiiBM=\",\r\n                            \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                            \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n                        },\r\n                        \"city_code\": [\r\n                            \"std:080\"\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"subscriber_url\": \"https://pilot-gateway-1.beckn.nsdl.co.in/\",\r\n                \"domain\": \"nic2004:60232\",\r\n                \"callback_url\": \"/test\",\r\n                \"type\": \"sellerApp\",\r\n                \"msn\": true,\r\n                \"city_code\": [\r\n                    \"std:080\"\r\n                ],\r\n                \"seller_on_record\": [\r\n                    {\r\n                        \"unique_key_id\": \"37baa06d-f90a-486c-85e5-cc621b787f04\",\r\n                        \"key_pair\": {\r\n                            \"signing_public_key\": \"gX32E5Oqi/luK39HZSzaoGfb0n3rFpe/ajvE5masiEI=\",\r\n                            \"encryption_public_key\": \"MCowBQYDK2VuAyEAVNZjTdWl2kbBRyYHWP921j4aWi0BPpf7pZPWtMDiiBM=\",\r\n                            \"valid_from\": \"2022-07-03T06:27:54.101Z\",\r\n                            \"valid_until\": \"2023-07-03T06:27:54.101Z\"\r\n                        },\r\n                        \"city_code\": [\r\n                            \"std:080\"\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"timestamp\": \"2022-07-08T13:56:54.101Z\",\r\n        \"request_id\": \"27baa06d-f90a-486c-85e5-cc621b787f04\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/ondc/subscribe/",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"subscribe",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
