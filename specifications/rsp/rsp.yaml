@@ -33,14 +33,15 @@ paths:
                 - message
                 - message.orderbook.orders.id
                 - message.orderbook.orders.invoice_no
-                - message.orderbook.orders.buyer_app_id
-                - message.orderbook.orders.seller_app_id
-                - message.orderbook.orders.value
+                - message.orderbook.orders.collector_app_id
+                - message.orderbook.orders.reciever_app_id
                 - message.orderbook.orders.state
                 - message.orderbook.orders.provider
                 - message.orderbook.orders.payment
                 - message.orderbook.orders.settlement_reason
-
+                - message.orderbook.orders.payout_bank_uri
+                - message.orderbook.orders.rsp_uri
+                - message.orderbook.orders.rsp_id
                 - message.orderbook.orders.created_at
                 - message.orderbook.orders.updated_at
       responses:
@@ -84,11 +85,10 @@ paths:
               required:
                 - context
                 - message
-                - message.settlement.id
-                - message.settlement.transaction_id
-                - message.settlement.seller_app_id
-                - message.settlement.settlement_id
-                - message.settlement.settlement_status
+                - message.settlement.settlements.settlement_id
+                - message.settlement.settlements.settlement_status
+                - message.settlement.settlements.settlement_reference_no
+                
       responses:
         '200':
           description: Acknowledgement of message received
@@ -132,9 +132,14 @@ paths:
                 - context
                 - message
                 - message.orderbook.orders.id
+                - message.orderbook.orders.invoice_no
+                - message.orderbook.orders.collector_app_id
+                - message.orderbook.orders.reciever_app_id
                 - message.orderbook.orders.transaction_id
-                - message.orderbook.orders.seller_app_id
+                - message.orderbook.orders.settlement_id
+                - message.orderbook.orders.settlement_reference_no
                 - message.orderbook.orders.recon_status
+
       responses:
         '200':
           description: Acknowledgement of message received
@@ -178,12 +183,10 @@ components:
                 description: Invoice Number of the Order
                 pattern: '[\da-zA-Z\-\/]{3,16}$'
                 example: "2022/XYZ/12345-2"
-              buyer_app_id:
+              collector_app_id:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bap_id'
-              seller_app_id:
+              reciever_app_id:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context/properties/bpp_id'
-              value:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Quotation/properties/price'
               state:
                 $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Order/properties/state'
               provider:
@@ -353,6 +356,7 @@ components:
               - amount_value
               - timestamp
               - payee_name
+              - payee_address
               - payee_account_no
               - payee_bank_code
               - payment_type
