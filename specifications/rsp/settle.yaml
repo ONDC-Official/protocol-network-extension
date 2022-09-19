@@ -157,8 +157,10 @@ components:
               - amount_value
               - timestamp
               - payee_name
+              - payee_address
               - payee_account_no
               - payee_bank_code
               - payment_type
               - purpose_code
               - payee_account_type
+              - settlement_id
