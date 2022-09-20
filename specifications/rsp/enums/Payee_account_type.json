@@ -1,0 +1,7 @@
+{
+  "enum": [
+            {"01", "Nodal Account"},
+            {"02", "Current Account"},
+            {"03", "Savings Account"}
+          ]
+}

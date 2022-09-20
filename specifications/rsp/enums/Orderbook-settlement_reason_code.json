@@ -1,0 +1,8 @@
+{
+  "enum": [
+            {"01", "Order payment"},
+            {"02", "Part refund"},
+            {"03", "Refund"},
+            {"04", "Correction"}
+          ]
+}

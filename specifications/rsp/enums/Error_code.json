@@ -1,0 +1,8 @@
+{
+  "enum": [
+            {"01", "Account Inactive"},
+            {"02", "Due KYC"},
+            {"03", "Account details mismatch"},
+            {"04", "Technical error"}
+          ]
+}
