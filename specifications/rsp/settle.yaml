@@ -1,21 +1,18 @@
 openapi: 3.0.0
 info:
-  title: Settle endpoint for Settlement Agency
-  description: Settle API Specification
+  title: Settlement Advice for Settlement Agency
+  description: Settlement Agency API Specification
   version: 0.1.0-draft
 security:
   - SubscriberAuth: []
-externalDocs:
-  description: Decentralized reconciliation and settlement process flow
-  url: https://github.com/Open-network-for-digital-commerce/protocol-network-extension/blob/main/docs/draft/RSP-flow.pdf
 paths:
   /settle:
     post:
       tags:
         - SettlementAgency
-      description: settlement of payment for different receivers - called by RSP (Step 2a)
+      description: settlement of payment for different receivers - called by RSP
       requestBody:
-        description: RSP asking settlement agency to settle receiver payments
+        description: RSP advising settlement agency to settle receiver payments
         content:
           application/json:
             schema:
@@ -30,7 +27,6 @@ paths:
                       $ref: '#/components/schemas/Settlement'
               required:
                 - context
-                - message
                 - message.settlement.id
                 - message.settlement.invoice_no
                 - message.settlement.buyer_app_id
@@ -63,8 +59,8 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: 'Signature of message body using Buyer App or Seller App subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
-  schemas:  
+      description: 'Signature of message body using Collector or Receiver subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
+  schemas:
     Settlement:
       description: Settlement details
       type: object
@@ -76,22 +72,23 @@ components:
             properties:
               payer_account_no:
                 type: number
-                description: "Debit Account Number of the client. This field is used when client maintains multiple debit account number with Bank."
-              amount_currency:
+                description: "Debit Account Number of the client, used when client maintains multiple debit accounts with bank"
+              currency:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price/properties/currency'
-              amount_value:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price/properties/value'
+              amount:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
               timestamp:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time/properties/timestamp'
+                type: string
+                format: date-time
               payee_name:
                 type: string
-                description: "Payee name. Except for . @ ! , : |~ - _ # & /  no other special characters are accepted"
+                description: "Payee name"
                 example: "A to Z Printing Solutions Pvt. Ltd"
               payee_address:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address/properties/full'
               payee_account_no:
                 type: string
-                description: "The account number of the beneficiary in which credit is to be given. Without Specail charcters and can be alpha numeric"
+                description: "Account number of the beneficiary which is to be credited. Without special charcters and can be alpha numeric"
               payee_bank_code:
                 type:  string
                 description: "Bank Code of Payee e.g. IFSC code"
@@ -100,61 +97,37 @@ components:
                 pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
               payment_type:
                 type: string
-                description: "This is the payment type allocated by the bank"
-                enum:
-                  - RTGS
-                  - NEFT
-                  - IMPFS
-                  - IFT
-                  - UPI
+                $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/tree/main/specifications/rsp.yaml#/components/schemas/Settlement/properties/payment_type'
               purpose_code:
                 type: string
-                maxLength: 10
-                description: "For RTGS / IFT transaction it should contain CMS and for NEFT it should be OTH"
-                enum:
-                  - CMS
-                  - OTH
+                $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/tree/main/specifications/rsp.yaml#/components/schemas/Settlement/properties/purpose_code'
               payee_account_type:
                 type: string
                 description: "Type of Beneficiary Account"
                 enum:
-                - 10
-                - 11
-                - 12
-                - 13
-                - 14
+                - "01"
+                - "02"
+                - "03"
               remarks:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor/properties/name'
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
               settlement_id:
                 type: string
                 description: "Unique identifier for each settlement"
                 example: "121313"
-              settlement_status:
-                type: string
-                enum:
-                  - SETTLED
-                  - PENDING
-                  - ERROR
+              state:
+                $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/tree/main/specifications/rsp.yaml#/components/schemas/Settlement/properties/state'
               settlement_reference_no:
                 type: string
                 description: "Reference number, incase of successful settlement"
                 example: "3718683618631"
               error_code:
-                type: string
-                description: "Error Message Code, to be provided by bank. Only required if settlement_status = error"
-                enum:
-                  - "01"
-                  - "02"
-                  - "03"
-                  - "04"
+                $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/tree/main/specifications/rsp.yaml#/components/schemas/Settlement/properties/error_code'
               error_message:
-                type: string
-                description: Message for Failure/ error on settlement. Only required if settlement_status = error
-                example: "Account not active/ not found"
+                $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/tree/main/specifications/rsp.yaml#/components/schemas/Settlement/properties/error_message'
             required:
               - payer_account_no
-              - amount_currency
-              - amount_value
+              - currency
+              - amount
               - timestamp
               - payee_name
               - payee_address
