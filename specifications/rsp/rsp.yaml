@@ -322,7 +322,7 @@ components:
                 example: "3718683618631"
               error_code:
                 type: string
-                description: "Error Message Code, to be provided by bank. Only required if settlement_status = "03""
+                description: "Error Message Code, to be provided by bank. Only required if settlement_status = 03"
                 enum:
                   - "01"
                   - "02"
@@ -394,7 +394,11 @@ components:
           example: "3718683618631"
         recon_status:
           type: string
-          $ref: '#/components/schemas/OrderBook/recon_status'
+          enum:
+            - "01"
+            - "02"
+            - "03"
+            - "04"
         diff_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
         message:
