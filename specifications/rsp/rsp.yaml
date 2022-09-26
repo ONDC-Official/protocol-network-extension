@@ -196,6 +196,15 @@ components:
                 format: uri
                 description: URI of the Payout Bank.
                 example: "https://rsp.somebank.com/rsp/"
+              rsp_uri:
+                type: string
+                format: uri
+                description: URI of the RSP Module.
+                example: "https://somersp.com/rsp/v1"
+              rsp_id:
+                type: string
+                description: Unique id of the RSP Block
+                example: "ABC12345"
               correction:
                  $ref: '#/components/schemas/Correction'
               transaction_id:
