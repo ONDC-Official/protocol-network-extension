@@ -7,41 +7,41 @@
     "_comment2": "Buyer App finder fee amount",
     "@ondc/org/buyer_app_finder_fee_amount": "3"
     
-    "_comment3": "Seller App Interest type on delayed settlement calculated on per annum basis in Percent",
+    "_comment3": "Seller App Proposes Interest type on delayed settlement calculated on per annum basisin Percent",
     "@ondc/org/seller_app_interest_fee_type": "Percent",
     
-    "_comment4": "Seller App Interest amount on delayed settlement calculated on per annum basis in Percent",
-    "@ondc/org/seller_app_interest_fee_amount": "1000"
+    "_comment4": "Seller App Proposes Interest amount on delayed settlement calculated on per annum basis in Percent",
+    "@ondc/org/seller_app_interest_fee_amount": "10"
     
-    "_comment5": "Seller App Liability Limitation Clause Type",
+    "_comment5": "Seller App Proposes Liability Limitation Clause Type",
     "@ondc/org/seller_app_liability_limitation_clause_type": "Amount"
     
-    "_comment6": "Seller App Liability Limitation Clause Amount",
+    "_comment6": "Seller App Proposes Liability Limitation Clause Amount",
     "@ondc/org/seller_app_liability_limitation_clause_amount": "10000",
     
-    "_comment7": "Seller App Court Jurisdiction",
+    "_comment7": "Seller App Proposes Court Jurisdiction",
     "@ondc/org/seller_app_court_jurisdiction": "std:080",
     
-    "_comment8": "Seller App Cancellation Charge Type",
+    "_comment8": "Seller App Proposes Cancellation Charge Type",
     "@ondc/org/seller_app_cancellation_charge_type": enum
         - Percent
         - Amount
     
-    "_comment9": "Seller App Cancellation Charge Amount",
+    "_comment9": "Seller App Proposes Cancellation Charge Amount",
     "@ondc/org/seller_app_cancellation_charge_amount": "10",
     
-    "_comment10": "Seller App Cancellation Charge Maximum Amount",
+    "_comment10": "Seller App Proposes Cancellation Charge Maximum Amount",
     "@ondc/org/seller_app_cancellation_charge_max_amount": "1000",
     
-    "_comment11": "Buyer App Delayed Delivery Penalty type",
+    "_comment11": "Buyer App Proposes Delayed Delivery Penalty type",
     "@ondc/org/buyer_app_delayed_delivery_penalty_type": enum
         - Percent
         - Amount
     
-    "_comment12": "Buyer App Delayed Delivery Penalty Amount",
+    "_comment12": "Buyer App Proposes Delayed Delivery Penalty Amount",
     "@ondc/org/buyer_app_delayed_delivery_penalty_amount": "100",
     
-    "_comment12": "Buyer App Delayed Delivery Penalty Max Amount",
+    "_comment12": "Buyer App Proposes Delayed Delivery Penalty Max Amount",
     "@ondc/org/buyer_app_delayed_delivery_penalty_max_amount": "1000"
     
   }
