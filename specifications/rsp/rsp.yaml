@@ -320,6 +320,10 @@ components:
                 type: string
                 description: "Reference number, in case of successful settlement"
                 example: "3718683618631"
+              prev_settlement_reference_no:
+                type: array
+                description: "Array of all previous UTR references against which settlement for this order was done"
+                example: ["1234ABCD","2345qwer"]
               error_code:
                 type: string
                 description: "Error Message Code, to be provided by bank. Only required if settlement_status = 03"
@@ -392,6 +396,10 @@ components:
           type: string
           description: "Reference number, in case of successful settlement"
           example: "3718683618631"
+        prev_settlement_reference_no:
+          type: array
+          description: "Array of all previous UTR references against which Correction settlement for this order was done"
+          example: ["1234ABCD","2345qwer"]          
         recon_status:
           type: string
           enum:
