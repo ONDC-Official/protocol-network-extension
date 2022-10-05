@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Reconciliation and Settlement for RSP
   description: RSP API Specification
-  version: 0.1.0-draft
+  version: 0.2.0-draft
 security:
   - SubscriberAuth: []
 paths:
@@ -324,6 +324,8 @@ components:
                 type: array
                 description: "Array of all previous UTR references against which settlement for this order was done"
                 example: ["1234ABCD","2345qwer"]
+                items:
+                  type: string
               error_code:
                 type: string
                 description: "Error Message Code, to be provided by bank. Only required if settlement_status = 03"
@@ -399,7 +401,9 @@ components:
         prev_settlement_reference_no:
           type: array
           description: "Array of all previous UTR references against which Correction settlement for this order was done"
-          example: ["1234ABCD","2345qwer"]          
+          example: ["1234ABCD","2345qwer"]
+          items:
+            type: string
         recon_status:
           type: string
           enum:
