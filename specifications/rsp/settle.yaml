@@ -70,11 +70,24 @@ components:
           items:
             type: object
             properties:
+              payer_name:
+                type: string
+                description: "Payer name"
+                example: "“Example1 company Pvt. Ltd"
+              payer_address:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address/properties/full'
               payer_account_no:
                 type: number
-                description: "Debit Account Number of the client, used when client maintains multiple debit accounts with bank"
-              currency:
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price/properties/currency'
+                description: "Debit Account Number of the client, used when client maintains multiple debit accounts with bank"      
+                example: 509424924294248
+              payer_bank_code:
+                type:  string
+                description: "Bank Code of Payee e.g. IFSC code"
+                example: “HDFC0000000”
+              payer_virtual_payment_address:
+                type: string
+                pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
+                example: "80abc@abctMh2h"
               amount:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
               timestamp:
@@ -147,8 +160,10 @@ components:
                 description: Message for error on settlement. Only required if settlement_status = "03"
                 example: "Account not active or not found"
             required:
+              - payer_name
+              - payer_address
               - payer_account_no
-              - currency
+              - payer_bank_code
               - amount
               - timestamp
               - payee_name
