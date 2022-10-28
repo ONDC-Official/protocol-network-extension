@@ -1,0 +1,8 @@
+{
+    "enum": [
+              {"01", "Provisional"},
+              {"02", "Finale"},
+              {"03", "Deemed Settled"}
+            ]
+}
+  

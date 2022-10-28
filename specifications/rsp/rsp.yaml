@@ -395,8 +395,9 @@ components:
               order_recon_status: 
                 type: string
                 enum:
-                  - Provisional
-                  - Final              
+                  - "01"
+                  - "02"
+                  - "03"              
               payerdetails:
                 $ref: '#/components/schemas/payerdetails'
               settlement_reason_code:
