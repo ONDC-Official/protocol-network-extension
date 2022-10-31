@@ -1,9 +1,0 @@
-{
-  "enum": [
-            "Express Delivery",
-            "Standard Delivery",
-            "Immediate Delivery",
-            "Same Day Delivery",
-            "Next Day Delivery"
-          ]
-}

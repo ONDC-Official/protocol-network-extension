@@ -1,7 +1,0 @@
-{
-  "tags":
-  {
-    "_comment1": "logistics buyer sets to yes to indicate order ready to ship, default is no",
-    "@ondc/org/order_ready_to_ship": "yes"
-  }
-}
