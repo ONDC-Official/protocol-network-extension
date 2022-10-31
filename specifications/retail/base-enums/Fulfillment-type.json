@@ -1,8 +1,0 @@
-{
-  "enum": [
-            "Delivery",
-            "Pickup",
-            "Delivery and Pickup",
-            "Reverse QC"
-          ]
-}
