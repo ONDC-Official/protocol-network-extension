@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Reconciliation and Settlement for RSP
   description: RSP API Specification
-  version: 0.2.0-draft
+  version: 0.3.0-draft
 security:
   - SubscriberAuth: []
 paths:
