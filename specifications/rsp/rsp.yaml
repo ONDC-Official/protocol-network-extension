@@ -6,7 +6,7 @@ info:
 security:
   - SubscriberAuth: []
 paths:
-  /recon:
+  /collector_recon:
     post:
       tags:
         - RSP
@@ -38,6 +38,10 @@ paths:
                 - message.orderbook.orders.settlement_reason_code
                 - message.orderbook.orders.created_at
                 - message.orderbook.orders.updated_at
+                - message.orderbook.orders.withholding_tax_gst
+                - message.orderbook.orders.withholding_tax_tds
+                - message.orderbook.orders.deduction_by_collector
+                - message.orderbook.orders.order_recon_status              
       responses:
         '200':
           description: Acknowledgement of message received
@@ -57,6 +61,144 @@ paths:
                     $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
                 required:
                   - message
+  /on_collector_recon:
+    post:
+      tags:
+        - Collector
+      description: Payment reconciliation and settlement status for Order Book
+      requestBody:
+        description: Updating reconciliation and settlement status for Order Book
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    orderbook:
+                      $ref: '#/components/schemas/OrderBook'
+              required:
+                - context
+                - message.orderbook.orders.id
+                - message.orderbook.orders.invoice_no
+                - message.orderbook.orders.collector_app_id
+                - message.orderbook.orders.receiver_app_id
+                - message.orderbook.orders.transaction_id
+                - message.orderbook.orders.settlement_id
+                - message.orderbook.orders.settlement_reference_no
+                - message.orderbook.orders.recon_status
+                - message.orderbook.orders.order_recon_status  
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /recon_status:
+    post:
+      tags:
+        - RSP
+      description: Get the Status of Reconcillation & Settlement.
+      requestBody:
+        description: Collector (i.e. buyer or seller app who collects payment from the buyer) sends API request to get the /recon status of the corresponding order/txn.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    reconstatus:
+                      $ref: '#/components/schemas/reconstatus'
+              required:
+                - context
+                - message.reconstatus.transaction_id
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_recon_status:
+    post:
+      tags:
+        - Collector
+      description: Status of Reconcillation & Settlement
+      requestBody:
+        description: Posting the Status of Reconciliation & Settlement to Collector
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    orderbook:
+                      $ref: '#/components/schemas/OrderBook'
+              required:
+                - context
+                - message.orderbook.orders.id
+                - message.orderbook.orders.invoice_no
+                - message.orderbook.orders.collector_app_id
+                - message.orderbook.orders.receiver_app_id
+                - message.orderbook.orders.transaction_id
+                - message.orderbook.orders.settlement_id
+                - message.orderbook.orders.settlement_reference_no
+                - message.orderbook.orders.recon_status
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message 
   /on_settle:
     post:
       tags:
@@ -100,12 +242,70 @@ paths:
                     $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
                 required:
                   - message
-  /on_recon:
+  /receiver_recon:
     post:
       tags:
-        - Collector
         - Receiver
-      description: Payment reconciliation and settlement status for Order Book
+      description: Reconciliation of payment for order book - called by RSP
+      requestBody:
+        description: RSP send /recon to Receiver (i.e. buyer or seller app who receives payment).
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    orderbook:
+                      $ref: '#/components/schemas/OrderBook'
+              required:
+                - context
+                - message.orderbook.orders.id
+                - message.orderbook.orders.invoice_no
+                - message.orderbook.orders.collector_app_id
+                - message.orderbook.orders.receiver_app_id
+                - message.orderbook.orders.state
+                - message.orderbook.orders.transaction_id
+                - message.orderbook.orders.provider
+                - message.orderbook.orders.payment
+                - message.orderbook.orders.payerdetails
+                - message.orderbook.orders.settlement_reason_code
+                - message.orderbook.orders.created_at
+                - message.orderbook.orders.updated_at
+                - message.orderbook.orders.withholding_tax_gst
+                - message.orderbook.orders.withholding_tax_tds
+                - message.orderbook.orders.deduction_by_collector
+                - message.orderbook.orders.order_recon_status         
+                - message.orderbook.orders.settlement_id
+                - message.orderbook.orders.settlement_reference_no
+                - message.orderbook.orders.recon_status    
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
+                required:
+                  - message
+  /on_receiver_recon:
+    post:
+      tags:
+        - RSP
+      description: Payment reconciliation and settlement status for Order Book from Receiver
       requestBody:
         description: Updating reconciliation and settlement status for Order Book
         content:
@@ -130,6 +330,7 @@ paths:
                 - message.orderbook.orders.settlement_id
                 - message.orderbook.orders.settlement_reference_no
                 - message.orderbook.orders.recon_status
+                - message.orderbook.orders.order_recon_status  
       responses:
         '200':
           description: Acknowledgement of message received
@@ -149,6 +350,7 @@ paths:
                     $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
                 required:
                   - message
+  
 components:
   securitySchemes:
     SubscriberAuth:
@@ -184,6 +386,18 @@ components:
                 $ref: '#/components/schemas/Provider'
               payment:
                 $ref: 'https://raw.githubusercontent.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/retail-hyperlocal.yaml#/components/schemas/Payment'
+              withholding_tax_gst: 
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              withholding_tax_tds:
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              deduction_by_collector: 
+                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
+              order_recon_status: 
+                type: string
+                enum:
+                  - "01"
+                  - "02"
+                  - "03"              
               payerdetails:
                 $ref: '#/components/schemas/payerdetails'
               settlement_reason_code:
@@ -238,6 +452,15 @@ components:
               updated_at:
                 type: string
                 format: date-time
+    reconstatus:
+      description: Describe the request body for recon_status Endpoint
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          description: Unique identifier for transaction
+      required:
+        - transaction_id
     Provider:
       description: Provider for Order
       type: object
@@ -399,15 +622,7 @@ components:
         - payer_name
         - payer_address
         - payer_account_no
-        - payer_bank_code
-
-        
-        
-              
-
-              
-            
-              
+        - payer_bank_code         
     Correction:
       description: Correction, which will be added to OrderBook after dispute resolution
       type: object
@@ -473,3 +688,4 @@ components:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
         message:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
+ 
