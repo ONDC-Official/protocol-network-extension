@@ -1,0 +1,10 @@
+ {
+    "enum": [
+              {"01":"Buyer"},
+              {"02":"Interfacing NP"},
+              {"03":"Counterparty NP"},
+              {"04":"Cascaded NP"}
+ 
+            ]
+  }
+   

@@ -1,0 +1,9 @@
+ {
+    "enum": [
+              {"01":"Issue"},
+              {"02":"Greviance"},
+              {"03":"Dispute"}
+ 
+            ]
+  }
+     
