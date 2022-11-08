@@ -1,0 +1,13 @@
+ {
+    "enum": [
+              {"01":"Order"},
+              {"02":"Transaction"},
+              {"03":"Fulfillment"},
+              {"04":"Product"},
+              {"05":"Product Service"},
+              {"06":"Service"},
+              {"07":"Payment"}
+ 
+            ]
+  }
+     

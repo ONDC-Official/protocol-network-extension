@@ -1,0 +1,10 @@
+{
+    "enum": [
+              {"01":"open"},
+              {"02":"escalate"},
+              {"03":"close"},
+              {"04":"cancel"},
+              {"05":"need more info"} 
+            ]
+  }
+  
