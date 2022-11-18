@@ -2,7 +2,7 @@
     "enum": [
               {"01":"Intefacing NP GRO"},
               {"02":"Counterparty NP GRO"},
-              {"03":"Cascaded NP GRO"}
+              {"03":"Cascaded Counterparty NP GRO"}
  
             ]
   }
