@@ -33,7 +33,7 @@ paths:
                   properties:
                     issue:
                       description: |
-                        The issue element describes the details of the issue raised by a complainant
+                        The issue element describes the details of the issue raised by a complainant.
                       $ref: "#/components/schemas/Issue"
               required:
                 - context
