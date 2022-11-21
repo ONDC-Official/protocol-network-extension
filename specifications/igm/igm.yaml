@@ -9,7 +9,7 @@ paths:
   /issue:
     post:
       tags:
-        - Buyer App, Seller App, LSP App
+        - Issue Lifecycle management apis
       description: |
         ###  Operation Description 
          * Create an issue for the following entities  of intrest, for which an issue is faced by the buyer: 
@@ -72,7 +72,7 @@ paths:
   /on_issue:
     post:
       tags:
-        - Buyer App, Seller App, LSP App
+        - Issue Lifecycle management apis
       description: Send the issue resolution details object
       requestBody:
         description: Seller confirms order
@@ -136,7 +136,7 @@ paths:
   /status:
     post:
       tags:
-        - ONDC Seller App, ONDC Buyer App, ONDC LSP App
+        - Issue status-check apis
       description: Fetch the latest issue status 
       requestBody:
         description: Any of the network participants or the buyer or seller or lsp checks for status of order
@@ -181,7 +181,7 @@ paths:
   /on_status:
     post:
       tags:
-        - ONDC Buyer App
+        - Issue status-check apis
       description: Fetch the status of a Service
       requestBody:
         description: Seller provides status information for order
@@ -228,7 +228,7 @@ paths:
   /update:
     post:
       tags:
-        - ONDC Seller App, ONDC Buyer App, ONDC LSP App
+        - Issue status update apis
       description: provide latest issue update 
       requestBody:
         description: Any of the network participants or the buyer or seller or lsp checks for status of order
@@ -271,7 +271,7 @@ paths:
   /on_update:
     post:
       tags:
-        - ONDC Buyer App
+        - Issue status update apis
       description: Fetch the status of a Service
       requestBody:
         description: Seller provides status information for order
