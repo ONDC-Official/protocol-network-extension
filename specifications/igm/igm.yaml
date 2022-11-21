@@ -242,15 +242,13 @@ paths:
                 message:
                   type: object
                   properties:
-                    network_issue_id:
-                      description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
-                      type: string
-                      format: uuid
-                  required:
-                    - network_issue_id
+                     issue_update_query:
+                      $ref: '#/components/schemas/IssueUpdateQuery'
               required:
                 - context
                 - message
+                - message.issue_update_query.network_issue_id
+
       responses:
         '200':
           description: Acknowledgement of message received
@@ -712,7 +710,17 @@ components:
         issue_update:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         
-
+    IssueUpdateQuery:
+      description: |
+        Query to get an update on the issue  provided by respondent or the complainant while seeking for an update of an issue
+      type: object
+      properties:
+        network_issue_id:
+          type: string
+          format: uuid
+        issue_update:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
+    
     IssueCateogory:
       description: _
       type: string
