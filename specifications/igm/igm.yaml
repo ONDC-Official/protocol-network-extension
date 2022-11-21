@@ -228,7 +228,7 @@ paths:
   /update:
     post:
       tags:
-        - Issue status update apis
+        - Issue update apis
       description: provide latest issue update 
       requestBody:
         description: Any of the network participants or the buyer or seller or lsp checks for status of order
