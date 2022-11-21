@@ -222,9 +222,6 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message 
-
-
-
   /update:
     post:
       tags:
