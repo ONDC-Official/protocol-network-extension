@@ -715,6 +715,8 @@ components:
         network_issue_id:
           type: string
           format: uuid
+        update_query_source:
+          $ref: "#/components/schemas/IssueSource"
         update_query:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
     
