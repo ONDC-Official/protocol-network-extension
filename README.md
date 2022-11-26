@@ -5,3 +5,22 @@ ONDC is an ambitious initiative to democratize digital commerce by creating a de
 <p align='center'>
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/109668555/198943739-23c40c9c-e409-48c6-9664-7197c100797c.png">
 </p>
+
+# Reference Documents
+
+- [ ] [ONDC Strategy Paper](https://www.ondc.org/image/ONDCStrategyPaper.pdf)
+- [ ] [ONDC Business Briefing Presentation](https://docs.google.com/presentation/d/1FJ8D_2pG9Ta4Siu3q84S4eGXZq1XyTED/edit#slide=id.g1151f945cbc_1_115)
+- [ ] [ONDC Business Briefing recording](https://drive.google.com/file/d/1c1f5FS4aOTmhIHogHs-kTyal31p7kD9N/view)
+- [ ] [ONDC Tech Briefing Presentation](https://docs.google.com/presentation/d/17mJ_zPjEYPagc5PZuw7FS3Ftcc-Gop4U6536wStRSag/edit#slide=id.g1204a6ff419_0_56)
+- [ ] [ONDC Tech Briefing recording](https://drive.google.com/file/d/1WuHCc59C45LClpbiIPomPMuTeClRZw7h/view?usp=sharing)
+- [ ] [Consultation paper : Building trust in ONDC network](https://ondc-static-website-media.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf)
+- [ ] [Policy Documents](https://drive.google.com/drive/u/2/folders/1vSvhvt5bRym7T-J4t2GB5onS0tfx4ljb)
+- [ ] [Integration Guide](https://docs.google.com/presentation/d/1HPRXk3lVYKmyAFcApgukZuwHhIZ_VlqR/edit#slide=id.g142ae05b320_0_0)
+- [ ] [Tech QuickStart Guide](https://github.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/blob/master/protocol-specifications/docs/draft/Tech%20Quickstart%20Guide.md)
+- [ ] [NP Resources](https://docs.google.com/spreadsheets/d/1U-JtpIwzl0_2GS1g_J6C2-0dEZneUNKcrGDrBy2YZNw/edit#gid=0)
+
+
+
+
+
+ 
