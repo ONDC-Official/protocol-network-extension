@@ -41,8 +41,7 @@ paths:
                 - message.issue.complainant_info.contact.name
                 - message.issue.complainant_info.contact.phone
                 - message.issue.complainant_info.contact.email
-                - message.issue.issue_identifiers
-                - message.issue.order_id
+                - message.issue.issue_order_id
                 - message.issue.order
                 - message.issue.issue_type
                 - message.issue.created_at
@@ -99,8 +98,7 @@ paths:
                 - message.issue_resolution_details.issue.complainant_info.contact.name
                 - message.issue_resolution_details.issue.complainant_info.contact.phone
                 - message.issue_resolution_details.issue.complainant_info.contact.email
-                - message.issue_resolution_details.issue.issue_identifiers
-                - message.issue_resolution_details.issue.order_id
+                - message.issue_resolution_details.issue.issue_order_id
                 - message.issue_resolution_details.issue.order
                 - message.issue_resolution_details.issue.issue_type
                 - message.issue_resolution_details.issue.created_at
@@ -133,7 +131,7 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message
-  /status:
+  /issue_status:
     post:
       tags:
         - Issue status-check apis
@@ -178,7 +176,7 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message
-  /on_status:
+  /on_issue_status:
     post:
       tags:
         - Issue status-check apis
@@ -196,7 +194,9 @@ paths:
                   type: object
                   properties:
                     issue_status:
-                      $ref: '#/components/schemas/IssueStatus'
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/IssueStatus'
                   required:
                     - order
                 error:
@@ -222,7 +222,7 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message 
-  /update:
+  /issue_update:
     post:
       tags:
         - Issue update apis
@@ -239,12 +239,12 @@ paths:
                 message:
                   type: object
                   properties:
-                     issue_update_query:
-                      $ref: '#/components/schemas/IssueUpdateQuery'
+                     issue_more_info:
+                      $ref: '#/components/schemas/IssueMoreInfo'
               required:
                 - context
                 - message
-                - message.issue_update_query.network_issue_id
+                - message.issue_more_info.network_issue_id
 
       responses:
         '200':
@@ -265,7 +265,7 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message
-  /on_update:
+  /on_issue_update:
     post:
       tags:
         - Issue status update apis
@@ -419,7 +419,7 @@ components:
       description: |
         Any one of these resolution support deatils are mandatory to be speficed whenever an issue resolution is proposed.
         In case of Issue, Either a respondent ChatLink, email or faq deatils should be provided or any of the additional sources of support should be provided
-        In case of Greviance : the GRO details are manadatory to be provided 
+        In case of Grievance : the GRO details are manadatory to be provided 
         In case of Dispute : the selected ODR details are mandatory to be provided 
         Porvides details of the resolution support for the respondent / complainant to interact with the respondent
       type: object
@@ -443,11 +443,11 @@ components:
             This is a required object if and when the issue type is "Dispute"
           type: array
           items:
-            $ref: "#/components/schemas/ODR"
+            $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
         gro:
           description: |
             Details of the GRO appointed by the resolution provider to support in issue resolution .
-            This is a required object if and when the issue type is "Greviance"
+            This is a required object if and when the issue type is "Grievance"
           type: object
           allOf:
            - $ref: "#/components/schemas/GRO"
@@ -478,7 +478,7 @@ components:
       description: |
         Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
         Details of the GRO appointed by the resolution provider to support in issue resolution .
-        This is a required object if and when the issue type is "Greviance"
+        This is a required object if and when the issue type is "Grievance"
         
       type: object
       properties:
@@ -547,7 +547,7 @@ components:
       description: |
         *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
         * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
-        * Describes the issue when it is escalated as a Greviance or a Dispute
+        * Describes the issue when it is escalated as a Grievance or a Dispute
       type: object
       properties:
         network_issue_id:
@@ -563,10 +563,10 @@ components:
           $ref: "#/components/schemas/Complainant"
         issue_identifiers:
           $ref: "#/components/schemas/IssueIdentifiers"
-        order_id: #to rewview should this be moved within issue identifiers
+        issue_order_id: #to rewview should this be moved within issue identifiers
           description: order id for the reference to the order for which there is a complaint
           type: string
-        fulfilment_id: #to rewview should this be moved within issue identifiers
+        issue_fulfilment_id: #to rewview should this be moved within issue identifiers
           description: issues may be raised with reference to a fulfilment id
           type: string
         item_id: #to rewview should this be moved within issue identifiers
@@ -581,7 +581,7 @@ components:
         issue_type:
           description: |
             identifies the type of the issue raised
-            * the complainant being raised can be a regular issue, which then subsequently can be escalated to be a Greviance which may be further escalated to be a Dispute
+            * the complainant being raised can be a regular issue, which then subsequently can be escalated to be a Grievance which may be further escalated to be a Dispute
           type: string
           enum:
             - "01"
@@ -589,19 +589,10 @@ components:
             - "03"
         source:
           $ref: "#/components/schemas/IssueSource"
-        supplementary_information:
-          description: |
-            supplementary Information  Describes and retails evidence of the information about the issue . 
-            Including but not limited to any of the following or more: 
-            * Picutres providing further information about the issue
-            * documents providing further information about the issue etc
-          type: array
-          items:
-            $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         expected_response_time:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Duration"
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         expected_resolution_time:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Duration"
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         status:
           $ref: "#/components/schemas/IssueStatus"
         created_at:
@@ -613,17 +604,21 @@ components:
           type: string
           format: date-time
         finalized_odr:
-          description: descripbes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigne for resolution. 
-          allOf:
-            - $ref: "#/components/schemas/ODR"
+          description: descripbes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigne for resolution.
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+        rating:
+          description: rating by the complainant for issue resolution
+          type: string
+          enum:
+            - THUMBS-UP
+            - THUMBS-DOWN
       required:
         - network_issue_id
         - complainant_info.contact.name
         - complainant_info.contact.phone
         - complainant_info.contact.email
-        - issue_identifiers
         - description
-        - order_id
+        - issue_order_id
         - order
         - issue_type
         - created_at
@@ -685,17 +680,27 @@ components:
             - "09"
             - "10"
             - "11"
-        cancellation_reason:
+        closing_reason:
           description: |
-            details of the reason why the issue is cancelled, can be captured when the complainant triggers a cancellation action
+            details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
           type: string
-        cancellation_remarks:
+        closing_remarks:
           description: |
-            details of the remarks when the issue is cancelled, can be captured when the complainant triggers a cancellation action
+            details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
           type: string
         status_details:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
-        
+        status_change_date:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        issue_modification_date:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        modified_by:
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+        modified_issue_field_name:
+          description: 
+            The issue field name that has been modified
+          type: string
+
     IssueUpdate:
       description: |
         Update on the issue provided by respondent or the complainant
@@ -707,7 +712,7 @@ components:
         issue_update:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         
-    IssueUpdateQuery:
+    IssueMoreInfo:
       description: |
         Query to get an update on the issue  provided by respondent or the complainant while seeking for an update of an issue
       type: object
@@ -715,8 +720,6 @@ components:
         network_issue_id:
           type: string
           format: uuid
-        update_query_source:
-          $ref: "#/components/schemas/IssueSource"
         update_query:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
     
