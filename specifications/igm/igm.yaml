@@ -222,93 +222,6 @@ paths:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
                 required:
                   - message 
-  /issue_update:
-    post:
-      tags:
-        - Issue update apis
-      description: provide latest issue update 
-      requestBody:
-        description: Any of the network participants or the buyer or seller or lsp checks for status of order
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                context:
-                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
-                message:
-                  type: object
-                  properties:
-                     issue_more_info:
-                      $ref: '#/components/schemas/IssueMoreInfo'
-              required:
-                - context
-                - message
-                - message.issue_more_info.network_issue_id
-
-      responses:
-        '200':
-          description: Acknowledgement of message received
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      ack:
-                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
-                    required:
-                      - ack
-                  error:
-                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
-                required:
-                  - message
-  /on_issue_update:
-    post:
-      tags:
-        - Issue status update apis
-      description: Fetch the update on the issue 
-      requestBody:
-        description: Interfacing app provides update  information for the issue
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                context:
-                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
-                message:
-                  type: object
-                  properties:
-                    issue_update:
-                      $ref: '#/components/schemas/IssueUpdate'
-                  required:
-                    - order
-                error:
-                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
-              required:
-                - context
-      responses:
-        '200':
-          description: Acknowledgement of message received
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      ack:
-                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
-                    required:
-                      - ack
-                  error:
-                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
-                required:
-                  - message    
 components:
   securitySchemes:
     SubscriberAuth:
@@ -548,6 +461,12 @@ components:
         *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
         * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
         * Describes the issue when it is escalated as a Grievance or a Dispute
+        *  supplementary Information  Describes and details evidence of the information about the issue . When the complainant or respondant seeks an issue update the addtional information about the update are populated as part of the supplementary information. 
+          the supplementary information section , details information including but not limited to any of the following or more: 
+            * comments from the complaintant/ respondant for seeking more information about the issue
+            * comments from the complaintant/ respondant providing the update on the issue with more information on the issue 
+            * Picutres providing further information about the issue
+            * documents attachment/links providing further information about the issue etc
       type: object
       properties:
         network_issue_id:
@@ -589,6 +508,10 @@ components:
             - "03"
         source:
           $ref: "#/components/schemas/IssueSource"
+        supplementary_information:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplementaryInformation"
         expected_response_time:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         expected_resolution_time:
@@ -626,7 +549,19 @@ components:
         - expected_response_time
         - expected_resolution_time
         - status.issue_status
-
+    SupplementaryInformation:
+      type: object
+      properties:
+        issue_update_info:
+                $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"  
+        created_at:
+          description: timestamp for the creation of the issue
+          type: string
+          format: date-time
+        modified_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
     IssueIdentifiers:
       description:  IDs of the subsequent tickets generated by the systems partipating in complaint resolution respectively.
       type: object
@@ -700,29 +635,6 @@ components:
           description: 
             The issue field name that has been modified
           type: string
-
-    IssueUpdate:
-      description: |
-        Update on the issue provided by respondent or the complainant
-      type: object
-      properties:
-        network_issue_id:
-          type: string
-          format: uuid
-        issue_update:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
-        
-    IssueMoreInfo:
-      description: |
-        Query to get an update on the issue  provided by respondent or the complainant while seeking for an update of an issue
-      type: object
-      properties:
-        network_issue_id:
-          type: string
-          format: uuid
-        update_query:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
-    
     IssueCateogory:
       description: _
       type: string
