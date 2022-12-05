@@ -374,7 +374,7 @@ components:
             This is a required object if and when the issue type is "Dispute"
           type: array
           items:
-            $ref: "#/components/schemas/Organization"
+            $ref: "#/components/schemas/ODR"
         gro:
           description: |
             Details of the GRO appointed by the resolution provider to support in issue resolution .
@@ -450,6 +450,8 @@ components:
         url:
           description: URL link to the ODR provider
           type: string
+        organization:
+          $ref: "#/components/schemas/Organization"
         pricing_model:
           description: Details of the pricing modle of the ODR
           type: object
@@ -554,7 +556,7 @@ components:
           format: date-time
         finalized_odr:
           description: descripbes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigne for resolution.
-          $ref: "#/components/schemas/Organization"
+          $ref: "#/components/schemas/ODR"
         rating:
           description: rating by the complainant for issue resolution
           type: string
