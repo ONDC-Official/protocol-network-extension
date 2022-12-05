@@ -555,7 +555,7 @@ components:
           type: string
           format: date-time
         finalized_odr:
-          description: descripbes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigne for resolution.
+          description: describes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
           $ref: "#/components/schemas/ODR"
         rating:
           description: rating by the complainant for issue resolution
