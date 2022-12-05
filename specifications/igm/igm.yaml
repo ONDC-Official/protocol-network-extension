@@ -109,6 +109,7 @@ paths:
                 - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.name
                 - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.address
                 - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.email
+                - message.issue_resolution_details.resolution_provider.provider.respondent_contact.email
                 - message.issue_resolution_details.resolution.network_issue_id
                 - message.issue_resolution_details.resolution.resolution_remarks
                 - message.issue_resolution_details.resolution.resolution_action
@@ -267,11 +268,12 @@ components:
       description: Describes the details of the entity that provides the resolution for the issue
       type: object
       properties:
-        provider_info:
+        respondent_info:
           description: _
+           the respondant represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
           type: object
           properties:
-            provider_type:
+            type:
               description: | 
                 Indicates the type of the resolution provider NP type.
                 ### TYPES
@@ -285,8 +287,8 @@ components:
                 - "03"
             organization:
               $ref: "#/components/schemas/Organization"
-        respondent_info:
-          $ref: "#/components/schemas/Respondent"
+            resolution_support:
+              $ref: "#/components/schemas/ResolutionSupport"
       required:
         - respondent_info
 
@@ -361,8 +363,13 @@ components:
         respondentEmail:
           description: email for the respondent for complainant to interact with the respondent
           type: string
+        respondentContact:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
         respondentFaqs:
           description: frequently asked questions for the respondent for complainant to get information as required
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Faq'
         additional_sources:
           type: object
           additionalProperties:
@@ -392,19 +399,6 @@ components:
           type: string
         link:
           type: string
-    Respondent:
-      description: the respondant represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
-      type: object
-      properties:
-        resolution_support:
-          $ref: "#/components/schemas/ResolutionSupport"
-        respondent_contact:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
-      required:
-        - respondent_contact.name
-        - respondent_contact.address
-        - respondent_contact.phone
-        - respondent_contact.email
     GRO:
       description: |
         Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
@@ -434,11 +428,20 @@ components:
         - contact.phone
         - contact.email
         - gro_type
+    Faq:
+      description: |
+       type: object
+      properties:
+        question:
+          type: string
+        Answer:
+          type: string
     ODR:
       description: |
-        Describes the details of the Online Dispute Resolution Provider.
+        * Describes the details of the Online Dispute Resolution Provider.
         ODR Service Providers (ODR SP) via dispute resolution methods such as mediation/ conciliation and/or arbitration, will attempt to resolve disputes
         NOTE : ```ODR``` stands for Online Dispute Resolution.
+        * May also describe the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
       type: object
       properties:
         name:
@@ -555,7 +558,6 @@ components:
           type: string
           format: date-time
         finalized_odr:
-          description: describes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
           $ref: "#/components/schemas/ODR"
         rating:
           description: rating by the complainant for issue resolution
