@@ -245,17 +245,16 @@ components:
             Describes the action taken by the conplainant who has raised the issue. 
             the value should be populated when the conplainant has taken any of the below actions to anotate the action taken. the actions can be, 
             ### Actions
-            1. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
-            2. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
-            3. Complainant can ```cancel``` the issue in case when the issue is not yet resolved, but the complainant decides to cancel the issue and doesnot expect any further actions to be taken on this issue. 
-            4. Complainant can ```accept``` the resolution once he is satisfied with the provided resolution . and he can subsequently close the issue (with the close action)
+            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
+            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
+            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
+            4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
           type: string
           enum:
             - "01"
             - "02"
             - "03"
             - "04"
-            - "05"
         complainant_action_reason:
           description: complainant can give the reason for the specific action taken
           type: string
@@ -273,14 +272,19 @@ components:
           type: object
           properties:
             provider_type:
-              description: Indicates the type of the resolution provider NP type.
+              description: | 
+                Indicates the type of the resolution provider NP type.
+                ### TYPES
+                1. Interfacing NP : indicating the NP where or through which the issue is raised
+                2. Transaction Counterparty NP : indicating the first level of transaction counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP : indicating the second or any further downstream levels of counterparty network provider with which the NP is interacting with to get an issue resolution.
               type: string
               enum:
                 - "01"
                 - "02"
                 - "03"
-            network_participant:
-              $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+            organization:
+              $ref: "#/components/schemas/Organization"
         respondent_info:
           $ref: "#/components/schemas/Respondent"
       required:
@@ -320,6 +324,11 @@ components:
           description: remarks of the result of the dispute, if applicable
           type: string
         resolution_action:
+          description: |
+              Indicactes the action taken while addressing the issue.
+               ### Actions
+                1. resolve : indicating the issue being resolved. 
+                2. reject : indicating that the issue is rejected by the respondant or the resolution provider. 
           type: string
           enum:
             - "01"
@@ -328,6 +337,15 @@ components:
         - network_issue_id
         - resolution_remarks
         - resolution_action
+    Organization:
+      type: object
+      properties:
+        org:
+         $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Orgranization"
+        contact: 
+         $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+        person:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
     ResolutionSupport:
       description: |
         Any one of these resolution support deatils are mandatory to be speficed whenever an issue resolution is proposed.
@@ -356,7 +374,7 @@ components:
             This is a required object if and when the issue type is "Dispute"
           type: array
           items:
-            $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+            $ref: "#/components/schemas/Organization"
         gro:
           description: |
             Details of the GRO appointed by the resolution provider to support in issue resolution .
@@ -367,7 +385,7 @@ components:
 
     ResolutionSource:
       description: |
-        the resolution source provide details of any addtional resolution resoruces thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
+        the resolution source provide details of any addtional resolution resources thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
       type: object
       properties:
         type:
@@ -401,6 +419,12 @@ components:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
         gro_type:
           type: string
+          description: |
+            Indicates the system through which the GRO is assigned to this issue. 
+            ### TYPES
+                1. Intefacing NP GRO : indicating the GRO is assigned by the NP where or through which the issue is raised
+                2. Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
           enum:
             - "01"
             - "02"
@@ -496,11 +520,13 @@ components:
         description:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         category:
-          $ref: "#/components/schemas/IssueCateogory"
+          $ref: "#/components/schemas/IssueCategory"
         issue_type:
           description: |
             identifies the type of the issue raised
-            * the complainant being raised can be a regular issue, which then subsequently can be escalated to be a Grievance which may be further escalated to be a Dispute
+            * the complainant being raised can be a regular ```Issue```, 
+            * which then subsequently can be escalated to be a ```Grievance``` 
+            * which may be further escalated to be a ```Dispute```
           type: string
           enum:
             - "01"
@@ -528,7 +554,7 @@ components:
           format: date-time
         finalized_odr:
           description: descripbes the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigne for resolution.
-          $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+          $ref: "#/components/schemas/Organization"
         rating:
           description: rating by the complainant for issue resolution
           type: string
@@ -579,12 +605,17 @@ components:
       description: _
       type: object
       properties:
-        issue_category:
-          $ref: "#/components/schemas/IssueCateogory"
-        id:
+        network_participant_id:
           type: string
-          description: unique identifier of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant nterwork provider id based on what causes the the
+          description: unique identifier of the network participant of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant network provider id based on what causes the issue
         issue_source_type:
+          description: |
+            Indicates the source from where the issue is raised. 
+            ### TYPES
+                1. Buyer : indicating that the Buyer of a product or a service has raised the issue
+                2. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
+                3. Counterparty NP  : indicating that the first level of counterparty network provider with which the interfacing NP is interacting with has identified and raised the issue.
+                4. Cascaded NP : indicating that the second or any further downstream levels of cascaded counterparty network provider, with which the NP is interacting with, has identified and raised the issue.         
           type: string
           enum:
             - "01"
@@ -594,13 +625,25 @@ components:
     IssueStatus:
       description: |
         Status of the issue updated by respondent or the complainant
-        The issue may attain different status based on its lifecycle.
+        The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
       type: object
       properties:
         network_issue_id:
           type: string
           format: uuid
         status:
+          description: |
+             ### Statues
+                1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+                2. Accepted : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
+                3. Rejected  : indicating that the issue worked worked upon is identified as invalid and is rejected. 
+                4. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
+                5. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
+                6. Declined : indicating that the issue is outright declined from its open status since it is demeed to be invalid.
+                7. Escalated to GRO : indicating that the issue is now escalated to the GRO level and it should be now treated as a Grievance.        
+                8. Escalated to ODR : indicating that this Grievance is now escalated to the ODR level and it should be now treated as a Dispute.         
+                9. Escalated to Court : indicating that this Dispute was unresolved after all actions by NPs and/OR GROs and/or ODRs and should now be addressed in the Court of law.         
+                10. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
           type: string
           enum:
             - "01"
@@ -614,7 +657,6 @@ components:
             - "08"
             - "09"
             - "10"
-            - "11"
         closing_reason:
           description: |
             details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
@@ -630,13 +672,22 @@ components:
         issue_modification_date:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         modified_by:
-          $ref: "https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant"
+          $ref: "#/components/schemas/Organization"
         modified_issue_field_name:
           description: 
             The issue field name that has been modified
           type: string
-    IssueCateogory:
-      description: _
+    IssueCategory:
+      description: |
+        Identifies what is the category of this issue
+        ### CATEGORIES:
+        1. Order : Indicactes that the issue is related to  Order.
+        2. Transaction : Indicactes that the issue is related to  Transaction.
+        3. Fulfillment : Indicactes that the issue is related to  Fulfillment.
+        4. Product : Indicactes that the issue is related to  Product.
+        5. Product Service : Indicactes that the issue is related to  Product Service.
+        6. Service : Indicactes that the issue is related to  Service.
+        7. Payment : Indicactes that the issue is related to  Payments.
       type: string
       enum: # TODO need to revisit
         - "01"
