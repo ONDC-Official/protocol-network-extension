@@ -382,13 +382,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ODR"
-        gro:
+        gros:
           description: |
             Details of the GRO appointed by the resolution provider to support in issue resolution .
             This is a required object if and when the issue type is "Grievance"
-          type: object
-          allOf:
-           - $ref: "#/components/schemas/GRO"
+          type: array
+          items:
+            $ref: "#/components/schemas/GRO"
 
     ResolutionSource:
       description: |
@@ -417,7 +417,7 @@ components:
             Indicates the system through which the GRO is assigned to this issue. 
             ### TYPES
                 1. Intefacing NP GRO : indicating the GRO is assigned by the NP where or through which the issue is raised
-                2. Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                2. Transaction Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
                 3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
           enum:
             - "01"
@@ -617,9 +617,8 @@ components:
             Indicates the source from where the issue is raised. 
             ### TYPES
                 1. Buyer : indicating that the Buyer of a product or a service has raised the issue
-                2. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
-                3. Counterparty NP  : indicating that the first level of counterparty network provider with which the interfacing NP is interacting with has identified and raised the issue.
-                4. Cascaded NP : indicating that the second or any further downstream levels of cascaded counterparty network provider, with which the NP is interacting with, has identified and raised the issue.         
+                2. Seller : indicating that the Seller of a product or a service has raised the issue
+                3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
           type: string
           enum:
             - "01"
@@ -639,15 +638,10 @@ components:
           description: |
              ### Statues
                 1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                2. Accepted : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
-                3. Rejected  : indicating that the issue worked worked upon is identified as invalid and is rejected. 
-                4. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
-                5. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
-                6. Declined : indicating that the issue is outright declined from its open status since it is demeed to be invalid.
-                7. Escalated to GRO : indicating that the issue is now escalated to the GRO level and it should be now treated as a Grievance.        
-                8. Escalated to ODR : indicating that this Grievance is now escalated to the ODR level and it should be now treated as a Dispute.         
-                9. Escalated to Court : indicating that this Dispute was unresolved after all actions by NPs and/OR GROs and/or ODRs and should now be addressed in the Court of law.         
-                10. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
+                2. Acknowledge : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
+                3. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
+                4. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
+                5. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
           type: string
           enum:
             - "01"

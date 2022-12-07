@@ -1,10 +1,8 @@
  {
     "enum": [
-              {"01":"End User"},
-              {"02":"Interfacing NP"},
-              {"03":"Counterparty NP"},
-              {"04":"Cascaded NP"}
- 
+              {"01":"Consumer"},
+              {"02":"Seller"},
+              {"03":"Interfacing NP"}
             ]
   }
    
