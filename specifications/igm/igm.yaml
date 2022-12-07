@@ -638,7 +638,7 @@ components:
           description: |
              ### Statues
                 1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                2. Acknowledge : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
+                2. Acknowledged : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
                 3. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
                 4. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
                 5. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
