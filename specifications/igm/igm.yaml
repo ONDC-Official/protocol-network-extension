@@ -1,529 +1,697 @@
-    openapi: 3.0.0
-    info:
-      title: Issue and Grievance Management (IGM) for ONDC
-      description: ONDC Issue and Grievance Management (IGM)  API Specification
-      version: 0.0.1-draft
-    security:
-      - SubscriberAuth: []
-    paths:
-      /issue:
-        post:
-          tags:
-            - IGM
-          description: |
-              ###  Operation Description 
-               * Create an issue for the following entities  of intrest, for which an issue is faced by the buyer: 
-                  +  order,
-                  +  transaction 
-                  +  fulfillment or
-                  +  item. 
-               * The issue can be created/raised by any of 
-                  + the Issueca#/components/schemas/IssueCateogory' himself related to any of he entity mentioned  Or
-                  + By any of the Issueca#/components/schemas/IssueCateogory'-app,seller-app, transaction-counter party, or logistics providers NPs to help resolve any issue rasied by the buyer.   
-          requestBody:
-            content:
-              application/json:
-                schema:
+openapi: 3.0.0
+info:
+  title: Issue and Grievance Management (IGM) for ONDC
+  description: ONDC Issue and Grievance Management (IGM)  API Specification
+  version: 0.0.1-draft
+security:
+  - SubscriberAuth: []
+paths:
+  /issue:
+    post:
+      tags:
+        - Issue Lifecycle management apis
+      description: |
+        ###  Operation Description 
+         * Create an issue for the following entities  of intrest, for which an issue is faced by the buyer: 
+            +  order,
+            +  transaction 
+            +  fulfillment or
+            +  item. 
+         * The issue can be created/raised by any of 
+            + the Issueca#/components/schemas/IssueCateogory' himself related to any of he entity mentioned  Or
+            + By any of the Issueca#/components/schemas/IssueCateogory'-app,seller-app, transaction-counter party, or logistics providers NPs to help resolve any issue rasied by the buyer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
+                message:
                   type: object
                   properties:
-                    context:
-                      $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
-                    message:
-                      type: object
-                      properties:
-                        issue:
-                          description : |
-                            The issue element describes the details of the issue raised by a complainant
-                          $ref: '#/components/schemas/Issue'
-                  required:
-                    - context
-                    - message.issue.network_issue_id
-          responses:
-            '200':
-              description: Acknowledgement of message received
-              content:
-                application/json:
-                  schema:
-                    type: object
-                    properties:
-                      message:
-                        type: object
-                        properties:
-                          ack:
-                            $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
-                        required:
-                          - ack
-                      error:
-                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
-                    required:
-                      - message
-      /on_issue:
-        post:
-          tags:
-            - ONDC Issueca#/components/schemas/IssueCateogory' App
-          description: Send the issue resolution details object
-          requestBody:
-            description: Seller confirms order
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    context:
-                      $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context'
-                    message:
-                      type: object
-                      properties:
-                        issue_resolution_details:
-                          $ref: '#/components/schemas/IssueResolutionDetails'
-                      required:
-                        - issue_resolution_details
-                    error:
-                      $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
-                  required:
-                    - context
-          responses:
-            '200':
-              description: Acknowledgement of message received
-              content:
-                application/json:
-                  schema:
-                    type: object
-                    properties:
-                      message:
-                        type: object
-                        properties:
-                          ack:
-                            $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack'
-                        required:
-                          - ack
-                      error:
-                        $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error'
-                    required:
-                      - message
-    components:
-      securitySchemes:
-        SubscriberAuth:
-          type: apiKey
-          in: header
-          name: Authorization
-          description: 'Signature of message body using Collector or Receiver subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
-      schemas:
-        Buyer: 
-          description: buyer is paying for the purchase of product/service on ONDC network
-          type: object
-          properties:
-            person:
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person'
-            contact:
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-        Complainant:
-          description: | 
-            - Describes an entity that raises a complaint with an interfacing app. 
-            - The complainant may be an end user (buyer or seller) or a network participant (buyer app/ seller app/ logistic services  provider app)
-          type: object
-          properties:
-            person:
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person'
-            contact:
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-            complainant_action:
-              description: |
-                Describes the action taken by the conplainant who has raised the issue. 
-                the value should be populated when the conplainant has taken any of the below actions to anotate the action taken. the actions can be, 
-                ### Actions
-                1. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
-                2. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
-                3. Complainant can ```cancel``` the issue in case when the issue is not yet resolved, but the complainant decides to cancel the issue and doesnot expect any further actions to be taken on this issue. 
-                4. Complainant can ```accept``` the resolution once he is satisfied with the provided resolution . and he can subsequently close the issue (with the close action)
-              type: string 
-              enum: 
-                 - "01"
-                 - "02"
-                 - "03"
-                 - "04"
-                 - "05"
-            complainant_action_reason: 
-              description : complainant can give the reason for the specific action taken 
-              type: string
-        ResolutionProvider: 
-          description: Describes the details of the entity that provides the resolution for the issue
-          type: object
-          properties:
-              provider_info:
-                description: _
+                    issue:
+                      $ref: "#/components/schemas/Issue"
+              required:
+                - context
+                - context.ttl
+                - message.issue
+                - message.issue.network_issue_id
+                - message.issue.complainant_info.contact.name
+                - message.issue.complainant_info.contact.phone
+                - message.issue.complainant_info.contact.email
+                - message.issue.issue_order_id
+                - message.issue.order
+                - message.issue.issue_type
+                - message.issue.created_at
+                - message.issue.modified_at
+                - message.issue.expected_response_time
+                - message.issue.expected_resolution_time
+                - message.issue.status.issue_status
+      responses:
+        "200":
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  provider_type:
-                    description: Indicates the type of the resolution provider NP type. 
-                    type: string
-                    enum: 
-                      - "01"
-                      - "02"
-                      - "03"
-                  network_participant: 
+                  message:
                     type: object
-                    $ref: 'https://raw.githubusercontent.com/ONDC-Official/protocol-network-extension/main/specifications/registry/openapi.yaml#/components/schemas/NetworkParticipant'
-              respondent_info:
-                description: information about the respondent from the resolution provider who is going to respond with the issue resolution. 
-                type: object
-                $ref: '#/components/schemas/Respondent'
-
-        IssueResolutionDetails:   
-          properties:
-            issue:
-              $ref: '#/components/schemas/Issue'
-            resolution_provider:
-              $ref: '#/components/schemas/ResolutionProvider'
-            resolution:
-              description: issue resolution
+                    properties:
+                      ack:
+                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
+                    required:
+                      - ack
+                  error:
+                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+                required:
+                  - message
+  /on_issue:
+    post:
+      tags:
+        - Issue Lifecycle management apis
+      description: Send the issue resolution details object
+      requestBody:
+        description: Seller confirms order
+        content:
+          application/json:
+            schema:
               type: object
-              $ref: '#/components/schemas/IssueResolution'  
-
-        IssueResolution:
-            description: Describes the issue raised by a Complainant and settlement contract for an order
-            type: object
-            properties:
-              network_issue_id:
-                description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
-                type: string
-                format: uuid
-              resolution:
-                description: resolution
-                type: string
-              resolution_remarks:
-                description: remarks of the resolution of the issue by the respondent
-                type: string
-              gro_remarks:
-                description: resolution remarks provided by the gro
-                type: string
-              dispute_resolution_remarks:
-                description: remarks of the result of the dispute, if applicable
-                type: string
-              resolution_action: 
-                type: string 
-                enum: 
-                  - "01"
-                  - "02"
-        ResolutionSupport:
-          description: resolution support
-          type: object
-          properties:
-            respondentChatLink:
-              description: chatbot link for the respondent for complainant to interact with the respondent
-              type: string
-            respondentEmail:
-              description: email for the respondent for complainant to interact with the respondent
-              type: string
-            respondentFaqs:
-              description: frequently asked questions for the respondent for complainant to get information as required
-            additional_sources:
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/ResolutionSource'  
-            selected_odrs:
-              description : |
-                 details of the ODRs selected by the resolution provider or the complainant .
-                 one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
-                 the details are to be captured b
-              type: array
-              items:
-                $ref: '#/components/schemas/ODR' 
-            gro:
-                description:  |
-                  details of the GRO appointed by the resolution provider to support in issue resolution .
+              properties:
+                context:
+                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
+                message:
+                  type: object
+                  properties:
+                    issue_resolution_details:
+                      $ref: "#/components/schemas/IssueResolutionDetails"
+                  required:
+                    - issue_resolution_details
+                error:
+                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+              required:
+                - context
+                - message.issue_resolution_details
+                - message.issue_resolution_details.issue.network_issue_id
+                - message.issue_resolution_details.issue.complainant_info.contact.name
+                - message.issue_resolution_details.issue.complainant_info.contact.phone
+                - message.issue_resolution_details.issue.complainant_info.contact.email
+                - message.issue_resolution_details.issue.issue_order_id
+                - message.issue_resolution_details.issue.order
+                - message.issue_resolution_details.issue.issue_type
+                - message.issue_resolution_details.issue.created_at
+                - message.issue_resolution_details.issue.modified_at
+                - message.issue_resolution_details.issue.expected_response_time
+                - message.issue_resolution_details.issue.expected_resolution_time
+                - message.issue_resolution_details.issue.status.issue_status
+                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.name
+                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.address
+                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.email
+                - message.issue_resolution_details.resolution_provider.provider.respondent_contact.email
+                - message.issue_resolution_details.resolution.network_issue_id
+                - message.issue_resolution_details.resolution.resolution_remarks
+                - message.issue_resolution_details.resolution.resolution_action
+      responses:
+        "200":
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
                 type: object
-                $ref: '#/components/schemas/GRO'
-                 
-        ResolutionSource:
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
+                    required:
+                      - ack
+                  error:
+                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+                required:
+                  - message
+  /issue_status:
+    post:
+      tags:
+        - Issue status-check apis
+      description: Fetch the latest issue status 
+      requestBody:
+        description: Any of the network participants or the buyer or seller or lsp checks for status of order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
+                message:
+                  type: object
+                  properties:
+                    network_issue_id:
+                      description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
+                      type: string
+                      format: uuid
+                  required:
+                    - network_issue_id
+              required:
+                - context
+                - message
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
+                    required:
+                      - ack
+                  error:
+                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+                required:
+                  - message
+  /on_issue_status:
+    post:
+      tags:
+        - Issue status-check apis
+      description: Fetch the status of a Service
+      requestBody:
+        description: Seller provides status information for order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Context"
+                message:
+                  type: object
+                  properties:
+                    issue_status:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/IssueStatus'
+                  required:
+                    - order
+                error:
+                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+              required:
+                - context
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Ack"
+                    required:
+                      - ack
+                  error:
+                    $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
+                required:
+                  - message 
+components:
+  securitySchemes:
+    SubscriberAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Signature of message body using Collector or Receiver subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
+  schemas:
+    Complainant:
+      description: |
+        - Describes an entity that raises a complaint with an interfacing app. 
+        - The complainant may be an end user (buyer or seller) or a network participant (buyer app/ seller app/ logistic services  provider app)
+      type: object
+      properties:
+        person:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
+        contact:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+        complainant_action:
           description: |
-            the resolution source provide details of any addtional resolution resoruces thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
+            Describes the action taken by the conplainant who has raised the issue. 
+            the value should be populated when the conplainant has taken any of the below actions to anotate the action taken. the actions can be, 
+            ### Actions
+            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
+            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
+            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
+            4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
+          type: string
+          enum:
+            - "01"
+            - "02"
+            - "03"
+            - "04"
+        complainant_action_reason:
+          description: complainant can give the reason for the specific action taken
+          type: string
+      required:
+        - contact.name
+        - contact.phone
+        - contact.email
+        - complainant_action
+    ResolutionProvider:
+      description: Describes the details of the entity that provides the resolution for the issue
+      type: object
+      properties:
+        respondent_info:
+          description: _
+           the respondant represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
           type: object
           properties:
             type:
+              description: | 
+                Indicates the type of the resolution provider NP type.
+                ### TYPES
+                1. Interfacing NP : indicating the NP where or through which the issue is raised
+                2. Transaction Counterparty NP : indicating the first level of transaction counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP : indicating the second or any further downstream levels of counterparty network provider with which the NP is interacting with to get an issue resolution.
               type: string
-            link:
-              type: string
-        Respondent:
-          description: the respondant represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
-          type: object
-          properties:
+              enum:
+                - "01"
+                - "02"
+                - "03"
+            organization:
+              $ref: "#/components/schemas/Organization"
             resolution_support:
-              description: chatbot link for the respondent for complainant to interact with the respondent
-              type: object
-              $ref: '#/components/schemas/ResolutionSupport'
-            respondent_contact:
-              description: respondent contact details
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-           
-        GRO:
-          description: |
-            Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
-          type: object
-          properties:
-            person:
-              description: gro info
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person'
-            contact:
-              description: Contact detials of the GRO 
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-            gro_type:
-              type: string
-              enum:
-                - "01"
-                - "02"
-                - "03"
-        ODR:   
-          description: |
-            Describes the details of the Online Dispute Resolution Provider.
-            ODR Service Providers (ODR SP) via dispute resolution methods such as mediation/ conciliation and/or arbitration, will attempt to resolve disputes
-            NOTE : ```ODR``` stands for Online Dispute Resolution.
-          type: object
-          properties:
-            name:
-              description: Name of the ODR provider 
-              type: string
-            about_info:
-              description: Detailed information about the ODR provider
-              type: string
-            url:
-              description: URL link to the ODR provider
-              type: string
-            pricing_model:
-              description: Details of the pricing modle of the ODR
-              type: object
-              properties:
-                price:
-                  $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
-                pricing_info:
-                  description: addtional information about the pricing model 
-                  type: string
+              $ref: "#/components/schemas/ResolutionSupport"
+      required:
+        - respondent_info
 
-            resolution_ratings:
-              description: |
-                Describes details of how the ODR has been rated across the resolutions it has provided in the past 
-              type: object
-              $ref: '#/components/schemas/Rating'   
-        Rating:
-          description: provides details of the ratings provided for a specific entity. 
-          type: object
-          properties:
-            rating_value:
-              description: _
-              type: string    
-        Issue:
-          description: |
-            *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
-            * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
-          type: object
-          properties:
-            network_issue_id:
-              description: | 
-                * Network issue identifier is an unique number assigned to any complaint by the interfacing application at the source.
+    IssueResolutionDetails:
+      properties:
+        issue:
+          $ref: "#/components/schemas/Issue"
+        resolution_provider:
+          $ref: "#/components/schemas/ResolutionProvider"
+        resolution:
+          $ref: "#/components/schemas/IssueResolution"
+      required:
+        - issue
+        - resolution_provider
+        - resolution
 
-                * **During the life cycle of a complaint, this number will not change and will be communicated to counterparty application.**
-
-                * Any subsequent issues created with the interfacing,counterpary or casacaded counter party apps are responsible for providing the correalted and relevant network-issue-id which helps all this inteacting systems to traverse back to the main issue.
-              type: string
-              format: uuid
-            complainant_info:
-              description: (buyer) or a network participant (buyer app/ seller app/ logistic services provider app), who is raising the issue. 
-              type: object
-              $ref: '#/components/schemas/Complainant'
-            issue_identifiers:
-              type: object
-              $ref: '#/components/schemas/IssueIdentifiers'
-            order_id:  #to rewview shouls this be moved within issue identifiers
-              description: order id for the reference to the order for which there is a complaint
-              type: string
-            fulfilment_id:   #to rewview shouls this be moved within issue identifiers
-              description: issues may be raised with reference to a fulfilment id 
-              type: string
-            item_id:   #to rewview shouls this be moved within issue identifiers
-              description: issues may be raised with reference to a speicif item id as well for individual items
-              type: string
-            order:
-              description: details of the respective order in reference for the issue
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order'
-            description:
-              description: | 
-               ##description of the issue.
-               * populated by the complainant to give the description of the issue being faced. 
-              type: object
-              $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
-            category:
-              description: category of ths issue 
-              type : object 
-              $ref: '#/components/schemas/IssueCateogory'
-            issue_type: 
-              description:  | 
-                identifies the type of the issue raised
-                * the complainant being raised can be a regular issue, which then subsequently can be escalated to be a Greviance which may be further escalated to be a Dispute
-              type: string
-              enum: 
-                - "01"
-                - "02"
-                - "03"
-            source:
-              description: _
-              type: object
-              $ref: '#/components/schemas/IssueSource'
-            supplementary_information:
-              description: |
-               supplementary Information  Describes and retails evidence of the information about the issue . 
-               Including but not limited to any of the following or more: 
-               * Picutres providing further information about the issue
-               * documents providing further information about the issue etc
-              type: array
-              items:
-                type: object
-                $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor'
-            expected_response_time:
-              description: |
-               expected time for the respondent of the respond to the issue. 
-              type: object
-              $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Duration"
-            expected_resolution_time:
-              description: |
-                 expected time for the respondent of the resolve or close the issue                 
-                 **Note:** Beyond this time the issue may be getting escalated
-              type: object
-              $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Duration"
-            status:
-              description: |
-                status of the Issue
-                this issue may attain different status based on its lifecycle.
-              type: object
-              $ref: '#/components/schemas/IssueStatus' 
-            created_at:
-              description: timestamp for the creation of the issue
-              type: string
-              format: date-time
-            modified_at:
-              description: timestamp for the capturing the time an issue was last updated
-              type: string
-              format: date-time
-            finalized_odr:
-              description: |  
-                Describes the details of the ODR which is agreed upon by all the parties/entities involved in resolving the issue. 
-                ** this ODR will be resposbile for resolving the issue once it is assigned with the issue. 
-              type: object
-              $ref: '#/components/schemas/ODR' 
-            # grievance_escalation_flag:
-            #   description: boolean flag to denote whether an issue has been escalated to a grievance or not
-            #   type: boolean
-            # app_gro_details:
-            #   description: gro details
-            #   type: object
-            #   $ref: '#/components/schemas/App'
-            # dispute_escalation_flag:
-            #   description: boolean flag to denote whether a grievance has been escalated to a dispute or not
-            #   type: boolean
-            
-            
-
-        IssueIdentifiers:
-          type: object
-          properties:
-            issue_id_crm_bap:
-              description: this id shall be maitained by the buyer app for an issue raised
-              type: string
-            issue_id_crm_bpp:
-              description: this id shall be maitained by the seller app for an issue raised
-              type: string
-            issue_id_crm_lsp:
-              description: This id shall be maitained by the LSP for an issue raised
-              type: string        
-        IssueSource:
-          description: _
-          type: object
-          properties:
-            issue_category:
-              type: object
-              $ref: '#/components/schemas/IssueCateogory'
-            id:
-              type: string
-              description : unique identifier of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant nterwork provider id based on what causes the the  
-            issue_source_type:
-              type: string
-              enum: 
-                - "01"
-                - "02"
-                - "03" 
-                - "04" 
-        IssueStatus:
-          description: status of the issue updated by respondent or the complainant
-          type: object
-          properties:
-            issue_status: 
-              type: string
-              enum:
-                - "01"
-                # TODO should we also have the "assigned " and "in progress" statues
-                - "02"
-                - "03"
-                - "04"
-                - "05"
-                - "06"
-                - "07"
-                - "08" 
-                - "09"
-                - "10"
-                - "11"
-            cancellation_reason: 
-              description : |
-                details of the reason why the issue is cancelled, can be captured when the complainant triggers a cancellation action
-              type: string
-            cancellation_remarks:
-              description:  |
-                details of the remarks when the issue is cancelled, can be captured when the complainant triggers a cancellation action
-              type: string 
-        IssueCateogory:
-          description: _
+    IssueResolution:
+      description: Describes the issue resolution for the issue raised by a Complainant 
+      type: object
+      properties:
+        network_issue_id:
+          description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
           type: string
-          
-          enum: # TODO need to revisit
-                - "01"
-                - "02"
-                - "03"
-                - "04"
-                - "05"
-                - "06"
-                - "07"
-        # below schema components may not be needed 
-        # Seller:
-        #   description: seller is the provider of the product/service being bought on the network
-        #   type: object
-        #   properties:
-        #     info:
-        #       type: object
-        #       $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person'
-        #     contact:
-        #       type: object
-        #       $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-        # Logistic:
-        #   description: logistic
-        #   type: object
-        #   properties:
-        #     info:
-        #       type: object
-        #       $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person'
-        #     contact:
-        #       type: object
-        #       $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact'
-        # App:
-        #   description: app
-        #   type: object
-        #   properties:
-        #     gro:
-        #       description: gro
-        #       type: object
-        #       $ref: '#/components/schemas/GRO'
+          format: uuid
+        resolution:
+          description: resolution
+          type: string
+        resolution_remarks:
+          description: remarks of the resolution of the issue by the respondent
+          type: string
+        gro_remarks:
+          description: resolution remarks provided by the gro
+          type: string
+        dispute_resolution_remarks:
+          description: remarks of the result of the dispute, if applicable
+          type: string
+        resolution_action:
+          description: |
+              Indicactes the action taken while addressing the issue.
+               ### Actions
+                1. resolve : indicating the issue being resolved. 
+                2. reject : indicating that the issue is rejected by the respondant or the resolution provider. 
+          type: string
+          enum:
+            - "01"
+            - "02"
+      required:
+        - network_issue_id
+        - resolution_remarks
+        - resolution_action
+    Organization:
+      type: object
+      properties:
+        org:
+         $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Organization"
+        contact: 
+         $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+        person:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
+    ResolutionSupport:
+      description: |
+        Any one of these resolution support deatils are mandatory to be speficed whenever an issue resolution is proposed.
+        In case of Issue, Either a respondent ChatLink, email or faq deatils should be provided or any of the additional sources of support should be provided
+        In case of Grievance : the GRO details are manadatory to be provided 
+        In case of Dispute : the selected ODR details are mandatory to be provided 
+        Porvides details of the resolution support for the respondent / complainant to interact with the respondent
+      type: object
+      properties:
+        respondentChatLink:
+          description: chatbot link for the respondent for complainant to interact with the respondent
+          type: string
+        respondentEmail:
+          description: email for the respondent for complainant to interact with the respondent
+          type: string
+        respondentContact:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+        respondentFaqs:
+          description: frequently asked questions for the respondent for complainant to get information as required
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Faq'
+        additional_sources:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/ResolutionSource"
+        selected_odrs:
+          description: |
+            details of the ODRs selected by the resolution provider .
+            one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
+            This is a required object if and when the issue type is "Dispute"
+          type: array
+          items:
+            $ref: "#/components/schemas/ODR"
+        gros:
+          description: |
+            Details of the GRO appointed by the resolution provider to support in issue resolution .
+            This is a required object if and when the issue type is "Grievance"
+          type: array
+          items:
+            $ref: "#/components/schemas/GRO"
+
+    ResolutionSource:
+      description: |
+        the resolution source provide details of any addtional resolution resources thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
+      type: object
+      properties:
+        type:
+          type: string
+        link:
+          type: string
+    GRO:
+      description: |
+        Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
+        Details of the GRO appointed by the resolution provider to support in issue resolution .
+        This is a required object if and when the issue type is "Grievance"
+        
+      type: object
+      properties:
+        person:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
+        contact:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+        gro_type:
+          type: string
+          description: |
+            Indicates the system through which the GRO is assigned to this issue. 
+            ### TYPES
+                1. Intefacing NP GRO : indicating the GRO is assigned by the NP where or through which the issue is raised
+                2. Transaction Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
+          enum:
+            - "01"
+            - "02"
+            - "03"
+      required:
+        - contact.name
+        - contact.phone
+        - contact.email
+        - gro_type
+    Faq:
+      description: |
+       type: object
+      properties:
+        question:
+          type: string
+        Answer:
+          type: string
+    ODR:
+      description: |
+        * Describes the details of the Online Dispute Resolution Provider.
+        ODR Service Providers (ODR SP) via dispute resolution methods such as mediation/ conciliation and/or arbitration, will attempt to resolve disputes
+        NOTE : ```ODR``` stands for Online Dispute Resolution.
+        * May also describe the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
+      type: object
+      properties:
+        name:
+          description: Name of the ODR provider
+          type: string
+        about_info:
+          description: Detailed information about the ODR provider
+          type: string
+        url:
+          description: URL link to the ODR provider
+          type: string
+        organization:
+          $ref: "#/components/schemas/Organization"
+        pricing_model:
+          description: Details of the pricing modle of the ODR
+          type: object
+          properties:
+            price:
+              $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price"
+            pricing_info:
+              description: addtional information about the pricing model
+              type: string
+
+        resolution_ratings:
+          $ref: "#/components/schemas/Rating"
+      required:
+        - name
+        - about_info
+        - url
+        - pricing_model.pricing_info
+        - resolution_ratings.rating_value
+    Rating:
+      description: |
+            provides details of the ratings provided for a specific entity.
+            Describes details of how the ODR has been rated across the resolutions it has provided in the past
+      type: object
+      properties:
+        rating_value:
+          description: | 
+            Rating value in percentage: eg : 98%
+          type: string
+      required:
+        - rating_value
+    Issue:
+      description: |
+        *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
+        * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
+        * Describes the issue when it is escalated as a Grievance or a Dispute
+        *  supplementary Information  Describes and details evidence of the information about the issue . When the complainant or respondant seeks an issue update the addtional information about the update are populated as part of the supplementary information. 
+          the supplementary information section , details information including but not limited to any of the following or more: 
+            * comments from the complaintant/ respondant for seeking more information about the issue
+            * comments from the complaintant/ respondant providing the update on the issue with more information on the issue 
+            * Picutres providing further information about the issue
+            * documents attachment/links providing further information about the issue etc
+      type: object
+      properties:
+        network_issue_id:
+          description: |
+            * Network issue identifier is an unique number assigned to any complaint by the interfacing application at the source.
+
+            * **During the life cycle of a complaint, this number will not change and will be communicated to counterparty application.**
+
+            * Any subsequent issues created with the interfacing,counterpary or casacaded counter party apps are responsible for providing the correalted and relevant network-issue-id which helps all this inteacting systems to traverse back to the main issue.
+          type: string
+          format: uuid
+        complainant_info:
+          $ref: "#/components/schemas/Complainant"
+        issue_identifiers:
+          $ref: "#/components/schemas/IssueIdentifiers"
+        issue_order_id: #to rewview should this be moved within issue identifiers
+          description: order id for the reference to the order for which there is a complaint
+          type: string
+        issue_fulfilment_id: #to rewview should this be moved within issue identifiers
+          description: issues may be raised with reference to a fulfilment id
+          type: string
+        item_id: #to rewview should this be moved within issue identifiers
+          description: issues may be raised with reference to a specific item id as well for individual items
+          type: string
+        order:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order"
+        description:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
+        category:
+          $ref: "#/components/schemas/IssueCategory"
+        issue_type:
+          description: |
+            identifies the type of the issue raised
+            * the complainant being raised can be a regular ```Issue```, 
+            * which then subsequently can be escalated to be a ```Grievance``` 
+            * which may be further escalated to be a ```Dispute```
+          type: string
+          enum:
+            - "01"
+            - "02"
+            - "03"
+        source:
+          $ref: "#/components/schemas/IssueSource"
+        supplementary_information:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplementaryInformation"
+        expected_response_time:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        expected_resolution_time:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        status:
+          $ref: "#/components/schemas/IssueStatus"
+        created_at:
+          description: timestamp for the creation of the issue
+          type: string
+          format: date-time
+        modified_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
+        finalized_odr:
+          $ref: "#/components/schemas/ODR"
+        rating:
+          description: rating by the complainant for issue resolution
+          type: string
+          enum:
+            - THUMBS-UP
+            - THUMBS-DOWN
+      required:
+        - network_issue_id
+        - complainant_info.contact.name
+        - complainant_info.contact.phone
+        - complainant_info.contact.email
+        - description
+        - issue_order_id
+        - order
+        - issue_type
+        - created_at
+        - modified_at
+        - expected_response_time
+        - expected_resolution_time
+        - status.issue_status
+    SupplementaryInformation:
+      type: object
+      properties:
+        issue_update_info:
+                $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"  
+        created_at:
+          description: timestamp for the creation of the issue
+          type: string
+          format: date-time
+        modified_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
+    IssueIdentifiers:
+      description:  IDs of the subsequent tickets generated by the systems partipating in complaint resolution respectively.
+      type: object
+      properties:
+        issue_id_crm_bap:
+          description: this id shall be maitained and populated by the buyer app for an issue raised
+          type: string
+        issue_id_crm_bpp:
+          description: this id shall be maitained and populated by the seller app for an issue raised
+          type: string
+        issue_id_crm_lsp:
+          description: This id shall be maitained and populated by the LSP for an issue raised
+          type: string
+    IssueSource:
+      description: _
+      type: object
+      properties:
+        network_participant_id:
+          type: string
+          description: unique identifier of the network participant of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant network provider id based on what causes the issue
+        issue_source_type:
+          description: |
+            Indicates the source from where the issue is raised. 
+            ### TYPES
+                1. Buyer : indicating that the Buyer of a product or a service has raised the issue
+                2. Seller : indicating that the Seller of a product or a service has raised the issue
+                3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
+          type: string
+          enum:
+            - "01"
+            - "02"
+            - "03"
+            - "04"
+    IssueStatus:
+      description: |
+        Status of the issue updated by respondent or the complainant
+        The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
+      type: object
+      properties:
+        network_issue_id:
+          type: string
+          format: uuid
+        status:
+          description: |
+             ### Statues
+                1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+                2. Acknowledged : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
+                3. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
+                4. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
+                5. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
+          type: string
+          enum:
+            - "01"
+            # TODO should we also have the "assigned " and "in progress" statues
+            - "02"
+            - "03"
+            - "04"
+            - "05"
+            - "06"
+            - "07"
+            - "08"
+            - "09"
+            - "10"
+        closing_reason:
+          description: |
+            details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
+          type: string
+        closing_remarks:
+          description: |
+            details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
+          type: string
+        status_details:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
+        status_change_date:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        issue_modification_date:
+          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
+        modified_by:
+          $ref: "#/components/schemas/Organization"
+        modified_issue_field_name:
+          description: 
+            The issue field name that has been modified
+          type: string
+    IssueCategory:
+      description: |
+        Identifies what is the category of this issue
+        ### CATEGORIES:
+        1. Order : Indicactes that the issue is related to  Order.
+        2. Transaction : Indicactes that the issue is related to  Transaction.
+        3. Fulfillment : Indicactes that the issue is related to  Fulfillment.
+        4. Product : Indicactes that the issue is related to  Product.
+        5. Product Service : Indicactes that the issue is related to  Product Service.
+        6. Service : Indicactes that the issue is related to  Service.
+        7. Payment : Indicactes that the issue is related to  Payments.
+      type: string
+      enum: # TODO need to revisit
+        - "01"
+        - "02"
+        - "03"
+        - "04"
+        - "05"
+        - "06"
+        - "07"

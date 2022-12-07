@@ -1,18 +1,11 @@
  {
     "enum": [
               {"01":"Open"},
-              {"02":"Accepted"},
-              {"03":"Rejected"},
-              {"04":"Closed"},
-              {"05":"Cancelled By Complainant"},
-              {"06":"Resolved"},
-              {"07":"Declined"},
-              {"08":"Escalated to GRO"},
-              {"09":"Escalated to ODR"},
-              {"10":"Escalated to Court"},
-              {"11":"Deemed Closed"}
- 
+              {"02":"Acknowledged"},
+              {"03":"Closed"},
+              {"04":"Resolved"},
+              {"05":"Deemed Closed"} 
             ]
   }
   
-  
+    

@@ -1,8 +1,7 @@
  {
     "enum": [
-              {"01":"Interfacing NP"},
-              {"02":"Transaction Counterparty NP"},
-              {"03":"Cascaded counterparty NP"}
+              {"01":"Transaction Counterparty NP"},
+              {"02":"Cascaded Counterparty NP"}
 
             ]
   }
