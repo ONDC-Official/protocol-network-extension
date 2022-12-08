@@ -4,7 +4,9 @@
               {"02":"Acknowledged"},
               {"03":"Closed"},
               {"04":"Resolved"},
-              {"05":"Deemed Closed"} 
+              {"05":"Deemed Closed"} ,
+              {"06":"Need More Info"}
+
             ]
   }
   

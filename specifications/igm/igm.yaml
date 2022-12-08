@@ -641,6 +641,7 @@ components:
                 3. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
                 4. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
                 5. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
+                6. Need More Info :   indicating that the network participant  is expecting more information from the complaiant . In that scenario the network participant working on the issue will set this status .  
           type: string
           enum:
             - "01"
