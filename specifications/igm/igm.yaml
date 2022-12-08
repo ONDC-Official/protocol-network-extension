@@ -110,7 +110,7 @@ paths:
                 - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.address
                 - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.email
                 - message.issue_resolution_details.resolution_provider.provider.respondent_contact.email
-                - message.issue_resolution_details.resolution.id
+                - message.issue_resolution_details.resolution.network_issue_id
                 - message.issue_resolution_details.resolution.resolution_remarks
                 - message.issue_resolution_details.resolution.resolution_action
       responses:
@@ -309,7 +309,7 @@ components:
       description: Describes the issue resolution for the issue raised by a Complainant 
       type: object
       properties:
-        id:
+        network_issue_id:
           description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
           type: string
           format: uuid
