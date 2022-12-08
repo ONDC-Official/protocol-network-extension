@@ -1,11 +1,9 @@
  {
     "enum": [
               {"01":"Open"},
-              {"02":"Acknowledged"},
-              {"03":"Closed"},
-              {"04":"Resolved"},
-              {"05":"Deemed Closed"} ,
-              {"06":"Need More Info"}
+              {"02":"Closed"},
+              {"03":"Resolved"},
+              {"04":"Need More Info"}
 
             ]
   }

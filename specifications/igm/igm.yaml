@@ -637,11 +637,9 @@ components:
           description: |
              ### Statues
                 1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                2. Acknowledged : indicating that the issue is Accepted to be worked upon by the resolution provider or its respondant
-                3. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
-                4. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
-                5. Deemed Closed : indicating that the is ready to be closed and other other actions are expected/accepted on this issue except for "Closed" action.             
-                6. Need More Info :   indicating that the network participant  is expecting more information from the complaiant . In that scenario the network participant working on the issue will set this status .  
+                2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
+                3. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
+                4. Need More Info :   indicating that the network participant  is expecting more information from the complaiant . In that scenario the network participant working on the issue will set this status .  
           type: string
           enum:
             - "01"
@@ -649,7 +647,6 @@ components:
             - "02"
             - "03"
             - "04"
-            - "05"
         closing_reason:
           description: |
             details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
