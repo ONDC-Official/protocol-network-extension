@@ -31,6 +31,7 @@ paths:
                 - message.orderbook.orders.invoice_no
                 - message.orderbook.orders.collector_app_id
                 - message.orderbook.orders.receiver_app_id
+                - message.orderbook.orders.receiver_app_uri
                 - message.orderbook.orders.state
                 - message.orderbook.orders.provider
                 - message.orderbook.orders.payment
@@ -379,6 +380,8 @@ components:
                 type: string
               receiver_app_id:
                 type: string
+              receiver_app_uri:
+                type: string
               state:
                 type: string
                 description: Order state
@@ -408,11 +411,7 @@ components:
                   - "02"
                   - "03"
                   - "04"
-              payout_bank_uri:
-                type: string
-                format: uri
-                description: URI of the Payout Bank.
-                example: "https://rsp.somebank.com/rsp/"
+                  - "05"
               correction:
                  $ref: '#/components/schemas/Correction'
               transaction_id:

@@ -27,12 +27,21 @@ paths:
                       $ref: '#/components/schemas/Settlement'
               required:
                 - context
-                - message.settlement.id
-                - message.settlement.invoice_no
-                - message.settlement.buyer_app_id
-                - message.settlement.seller_app_id
-                - message.settlement.settlement_id
-                - message.settlement.settlement_details
+                - message.settlement.settlements.payer_name
+                - message.settlement.settlements.payer_address
+                - message.settlement.settlements.payer_account_no
+                - message.settlement.settlements.payer_bank_code
+                - message.settlement.settlements.curr_type
+                - message.settlement.settlements.amount
+                - message.settlement.settlements.timestamp
+                - message.settlement.settlements.payee_name
+                - message.settlement.settlements.payee_address
+                - message.settlement.settlements.payee_account_no
+                - message.settlement.settlements.payee_bank_code
+                - message.settlement.settlements.payment_type
+                - message.settlement.settlements.purpose_code
+                - message.settlement.settlements.payee_account_type
+                - message.settlement.settlements.settlement_id
       responses:
         '200':
           description: Acknowledgement of message received
