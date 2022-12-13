@@ -4,7 +4,7 @@
             {"02", "Part refund"},
             {"03", "Refund"},
             {"04", "Correction"},
-            {"05", "Buyer App Profit Payment"},
+            {"05", "Buyer App fee Payment"},
             {"06", "Buyer app fee gst payment"},
           ]
 }
