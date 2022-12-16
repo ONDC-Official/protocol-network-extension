@@ -27,6 +27,8 @@ paths:
                       $ref: '#/components/schemas/Settlement'
               required:
                 - context
+                - message.settlement.settlements.collector_app_id
+                - message.settlement.settlements.receiver_app_id
                 - message.settlement.settlements.payer_name
                 - message.settlement.settlements.payer_address
                 - message.settlement.settlements.payer_account_no
@@ -79,6 +81,12 @@ components:
           items:
             type: object
             properties:
+              collector_app_id:
+                type: string
+                description: Subscriber Id of the Payer
+              receiver_app_id:
+                type: string
+                description: Subscriber Id of the Payee
               payer_name:
                 type: string
                 description: "Payer name"
@@ -177,6 +185,8 @@ components:
                 description: Message for error on settlement. Only required if settlement_status = "03"
                 example: "Account not active or not found"
             required:
+              - collector_app_id
+              - receiver_app_id
               - payer_name
               - payer_address
               - payer_account_no
