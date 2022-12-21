@@ -372,19 +372,24 @@ components:
               id:
                 type: string
                 description: Order id
+                example: "K106403902112759"
               invoice_no:
                 type: string
                 description: Invoice Number of the Order
                 example: "2022/XYZ/12345-2"
               collector_app_id:
                 type: string
+                example: "abc.collectorapp.com"
               receiver_app_id:
                 type: string
+                example: "abc.receiverapp.com"
               receiver_app_uri:
                 type: string
+                example: "https://abc.receiverapp.com"
               state:
                 type: string
                 description: Order state
+                example: "Delivered"
               provider:
                 $ref: '#/components/schemas/Provider'
               payment:
@@ -417,6 +422,7 @@ components:
               transaction_id:
                 type: string
                 description: Unique identifier for transaction
+                example: "6baa811a-6cbe-4ad3-94e9-cbf96aaff343"
               settlement_id:
                 type: string
                 description: "Unique identifier for each settlement"
@@ -448,9 +454,11 @@ components:
               created_at:
                 type: string
                 format: date-time
+                example: "2022-10-28T10:34:58.472Z"
               updated_at:
                 type: string
                 format: date-time
+                example: "2022-10-28T10:34:58.472Z"
     reconstatus:
       description: Describe the request body for recon_status Endpoint
       type: object
@@ -458,6 +466,7 @@ components:
         transaction_id:
           type: string
           description: Unique identifier for transaction
+          example: "3df395a9-c196-4678-a4d1-5eaf4f7df8dc"
       required:
         - transaction_id
     Provider:
@@ -483,13 +492,15 @@ components:
               collector_app_id:
                 type: string
                 description: Subscriber Id of the Payer
+                example: "abc.collectorapp.com"
               receiver_app_id:
                 type: string
                 description: Subscriber Id of the Payee
+                example: "abc.receiverapp.com"
               payer_name:
                 type: string
                 description: "Payer name"
-                example: "“Example1 company Pvt. Ltd"
+                example: "Example1 company Pvt. Ltd"
               payer_address:
                 $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address/properties/full'
               payer_account_no:
@@ -511,6 +522,7 @@ components:
               timestamp:
                 type: string
                 format: date-time
+                example: "2022-10-18T16:14:40.396Z"
               payee_name:
                 type: string
                 description: "Payee name"
@@ -520,12 +532,15 @@ components:
               payee_account_no:
                 type: string
                 description: "Account number of the beneficiary which is to be credited. Without special charcters and can be alpha numeric"
+                example: "99679007677676"
               payee_bank_code:
                 type:  string
                 description: "Bank Code of Payee e.g. IFSC code"
+                example: "HDFC900008"
               payee_virtual_payment_address:
                 type: string
                 pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
+                example: "payee@upi"
               payment_type:
                 description: "Payment type allocated by the bank"
                 enum:
@@ -610,7 +625,7 @@ components:
         payer_name:
           type: string
           description: "Payer name"
-          example: "“Example1 company Pvt. Ltd"
+          example: "Example1 company Pvt. Ltd"
         payer_address:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Address/properties/full'
         payer_account_no:
@@ -661,6 +676,7 @@ components:
         order_id:
           type: string
           description: "Original Order ID"
+          example: "K106403902112759"
         order_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
         order_correction_amount:
@@ -668,6 +684,7 @@ components:
         order_state:
           type: string
           description: "Order State"
+          example: "Delivered"
         previous_settled_amount:
           $ref: 'https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Price'
         settlement_id:
