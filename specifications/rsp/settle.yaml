@@ -27,12 +27,23 @@ paths:
                       $ref: '#/components/schemas/Settlement'
               required:
                 - context
-                - message.settlement.id
-                - message.settlement.invoice_no
-                - message.settlement.buyer_app_id
-                - message.settlement.seller_app_id
-                - message.settlement.settlement_id
-                - message.settlement.settlement_details
+                - message.settlement.settlements.collector_app_id
+                - message.settlement.settlements.receiver_app_id
+                - message.settlement.settlements.payer_name
+                - message.settlement.settlements.payer_address
+                - message.settlement.settlements.payer_account_no
+                - message.settlement.settlements.payer_bank_code
+                - message.settlement.settlements.curr_type
+                - message.settlement.settlements.amount
+                - message.settlement.settlements.timestamp
+                - message.settlement.settlements.payee_name
+                - message.settlement.settlements.payee_address
+                - message.settlement.settlements.payee_account_no
+                - message.settlement.settlements.payee_bank_code
+                - message.settlement.settlements.payment_type
+                - message.settlement.settlements.purpose_code
+                - message.settlement.settlements.payee_account_type
+                - message.settlement.settlements.settlement_id
       responses:
         '200':
           description: Acknowledgement of message received
@@ -70,6 +81,14 @@ components:
           items:
             type: object
             properties:
+              collector_app_id:
+                type: string
+                description: Subscriber Id of the Payer
+                example: "abc.collectorapp.com"
+              receiver_app_id:
+                type: string
+                description: Subscriber Id of the Payee
+                example: "abc.receiverapp.com"
               payer_name:
                 type: string
                 description: "Payer name"
@@ -95,6 +114,7 @@ components:
               timestamp:
                 type: string
                 format: date-time
+                example: "2022-10-18T16:14:40.396Z"
               payee_name:
                 type: string
                 description: "Payee name"
@@ -104,12 +124,15 @@ components:
               payee_account_no:
                 type: string
                 description: "Account number of the beneficiary which is to be credited. Without special charcters and can be alpha numeric"
+                example: "99679007677676"
               payee_bank_code:
                 type:  string
                 description: "Bank Code of Payee e.g. IFSC code"
+                example: "HDFC900008"
               payee_virtual_payment_address:
                 type: string
                 pattern: '^([a-zA-Z0-9]{2,10})@([a-zA-Z0-9]{2,10})'
+                example: "receiver@upi"
               payment_type:
                 description: "Payment type allocated by the bank"
                 enum:
@@ -168,6 +191,8 @@ components:
                 description: Message for error on settlement. Only required if settlement_status = "03"
                 example: "Account not active or not found"
             required:
+              - collector_app_id
+              - receiver_app_id
               - payer_name
               - payer_address
               - payer_account_no

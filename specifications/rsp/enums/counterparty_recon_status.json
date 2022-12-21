@@ -1,0 +1,9 @@
+{
+    "enum": [
+              {"01", "Paid"},
+              {"02", "Overpaid"},
+              {"03", "Underpaid"},
+              {"04", "Not paid"}
+            ]
+  }
+  
