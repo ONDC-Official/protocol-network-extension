@@ -15,7 +15,8 @@ ONDC is an ambitious initiative to democratize digital commerce by creating a de
 - [ ] [ONDC Tech Briefing recording](https://drive.google.com/file/d/1WuHCc59C45LClpbiIPomPMuTeClRZw7h/view?usp=sharing)
 - [ ] [Consultation paper : Building trust in ONDC network](https://ondc-static-website-media.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf)
 - [ ] [Policy Documents](https://drive.google.com/drive/u/2/folders/1vSvhvt5bRym7T-J4t2GB5onS0tfx4ljb)
-- [ ] [Integration Guide](https://docs.google.com/presentation/d/1HPRXk3lVYKmyAFcApgukZuwHhIZ_VlqR/edit#slide=id.g142ae05b320_0_0)
+- [ ] [API Contract - Retail](https://docs.google.com/document/d/12oMC4A05jT5rjCbY-M7j4T2oekr9bqcvSOpTI0jFEgE/edit)
+- [ ] [API Contract - Logistics](https://docs.google.com/document/d/1LiKGK3AKwzx5GWAc5g942QKB-TzDn0gGMsvXNJgIrmk/edit)
 - [ ] [Tech QuickStart Guide](https://github.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/blob/master/protocol-specifications/docs/draft/Tech%20Quickstart%20Guide.md)
 - [ ] [NP Resources](https://docs.google.com/spreadsheets/d/1U-JtpIwzl0_2GS1g_J6C2-0dEZneUNKcrGDrBy2YZNw/edit#gid=0)
 
