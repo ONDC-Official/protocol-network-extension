@@ -252,10 +252,10 @@ components:
             4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
           type: string
           enum:
-            - "01"
-            - "02"
-            - "03"
-            - "04"
+            - OPEN
+            - ESCALATE
+            - CLOSE
+            - NEED-MORE-INFO
         complainant_action_reason:
           description: complainant can give the reason for the specific action taken
           type: string
@@ -282,9 +282,9 @@ components:
                 3. Cascaded Counterparty NP : indicating the second or any further downstream levels of counterparty network provider with which the NP is interacting with to get an issue resolution.
               type: string
               enum:
-                - "01"
-                - "02"
-                - "03"
+                - INTERFACING-NP
+                - TRANSACTION-COUNTERPARTY-NP
+                - CASCADED-COUNTERPARTY-NP
             organization:
               $ref: "#/components/schemas/Organization"
             resolution_support:
@@ -333,8 +333,8 @@ components:
                 2. reject : indicating that the issue is rejected by the respondant or the resolution provider. 
           type: string
           enum:
-            - "01"
-            - "02"
+            - RESOLVE
+            - REJECT
       required:
         - id
         - resolution_remarks
@@ -420,9 +420,9 @@ components:
                 2. Transaction Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
                 3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
           enum:
-            - "01"
-            - "02"
-            - "03"
+            - INTEFACING-NP-GRO
+            - TRANSACTION-COUNTERPARTY-NP-GRO
+            - CASCADED-COUNTERPARTY-NP-GRO
       required:
         - contact.name
         - contact.phone
@@ -526,6 +526,8 @@ components:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         category:
           $ref: "#/components/schemas/IssueCategory"
+        sub_category:
+          $ref: "#/components/schemas/IssueSubCategory"
         issue_type:
           description: |
             identifies the type of the issue raised
@@ -534,9 +536,9 @@ components:
             * which may be further escalated to be a ```Dispute```
           type: string
           enum:
-            - "01"
-            - "02"
-            - "03"
+            - ISSUE
+            - GREVIANCE
+            - DISPUTE
         source:
           $ref: "#/components/schemas/IssueSource"
         supplementary_information:
@@ -588,7 +590,7 @@ components:
           description: timestamp for the creation of the issue
           type: string
           format: date-time
-        modified_at:
+        updated_at:
           description: timestamp for the capturing the time an issue was last updated
           type: string
           format: date-time
@@ -621,9 +623,9 @@ components:
                 3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
           type: string
           enum:
-            - "01"
-            - "02"
-            - "03"
+            - CONSUMER
+            - SELLER
+            - INTERFACING-NP
     IssueStatus:
       description: |
         Status of the issue updated by respondent or the complainant
@@ -642,11 +644,11 @@ components:
                 4. Need More Info :   indicating that the network participant  is expecting more information from the complaiant . In that scenario the network participant working on the issue will set this status .  
           type: string
           enum:
-            - "01"
+            - OPEN
             # TODO should we also have the "assigned " and "in progress" statues
-            - "02"
-            - "03"
-            - "04"
+            - CLOSED
+            - RESOLVED
+            - NEED-MORE-INFO
         closing_reason:
           description: |
             details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
@@ -659,14 +661,14 @@ components:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         status_change_date:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
-        issue_modification_date:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         modified_by:
           $ref: "#/components/schemas/Organization"
-        modified_issue_field_name:
+        modified_fields:
           description: 
             The issue field name that has been modified
-          type: string
+          type: array
+          items:
+            type: string
     IssueCategory:
       description: |
         Identifies what is the category of this issue
@@ -680,10 +682,18 @@ components:
         7. Payment : Indicactes that the issue is related to  Payments.
       type: string
       enum: # TODO need to revisit
+        - ORDER
+        - TRANSACTION
+        - FULFILLMENT
+        - PRODUCT
+        - PRODUCT-SERVICE
+        - SERVICE
+        - PAYMENT
+    IssueSubCategory:
+      description:
+        Identifies what is the sub-category of this issue
+      type: string
+      enum: # TODO need to revisit
         - "01"
         - "02"
         - "03"
-        - "04"
-        - "05"
-        - "06"
-        - "07"
