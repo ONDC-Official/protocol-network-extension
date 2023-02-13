@@ -1,0 +1,5 @@
+{
+  "gender": [
+    { "adult-male": 1}, {"adult-female": 2},{"kids-boy":3},{"kids-girl":4},{"infant":5}
+  ]
+}
