@@ -649,11 +649,7 @@ components:
             - CLOSED
             - RESOLVED
             - NEED-MORE-INFO
-        closing_reason:
-          description: |
-            details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
-          type: string
-        closing_remarks:
+        remarks:
           description: |
             details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
           type: string
