@@ -238,7 +238,7 @@ components:
         person:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
         contact:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         complainant_action:
           description: |
             Describes the action taken by the conplainant who has raised the issue. 
@@ -337,7 +337,7 @@ components:
         org:
          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Organization"
         contact: 
-         $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+         $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         person:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
     ResolutionSupport:
@@ -356,7 +356,7 @@ components:
           description: email for the respondent for complainant to interact with the respondent
           type: string
         respondentContact:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         respondentFaqs:
           description: frequently asked questions for the respondent for complainant to get information as required
           type: object
@@ -565,6 +565,10 @@ components:
           $ref: "#/components/schemas/ResolutionProvider"
         resolution:
           $ref: "#/components/schemas/IssueResolution"
+        additional_info_required:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdditionalInfoRequired"
       required:
         - id
         - complainant_info.contact.name
