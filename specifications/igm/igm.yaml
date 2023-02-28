@@ -194,16 +194,14 @@ paths:
                 message:
                   type: object
                   properties:
-                    issue_status:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/IssueStatus'
-                  required:
-                    - order
+                    issue:
+                      type: object
+                      $ref: "#/components/schemas/Issue"
                 error:
                     $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
               required:
                 - context
+                - message.issue.order_details
       responses:
         '200':
           description: Acknowledgement of message received
@@ -240,7 +238,7 @@ components:
         person:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
         contact:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         complainant_action:
           description: |
             Describes the action taken by the conplainant who has raised the issue. 
@@ -296,14 +294,8 @@ components:
       properties:
         issue:
           $ref: "#/components/schemas/Issue"
-        resolution_provider:
-          $ref: "#/components/schemas/ResolutionProvider"
-        resolution:
-          $ref: "#/components/schemas/IssueResolution"
       required:
         - issue
-        - resolution_provider
-        - resolution
 
     IssueResolution:
       description: Describes the issue resolution for the issue raised by a Complainant 
@@ -345,7 +337,7 @@ components:
         org:
          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Organization"
         contact: 
-         $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+         $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         person:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
     ResolutionSupport:
@@ -364,7 +356,7 @@ components:
           description: email for the respondent for complainant to interact with the respondent
           type: string
         respondentContact:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Contact"
+          $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
         respondentFaqs:
           description: frequently asked questions for the respondent for complainant to get information as required
           type: object
@@ -520,8 +512,8 @@ components:
         #item_id: #to rewview should this be moved within issue identifiers
          # description: issues may be raised with reference to a specific item id as well for individual items
          # type: string
-        order:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Order"
+        order_details:
+          $ref: "#/components/schemas/OrderDetails"
         description:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         category:
@@ -550,7 +542,9 @@ components:
         expected_resolution_time:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         status:
-          $ref: "#/components/schemas/IssueStatus"
+          type: array
+          items:
+            $ref: "#/components/schemas/IssueStatus"
         created_at:
           description: timestamp for the creation of the issue
           type: string
@@ -567,6 +561,14 @@ components:
           enum:
             - THUMBS-UP
             - THUMBS-DOWN
+        resolution_provider:
+          $ref: "#/components/schemas/ResolutionProvider"
+        resolution:
+          $ref: "#/components/schemas/IssueResolution"
+        additional_info_required:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdditionalInfoRequired"
       required:
         - id
         - complainant_info.contact.name
@@ -647,13 +649,14 @@ components:
             - OPEN
             # TODO should we also have the "assigned " and "in progress" statues
             - CLOSED
+        respondent_action:
+          type: string
+          enum:
+            - PROCESSING
+            - CASCADED
             - RESOLVED
             - NEED-MORE-INFO
-        closing_reason:
-          description: |
-            details of the reason why the issue is closed, can be captured when the complainant triggers a closing action
-          type: string
-        closing_remarks:
+        remarks:
           description: |
             details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
           type: string
@@ -661,8 +664,15 @@ components:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         status_change_date:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
-        modified_by:
+        updated_by:
           $ref: "#/components/schemas/Organization"
+        cascaded_level:
+          # the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
+          type: integer
+        updated_at:
+          description: timestamp for the capturing the time an issue status was last updated
+          type: string
+          format: date-time
         modified_fields:
           description: 
             The issue field name that has been modified
@@ -697,3 +707,43 @@ components:
         - "01"
         - "02"
         - "03"
+    OrderDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+        fulfillments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Fulfillment"
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+    Fulfillment:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+    AdditionalInfoRequired:
+      type: object
+      properties:
+        info_required:
+          type: object
+          $ref: "#/components/schemas/SupplementaryInformation"
+        info_provided:
+          type: object
+          $ref: "#/components/schemas/SupplementaryInformation"
+        updated_at:
+          type: string
+          format: date-time
+
