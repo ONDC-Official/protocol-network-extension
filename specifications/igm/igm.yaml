@@ -85,34 +85,27 @@ paths:
                 message:
                   type: object
                   properties:
-                    issue_resolution_details:
-                      $ref: "#/components/schemas/IssueResolutionDetails"
+                    issue:
+                      $ref: "#/components/schemas/Issue"
                   required:
-                    - issue_resolution_details
+                    - issue
                 error:
                   $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Error"
               required:
                 - context
-                - message.issue_resolution_details
-                - message.issue_resolution_details.issue.id
-                - message.issue_resolution_details.issue.complainant_info.contact.name
-                - message.issue_resolution_details.issue.complainant_info.contact.phone
-                - message.issue_resolution_details.issue.complainant_info.contact.email
-                - message.issue_resolution_details.issue.issue_order_id
-                - message.issue_resolution_details.issue.order
-                - message.issue_resolution_details.issue.issue_type
-                - message.issue_resolution_details.issue.created_at
-                - message.issue_resolution_details.issue.modified_at
-                - message.issue_resolution_details.issue.expected_response_time
-                - message.issue_resolution_details.issue.expected_resolution_time
-                - message.issue_resolution_details.issue.status.issue_status
-                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.name
-                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.address
-                - message.issue_resolution_details.resolution_provider.respondent_info.respondent_contact.email
-                - message.issue_resolution_details.resolution_provider.provider.respondent_contact.email
-                - message.issue_resolution_details.resolution.network_issue_id
-                - message.issue_resolution_details.resolution.resolution_remarks
-                - message.issue_resolution_details.resolution.resolution_action
+                - message.issue
+                - message.issue.id
+                - message.issue.complainant_info.contact.name
+                - message.issue.complainant_info.contact.phone
+                - message.issue.complainant_info.contact.email
+                - message.issue.issue_order_id
+                - message.issue.order
+                - message.issue.issue_type
+                - message.issue.created_at
+                - message.issue.updated_at
+                - message.issue.expected_response_time
+                - message.issue.expected_resolution_time
+                - message.issue.status.issue_status
       responses:
         "200":
           description: Acknowledgement of message received
@@ -239,29 +232,10 @@ components:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Person"
         contact:
           $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
-        complainant_action:
-          description: |
-            Describes the action taken by the conplainant who has raised the issue. 
-            the value should be populated when the conplainant has taken any of the below actions to anotate the action taken. the actions can be, 
-            ### Actions
-            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
-            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
-            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
-            4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
-          type: string
-          enum:
-            - OPEN
-            - ESCALATE
-            - CLOSE
-            - NEED-MORE-INFO
-        complainant_action_reason:
-          description: complainant can give the reason for the specific action taken
-          type: string
       required:
         - contact.name
         - contact.phone
         - contact.email
-        - complainant_action
     ResolutionProvider:
       description: Describes the details of the entity that provides the resolution for the issue
       type: object
@@ -289,13 +263,6 @@ components:
               $ref: "#/components/schemas/ResolutionSupport"
       required:
         - respondent_info
-
-    IssueResolutionDetails:
-      properties:
-        issue:
-          $ref: "#/components/schemas/Issue"
-      required:
-        - issue
 
     IssueResolution:
       description: Describes the issue resolution for the issue raised by a Complainant 
@@ -366,14 +333,6 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/ResolutionSource"
-        selected_odrs:
-          description: |
-            details of the ODRs selected by the resolution provider .
-            one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
-            This is a required object if and when the issue type is "Dispute"
-          type: array
-          items:
-            $ref: "#/components/schemas/ODR"
         gros:
           description: |
             Details of the GRO appointed by the resolution provider to support in issue resolution .
@@ -529,14 +488,10 @@ components:
           type: string
           enum:
             - ISSUE
-            - GREVIANCE
+            - GRIEVANCE
             - DISPUTE
         source:
           $ref: "#/components/schemas/IssueSource"
-        supplementary_information:
-          type: array
-          items:
-            $ref: "#/components/schemas/SupplementaryInformation"
         expected_response_time:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         expected_resolution_time:
@@ -545,14 +500,14 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/IssueStatus"
-        created_at:
-          description: timestamp for the creation of the issue
-          type: string
-          format: date-time
-        modified_at:
-          description: timestamp for the capturing the time an issue was last updated
-          type: string
-          format: date-time
+        selected_odrs_info:
+          description: |
+            details of the ODRs selected by the resolution provider .
+            one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
+            This is a required object if and when the issue type is "Dispute"
+          type: array
+          items:
+            $ref: "#/components/schemas/SelectedODRs"
         finalized_odr:
           $ref: "#/components/schemas/ODR"
         rating:
@@ -569,6 +524,14 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AdditionalInfoRequired"
+        created_at:
+          description: timestamp for the creation of the issue
+          type: string
+          format: date-time
+        updated_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
       required:
         - id
         - complainant_info.contact.name
@@ -587,11 +550,7 @@ components:
       type: object
       properties:
         issue_update_info:
-                $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"  
-        created_at:
-          description: timestamp for the creation of the issue
-          type: string
-          format: date-time
+                $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
         updated_at:
           description: timestamp for the capturing the time an issue was last updated
           type: string
@@ -620,7 +579,7 @@ components:
           description: |
             Indicates the source from where the issue is raised. 
             ### TYPES
-                1. Buyer : indicating that the Buyer of a product or a service has raised the issue
+                1. Consumer : indicating that the Consumer(Buyer) of a product or a service has raised the issue
                 2. Seller : indicating that the Seller of a product or a service has raised the issue
                 3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
           type: string
@@ -634,21 +593,30 @@ components:
         The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
       type: object
       properties:
-        network_issue_id:
-          type: string
-          format: uuid
         status:
           description: |
              ### Statues
                 1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue         
-                3. Resolved : indicating that the issue is resolved and no further resolution action is expected on this issue        
-                4. Need More Info :   indicating that the network participant  is expecting more information from the complaiant . In that scenario the network participant working on the issue will set this status .  
+                2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
           type: string
           enum:
             - OPEN
-            # TODO should we also have the "assigned " and "in progress" statues
             - CLOSED
+        complainant_action:
+          description: |
+            Describes the action taken by the complainant who has raised the issue. 
+            the value should be populated when the complainant has taken any of the below actions to anotate the action taken. the actions can be, 
+            ### Actions
+            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
+            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
+            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
+            4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
+          type: string
+          enum:
+            - OPEN
+            - ESCALATE
+            - CLOSE
+            - NEED-MORE-INFO
         respondent_action:
           type: string
           enum:
@@ -660,25 +628,15 @@ components:
           description: |
             details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
           type: string
-        status_details:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Descriptor"
-        status_change_date:
-          $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
-        updated_by:
-          $ref: "#/components/schemas/Organization"
-        cascaded_level:
-          # the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
-          type: integer
         updated_at:
           description: timestamp for the capturing the time an issue status was last updated
           type: string
           format: date-time
-        modified_fields:
-          description: 
-            The issue field name that has been modified
-          type: array
-          items:
-            type: string
+        updated_by:
+          $ref: "#/components/schemas/Organization"
+        cascaded_level:
+          description: the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
+          type: integer
     IssueCategory:
       description: |
         Identifies what is the category of this issue
@@ -743,7 +701,14 @@ components:
         info_provided:
           type: object
           $ref: "#/components/schemas/SupplementaryInformation"
-        updated_at:
-          type: string
-          format: date-time
-
+    SelectedODRs:
+      type: object
+      properties:
+        respondant_info:
+          type: object
+          $ref: "#/components/schemas/Organization"
+        odrs:
+          type: array
+          items:
+            $ref: "#/components/schemas/ODR"
+        
