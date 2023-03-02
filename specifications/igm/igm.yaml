@@ -38,17 +38,16 @@ paths:
                 - context.ttl
                 - message.issue
                 - message.issue.id
-                - message.issue.complainant_info.contact.name
                 - message.issue.complainant_info.contact.phone
                 - message.issue.complainant_info.contact.email
-                - message.issue.issue_order_id
-                - message.issue.order
+                - message.issue.order_details.id
+                - message.issue.order_details
                 - message.issue.issue_type
                 - message.issue.created_at
-                - message.issue.modified_at
+                - message.issue.updated_at
                 - message.issue.expected_response_time
                 - message.issue.expected_resolution_time
-                - message.issue.status.issue_status
+                - message.issue.status.status
       responses:
         "200":
           description: Acknowledgement of message received
@@ -95,17 +94,16 @@ paths:
                 - context
                 - message.issue
                 - message.issue.id
-                - message.issue.complainant_info.contact.name
                 - message.issue.complainant_info.contact.phone
                 - message.issue.complainant_info.contact.email
-                - message.issue.issue_order_id
-                - message.issue.order
+                - message.issue.order_details.id
+                - message.issue.order_details
                 - message.issue.issue_type
                 - message.issue.created_at
                 - message.issue.updated_at
                 - message.issue.expected_response_time
                 - message.issue.expected_resolution_time
-                - message.issue.status.issue_status
+                - message.issue.status.status
       responses:
         "200":
           description: Acknowledgement of message received
@@ -233,7 +231,6 @@ components:
         contact:
           $ref: "https://raw.githubusercontent.com/ONDC-Official/ONDC-Protocol-Specs/master/protocol-specifications/core/v0/api/core.yaml#/components/schemas/Contact"
       required:
-        - contact.name
         - contact.phone
         - contact.email
     ResolutionProvider:
@@ -295,7 +292,7 @@ components:
             - RESOLVE
             - REJECT
       required:
-        - id
+        - network_issue_id
         - resolution_remarks
         - resolution_action
     Organization:
@@ -375,7 +372,6 @@ components:
             - TRANSACTION-COUNTERPARTY-NP-GRO
             - CASCADED-COUNTERPARTY-NP-GRO
       required:
-        - contact.name
         - contact.phone
         - contact.email
         - gro_type
@@ -534,18 +530,17 @@ components:
           format: date-time
       required:
         - id
-        - complainant_info.contact.name
         - complainant_info.contact.phone
         - complainant_info.contact.email
         - description
-        - issue_order_id
-        - order
+        - order_details.id
+        - order_details
         - issue_type
         - created_at
-        - modified_at
+        - updated_at
         - expected_response_time
         - expected_resolution_time
-        - status.issue_status
+        - status.status
     SupplementaryInformation:
       type: object
       properties:
