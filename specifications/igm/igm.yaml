@@ -594,50 +594,30 @@ components:
         The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
       type: object
       properties:
-        status:
-          description: |
-             ### Statues
-                1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
-          type: string
-          enum:
-            - OPEN
-            - CLOSED
         complainant_action:
-          description: |
-            Describes the action taken by the complainant who has raised the issue. 
-            the value should be populated when the complainant has taken any of the below actions to anotate the action taken. the actions can be, 
-            ### Actions
-            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
-            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
-            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue. 
-            4. Complainant can ask for ```need more info``` if he is looking for further more information about the issue or the issue status or any update on the issue. 
-          type: string
-          enum:
-            - OPEN
-            - ESCALATE
-            - CLOSE
-            - NEED-MORE-INFO
-        respondent_action:
-          type: string
-          enum:
-            - PROCESSING
-            - CASCADED
-            - RESOLVED
-            - NEED-MORE-INFO
+          type: object
+          properties:
+            status:
+              description: |
+                ### Statues
+                  1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+                  2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
+              type: string
+              enum:
+                - OPEN
+                - CLOSED
+            complainant_actions:
+              type: array
+              items:
+                $ref: "#/components/schemas/ComplainantAction"
+        respondent_actions:
+          type: array
+          items:
+            $ref: "#/components/schemas/RespondentAction"
         remarks:
           description: |
             details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
           type: string
-        updated_at:
-          description: timestamp for the capturing the time an issue status was last updated
-          type: string
-          format: date-time
-        updated_by:
-          $ref: "#/components/schemas/Organization"
-        cascaded_level:
-          description: the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
-          type: integer
     IssueCategory:
       description: |
         Identifies what is the category of this issue
@@ -713,4 +693,44 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ODR"
-        
+    ComplainantAction:
+      type: object
+      properties:
+        complainant_action:
+          description: |
+              Describes the action taken by the complainant who has raised the issue. 
+              the value should be populated when the complainant has taken any of the below actions to anotate the action taken. the actions can be, 
+              ### Actions
+              1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
+              2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
+              3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue.
+          type: string
+          enum:
+            - OPEN
+            - ESCALATE
+            - CLOSE
+        updated_at:
+          description: timestamp for the capturing the time an issue status was last updated
+          type: string
+          format: date-time
+        updated_by:
+          $ref: "#/components/schemas/Organization"     
+    RespondentAction:
+      type: object
+      properties:
+        respondent_action:
+          type: string
+          enum:
+            - PROCESSING
+            - CASCADED
+            - RESOLVED
+            - NEED-MORE-INFO
+        updated_at:
+          description: timestamp for the capturing the time an issue status was last updated
+          type: string
+          format: date-time
+        updated_by:
+          $ref: "#/components/schemas/Organization"
+        cascaded_level:
+          description: the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
+          type: integer
