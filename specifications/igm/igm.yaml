@@ -498,7 +498,17 @@ components:
         expected_resolution_time:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         status:
-            $ref: "#/components/schemas/IssueStatus"
+          description: |
+            ### Statues
+              1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+              2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
+          type: string
+          enum:
+             - OPEN
+             - CLOSED
+        issue_action:
+            $ref: "#/components/schemas/IssueActions"
+
         selected_odrs_info:
           description: |
             details of the ODRs selected by the resolution provider .
@@ -586,7 +596,7 @@ components:
             - CONSUMER
             - SELLER
             - INTERFACING-NP
-    IssueStatus:
+    IssueActions:
       description: |
         Status of the issue updated by respondent or the complainant
         The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
@@ -678,15 +688,6 @@ components:
     ComplainantAction:
       type: object
       properties:
-        status:
-          description: |
-            ### Statues
-              1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-              2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
-          type: string
-          enum:
-             - OPEN
-             - CLOSED
         complainant_action:
           description: |
               Describes the action taken by the complainant who has raised the issue. 
