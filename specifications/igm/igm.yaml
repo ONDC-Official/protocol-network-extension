@@ -498,8 +498,6 @@ components:
         expected_resolution_time:
           $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications/draft/core/v0/api/core.yaml#/components/schemas/Time"
         status:
-          type: array
-          items:
             $ref: "#/components/schemas/IssueStatus"
         selected_odrs_info:
           description: |
@@ -594,30 +592,14 @@ components:
         The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
       type: object
       properties:
-        complainant_action:
-          type: object
-          properties:
-            status:
-              description: |
-                ### Statues
-                  1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
-                  2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
-              type: string
-              enum:
-                - OPEN
-                - CLOSED
-            complainant_actions:
-              type: array
-              items:
-                $ref: "#/components/schemas/ComplainantAction"
+        complainant_actions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ComplainantAction"
         respondent_actions:
           type: array
           items:
             $ref: "#/components/schemas/RespondentAction"
-        remarks:
-          description: |
-            details of the remarks when the issue is closed, can be captured when the complainant triggers a closing action
-          type: string
     IssueCategory:
       description: |
         Identifies what is the category of this issue
@@ -696,6 +678,15 @@ components:
     ComplainantAction:
       type: object
       properties:
+        status:
+          description: |
+            ### Statues
+              1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+              2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
+          type: string
+          enum:
+             - OPEN
+             - CLOSED
         complainant_action:
           description: |
               Describes the action taken by the complainant who has raised the issue. 
@@ -714,7 +705,12 @@ components:
           type: string
           format: date-time
         updated_by:
-          $ref: "#/components/schemas/Organization"     
+          $ref: "#/components/schemas/Organization"  
+        remarks:
+          description: |
+            details of the remarks when the issue status is changed, can be captured when the complainant triggers an action
+          type: string
+          
     RespondentAction:
       type: object
       properties:
@@ -731,6 +727,10 @@ components:
           format: date-time
         updated_by:
           $ref: "#/components/schemas/Organization"
+        remarks:
+          description: |
+            details of the remarks when the issue status is changed, can be captured when the respondent triggers an action
+          type: string
         cascaded_level:
           description: the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1 it will upgrade it indicates to the next sub-level.
           type: integer
