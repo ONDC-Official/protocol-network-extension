@@ -1,1 +1,1 @@
-#Grocery enums
+Suggestive enums for Grocery
