@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Issue and Grievance Management (IGM) for ONDC
   description: ONDC Issue and Grievance Management (IGM)  API Specification
-  version: 0.2
+  version: 0.3
 security:
   - SubscriberAuth: []
 paths:
