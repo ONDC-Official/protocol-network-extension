@@ -1,0 +1,4 @@
+[submodule "beckn-mobility-specs"]
+	path = beckn-mobility-specs
+	url = https://github.com/beckn/mobility.git
+	branch = master
