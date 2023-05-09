@@ -1,13 +1,12 @@
 {
    "UOM":
    [
-     "Unit",
-     "Dozen",
-     "Gram",
-     "Kilogram",
-     "Tonne",
-     "Ml",
-     "Litre",
-     "Millilitre"
+     "unit",
+     "dozen",
+     "gram",
+     "kilogram",
+     "tonne",
+     "litre",
+     "millilitre"
    ]
 }
