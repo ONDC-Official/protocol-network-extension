@@ -1,10 +1,10 @@
 {
    "UOM":
    [
-     "Units",
+     "Unit",
      "Dozen",
-     "Grams",
-     "Kilograms",
+     "Gram",
+     "Kilogram",
      "Tonne",
      "Ml",
      "Litre",
