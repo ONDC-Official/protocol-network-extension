@@ -17,7 +17,7 @@ ONDC is an ambitious initiative to democratize digital commerce by creating a de
 - [ ] [Policy Documents](https://drive.google.com/drive/u/2/folders/1vSvhvt5bRym7T-J4t2GB5onS0tfx4ljb)
 - [ ] [Published Specs & other resources](https://drive.google.com/drive/u/0/folders/1um7COKAs2hahHJOEqFnan1B5EFXvpMty)
 - [ ] [API Contract - Logistics](https://docs.google.com/document/d/1fefHfMoYIouN-QJTDJFFZm46dqHmFvwY-6ICoISJcUY/edit)
-- [ ] [Tech QuickStart Guide]([https://github.com/Open-network-for-digital-commerce/ONDC-Protocol-Specs/blob/master/protocol-specifications/docs/draft/Tech%20Quickstart%20Guide.md](https://ondc-issue-logging-cohort1.atlassian.net/wiki/spaces/TG/pages/36339713/ONDC+Developer+Guide))
+- [ ] [Tech QuickStart Guide](https://ondc-issue-logging-cohort1.atlassian.net/wiki/spaces/TG/pages/36339713/ONDC+Developer+Guide)
 - [ ] [NP Resources](https://docs.google.com/spreadsheets/d/1U-JtpIwzl0_2GS1g_J6C2-0dEZneUNKcrGDrBy2YZNw/edit#gid=0)
 - [ ] [Integration Guide](https://docs.google.com/presentation/d/1HPRXk3lVYKmyAFcApgukZuwHhIZ_VlqR/edit#slide=id.g158b58a8d20_0_78)
 
