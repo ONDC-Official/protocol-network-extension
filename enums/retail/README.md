@@ -1,1 +1,1 @@
-#Enumerations for catalog attributes for all retail categories
+Enumerations for catalog attributes for all retail categories
