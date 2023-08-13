@@ -1,1 +1,0 @@
-Suggestive enums for bpc
