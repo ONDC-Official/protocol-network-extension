@@ -1,252 +1,6268 @@
-{"colours":[
-["alabaster","#EDEADE"],
-["almond","#EADDCA"],
-["amaranth","#9F2B68"],
-["amber","#FFBF00"],
-["apricot","#FBCEB1"],
-["aqua","#00FFFF"],
-["aquamarine","#7FFFD4"],
-["army green","#454B1B"],
-["ash gray","#B2BEB5"],
-["azure blue","#F0FFFF"],
-["baby blue","#89CFF0"],
-["beige","#F5F5DC"],
-["bisque","#F2D2BD"],
-["black","#000000"],
-["blood red","#880808"],
-["blue gray","#7393B3"],
-["blue green","#088F8F"],
-["blue","#0000FF"],
-["bone white","#F9F6EE"],
-["brass","#E1C16E"],
-["brick red","#AA4A44"],
-["bright blue","#0096FF"],
-["bright green","#AAFF00"],
-["bright orange","#FFAC1C"],
-["bright purple","#BF40BF"],
-["bright red","#EE4B2B"],
-["bright yellow","#FFEA00"],
-["bronze","#CD7F32"],
-["brown","#A52A2A"],
-["buff","#DAA06D"],
-["burgundy","#800020"],
-["burnt ember","#6E260E"],
-["burnt orange","#CC5500"],
-["burnt sienna","#E97451"],
-["butterscotch","#E3963E"],
-["byzantium","#702963"],
-["cadet blue","#5F9EA0"],
-["cadmium green","#097969"],
-["cadmium orange","#F28C28"],
-["cadmium red","#D22B2B"],
-["cadmium yellow","#FDDA0D"],
-["camel","#C19A6B"],
-["canary yellow","#FFFF8F"],
-["cardinal red","#C41E3A"],
-["carmine","#D70040"],
-["celadon","#AFE1AF"],
-["cerise","#DE3163"],
-["charcoal","#36454F"],
-["chartreuse","#DFFF00"],
-["cherry","#D2042D"],
-["chestnut","#954535"],
-["chocolate","#7B3F00"],
-["cinnamon","#D27D2D"],
-["citrine","#E4D00A"],
-["claret","#811331"],
-["cobalt blue","#0047AB"],
-["coffee","#6F4E37"],
-["cognac","#834333"],
-["copper","#B87333"],
-["coral pink","#F88379"],
-["coral","#FF7F50"],
-["cordovan","#814141"],
-["cornflower blue","#6495ED"],
-["cornsilk","#FFF8DC"],
-["cream","#FFFDD0"],
-["crimson","#DC143C"],
-["cyan","#00FFFF"],
-["dark blue","#00008B"],
-["dark brown","#5C4033"],
-["dark gray","#A9A9A9"],
-["dark green","#023020"],
-["dark orange","#8B4000"],
-["dark pink","#AA336A"],
-["dark purple","#301934"],
-["dark red","#8B0000"],
-["dark tan","#988558"],
-["dark yellow","#8B8000"],
-["denim","#6F8FAF"],
-["desert","#FAD5A5"],
-["dusty rose","#C9A9A6"],
-["ecru","#C2B280"],
-["eggplant","#483248"],
-["eggshell","#F0EAD6"],
-["egyptian blue","#1434A4"],
-["electric blue","#7DF9FF"],
-["emerald green","#50C878"],
-["eucalyptus","#5F8575"],
-["fallow","#C19A6B"],
-["falu red","#7B1818"],
-["fawn","#E5AA70"],
-["fern green","#4F7942"],
-["flax","#EEDC82"],
-["forest green","#228B22"],
-["fuchsia","#FF00FF"],
-["gamboge","#E49B0F"],
-["garnet","#9A2A2A"],
-["glaucous","#6082B6"],
-["gold","#FFD700"],
-["golden brown","#966919"],
-["golden yellow","#FFC000"],
-["goldenrod","#DAA520"],
-["grass green","#7CFC00"],
-["gray","#808080"],
-["green","#008000"],
-["gunmetal gray","#818589"],
-["hot pink","#FF69B4"],
-["hunter green","#355E3B"],
-["icterine","#FCF55F"],
-["indigo","#3F00FF"],
-["iris","#5D3FD3"],
-["ivory","#FFFFF0"],
-["jade","#00A36C"],
-["jasmine","#F8DE7E"],
-["jet black","#343434"],
-["jungle green","#2AAA8A"],
-["kelly green","#4CBB17"],
-["khaki","#F0E68C"],
-["lavender","#E6E6FA"],
-["lemon yellow","#FAFA33"],
-["licorice","#1B1212"],
-["light blue","#ADD8E6"],
-["light brown","#C4A484"],
-["light gray","#D3D3D3"],
-["light green","#90EE90"],
-["light orange","#FFD580"],
-["light pink","#FFB6C1"],
-["light purple","#CBC3E3"],
-["light violet","#CF9FFF"],
-["lilac","#AA98A9"],
-["lime green","#32CD32"],
-["lincoln green","#478778"],
-["linen","#E9DCC9"],
-["magenta","#FF00FF"],
-["mahogany","#C04000"],
-["maize","#FBEC5D"],
-["malachite","#0BDA51"],
-["mango","#F4BB44"],
-["maroon","#800000"],
-["marsala","#986868"],
-["matte black","#28282B"],
-["mauve taupe","#915F6D"],
-["mauve","#E0B0FF"],
-["midnight blue","#191970"],
-["millenial pink","#F3CFC6"],
-["mint green","#98FB98"],
-["mocha","#967969"],
-["moss green","#8A9A5B"],
-["mulberry","#770737"],
-["mustard yellow","#FFDB58"],
-["naples yellow","#FADA5E"],
-["navajo white","#FFDEAD"],
-["navy blue","#000080"],
-["neon blue","#1F51FF"],
-["neon green","#0FFF50"],
-["neon orange","#FF5F1F"],
-["neon pink","#FF10F0"],
-["neon red","#FF3131"],
-["nude","#F2D2BD"],
-["nyanza","#ECFFDC"],
-["ochre","#CC7722"],
-["off white","#FAF9F6"],
-["olive green","#808000"],
-["onyx","#353935"],
-["orange","#FFA500"],
-["orchid","#DA70D6"],
-["oxblood","#4A0404"],
-["parchment","#FCF5E5"],
-["pastel blue","#A7C7E7"],
-["pastel green","#C1E1C1"],
-["pastel orange","#FAC898"],
-["pastel pink","#F8C8DC"],
-["pastel purple","#C3B1E1"],
-["pastel red","#FAA0A0"],
-["pastel yellow","#FFFAA0"],
-["peach","#FFE5B4"],
-["pear","#C9CC3F"],
-["pearl","#E2DFD2"],
-["peridot","#B4C424"],
-["periwinkle","#CCCCFF"],
-["persimmon","#EC5800"],
-["pewter","#899499"],
-["pink orange","#F89880"],
-["pink","#FFC0CB"],
-["pistachio","#93C572"],
-["platinum","#E5E4E2"],
-["plum","#673147"],
-["poppy","#E35335"],
-["powder blue","#B6D0E2"],
-["puce","#A95C68"],
-["pumpkin orange","#FF7518"],
-["purple","#800080"],
-["quartz","#51414F"],
-["raspberry","#E30B5C"],
-["red brown","#A52A2A"],
-["red ochre","#913831"],
-["red orange","#FF4433"],
-["red purple","#953553"],
-["red","#FF0000"],
-["robin egg blue","#96DED1"],
-["rose gold","#E0BFB8"],
-["rose red","#C21E56"],
-["rose","#F33A6A"],
-["royal blue","#4169E1"],
-["ruby red","#E0115F"],
-["russet","#80461B"],
-["saddle brown","#8B4513"],
-["safety orange","#FF5F15"],
-["saffron","#F4C430"],
-["sage green","#8A9A5B"],
-["salmon","#FA8072"],
-["sand","#C2B280"],
-["sapphire blue","#0F52BA"],
-["scarlet","#FF2400"],
-["sea green","#2E8B57"],
-["seafoam green","#9FE2BF"],
-["seashell","#FFF5EE"],
-["shamrock green","#009E60"],
-["sienna","#A0522D"],
-["silver","#C0C0C0"],
-["sky blue","#87CEEB"],
-["slate gray","#708090"],
-["smoke","#848884"],
-["spring green","#00FF7F"],
-["steel blue","#4682B4"],
-["steel gray","#71797E"],
-["sunset orange","#FA5F55"],
-["tan","#D2B48C"],
-["tangerine","#F08000"],
-["taupe","#483C32"],
-["teal","#008080"],
-["terra cotta","#E3735E"],
-["thistle","#D8BFD8"],
-["turqoise","#40E0D0"],
-["tuscan red","#7C3030"],
-["tyrian purple","#630330"],
-["vanilla","#F3E5AB"],
-["vegas gold","#C4B454"],
-["venetian red","#A42A04"],
-["verdigris","#40B5AD"],
-["vermillion","#E34234"],
-["violet","#7F00FF"],
-["viridian","#40826D"],
-["watermelon pink","#E37383"],
-["wheat","#F5DEB3"],
-["white","#FFFFFF"],
-["wine","#722F37"],
-["wisteria","#BDB5D5"],
-["yellow orange","#FFAA33"],
-["yellow","#FFFF00"],
-["zaffre","#0818A8"]
-]}
+{
+    "colours": [
+        [
+            "abbey",
+            "#4C4F56"
+        ],
+        [
+            "acadia",
+            "#1B1404"
+        ],
+        [
+            "acapulco",
+            "#7CB0A1"
+        ],
+        [
+            "aero blue",
+            "#C9FFE5"
+        ],
+        [
+            "affair",
+            "#714693"
+        ],
+        [
+            "akaroa",
+            "#D4C4A8"
+        ],
+        [
+            "alabaster",
+            "#FAFAFA"
+        ],
+        [
+            "albescent white",
+            "#F5E9D3"
+        ],
+        [
+            "algae green",
+            "#93DFB8"
+        ],
+        [
+            "alice blue",
+            "#F0F8FF"
+        ],
+        [
+            "alizarin crimson",
+            "#E32636"
+        ],
+        [
+            "allports",
+            "#0076A3"
+        ],
+        [
+            "almond",
+            "#EED9C4"
+        ],
+        [
+            "almond frost",
+            "#907B71"
+        ],
+        [
+            "alpine",
+            "#AF8F2C"
+        ],
+        [
+            "alto",
+            "#DBDBDB"
+        ],
+        [
+            "aluminium",
+            "#A9ACB6"
+        ],
+        [
+            "amaranth",
+            "#E52B50"
+        ],
+        [
+            "amazon",
+            "#3B7A57"
+        ],
+        [
+            "amber",
+            "#FFBF00"
+        ],
+        [
+            "americano",
+            "#87756E"
+        ],
+        [
+            "amethyst",
+            "#9966CC"
+        ],
+        [
+            "amethyst smoke",
+            "#A397B4"
+        ],
+        [
+            "amour",
+            "#F9EAF3"
+        ],
+        [
+            "amulet",
+            "#7B9F80"
+        ],
+        [
+            "anakiwa",
+            "#9DE5FF"
+        ],
+        [
+            "antique brass",
+            "#C88A65"
+        ],
+        [
+            "antique bronze",
+            "#704A07"
+        ],
+        [
+            "anzac",
+            "#E0B646"
+        ],
+        [
+            "apache",
+            "#DFBE6F"
+        ],
+        [
+            "apple",
+            "#4FA83D"
+        ],
+        [
+            "apple blossom",
+            "#AF4D43"
+        ],
+        [
+            "apple green",
+            "#E2F3EC"
+        ],
+        [
+            "apricot",
+            "#EB9373"
+        ],
+        [
+            "apricot peach",
+            "#FBCEB1"
+        ],
+        [
+            "apricot white",
+            "#FFFEEC"
+        ],
+        [
+            "aqua deep",
+            "#014B43"
+        ],
+        [
+            "aqua forest",
+            "#5FA777"
+        ],
+        [
+            "aqua haze",
+            "#EDF5F5"
+        ],
+        [
+            "aqua island",
+            "#A1DAD7"
+        ],
+        [
+            "aqua spring",
+            "#EAF9F5"
+        ],
+        [
+            "aqua squeeze",
+            "#E8F5F2"
+        ],
+        [
+            "aquamarine",
+            "#7FFFD4"
+        ],
+        [
+            "aquamarine blue",
+            "#71D9E2"
+        ],
+        [
+            "arapawa",
+            "#110C6C"
+        ],
+        [
+            "armadillo",
+            "#433E37"
+        ],
+        [
+            "arrowtown",
+            "#948771"
+        ],
+        [
+            "ash",
+            "#C6C3B5"
+        ],
+        [
+            "asparagus",
+            "#7BA05B"
+        ],
+        [
+            "asphalt",
+            "#130A06"
+        ],
+        [
+            "astra",
+            "#FAEAB9"
+        ],
+        [
+            "astral",
+            "#327DA0"
+        ],
+        [
+            "astronaut",
+            "#283A77"
+        ],
+        [
+            "astronaut blue",
+            "#013E62"
+        ],
+        [
+            "athens gray",
+            "#EEF0F3"
+        ],
+        [
+            "aths special",
+            "#ECEBCE"
+        ],
+        [
+            "atlantis",
+            "#97CD2D"
+        ],
+        [
+            "atoll",
+            "#0A6F75"
+        ],
+        [
+            "atomic tangerine",
+            "#FF9966"
+        ],
+        [
+            "au chico",
+            "#97605D"
+        ],
+        [
+            "aubergine",
+            "#3B0910"
+        ],
+        [
+            "australian mint",
+            "#F5FFBE"
+        ],
+        [
+            "avocado",
+            "#888D65"
+        ],
+        [
+            "axolotl",
+            "#4E6649"
+        ],
+        [
+            "azalea",
+            "#F7C8DA"
+        ],
+        [
+            "aztec",
+            "#0D1C19"
+        ],
+        [
+            "azure",
+            "#315BA1"
+        ],
+        [
+            "azure radiance",
+            "#007FFF"
+        ],
+        [
+            "baby blue",
+            "#E0FFFF"
+        ],
+        [
+            "bahama blue",
+            "#026395"
+        ],
+        [
+            "bahia",
+            "#A5CB0C"
+        ],
+        [
+            "baja white",
+            "#FFF8D1"
+        ],
+        [
+            "bali hai",
+            "#859FAF"
+        ],
+        [
+            "baltic sea",
+            "#2A2630"
+        ],
+        [
+            "bamboo",
+            "#DA6304"
+        ],
+        [
+            "banana mania",
+            "#FBE7B2"
+        ],
+        [
+            "bandicoot",
+            "#858470"
+        ],
+        [
+            "barberry",
+            "#DED717"
+        ],
+        [
+            "barley corn",
+            "#A68B5B"
+        ],
+        [
+            "barley white",
+            "#FFF4CE"
+        ],
+        [
+            "barossa",
+            "#44012D"
+        ],
+        [
+            "bastille",
+            "#292130"
+        ],
+        [
+            "battleship gray",
+            "#828F72"
+        ],
+        [
+            "bay leaf",
+            "#7DA98D"
+        ],
+        [
+            "bay of many",
+            "#273A81"
+        ],
+        [
+            "bazaar",
+            "#98777B"
+        ],
+        [
+            "bean  ",
+            "#3D0C02"
+        ],
+        [
+            "beauty bush",
+            "#EEC1BE"
+        ],
+        [
+            "beaver",
+            "#926F5B"
+        ],
+        [
+            "beeswax",
+            "#FEF2C7"
+        ],
+        [
+            "beige",
+            "#F5F5DC"
+        ],
+        [
+            "bermuda",
+            "#7DD8C6"
+        ],
+        [
+            "bermuda gray",
+            "#6B8BA2"
+        ],
+        [
+            "beryl green",
+            "#DEE5C0"
+        ],
+        [
+            "bianca",
+            "#FCFBF3"
+        ],
+        [
+            "big stone",
+            "#162A40"
+        ],
+        [
+            "bilbao",
+            "#327C14"
+        ],
+        [
+            "biloba flower",
+            "#B2A1EA"
+        ],
+        [
+            "birch",
+            "#373021"
+        ],
+        [
+            "bird flower",
+            "#D4CD16"
+        ],
+        [
+            "biscay",
+            "#1B3162"
+        ],
+        [
+            "bismark",
+            "#497183"
+        ],
+        [
+            "bison hide",
+            "#C1B7A4"
+        ],
+        [
+            "bistre",
+            "#3D2B1F"
+        ],
+        [
+            "bitter",
+            "#868974"
+        ],
+        [
+            "bitter lemon",
+            "#CAE00D"
+        ],
+        [
+            "bittersweet",
+            "#FE6F5E"
+        ],
+        [
+            "bizarre",
+            "#EEDEDA"
+        ],
+        [
+            "black",
+            "#000000"
+        ],
+        [
+            "black bean",
+            "#081910"
+        ],
+        [
+            "black forest",
+            "#0B1304"
+        ],
+        [
+            "black haze",
+            "#F6F7F7"
+        ],
+        [
+            "black marlin",
+            "#3E2C1C"
+        ],
+        [
+            "black olive",
+            "#242E16"
+        ],
+        [
+            "black pearl",
+            "#041322"
+        ],
+        [
+            "black rock",
+            "#0D0332"
+        ],
+        [
+            "black rose",
+            "#67032D"
+        ],
+        [
+            "black russian",
+            "#0A001C"
+        ],
+        [
+            "black squeeze",
+            "#F2FAFA"
+        ],
+        [
+            "black white",
+            "#FFFEF6"
+        ],
+        [
+            "blackberry",
+            "#4D0135"
+        ],
+        [
+            "blackcurrant",
+            "#32293A"
+        ],
+        [
+            "blaze orange",
+            "#FF6600"
+        ],
+        [
+            "bleach white",
+            "#FEF3D8"
+        ],
+        [
+            "bleached cedar",
+            "#2C2133"
+        ],
+        [
+            "blizzard blue",
+            "#A3E3ED"
+        ],
+        [
+            "blossom",
+            "#DCB4BC"
+        ],
+        [
+            "blue",
+            "#0000FF"
+        ],
+        [
+            "blue bayoux",
+            "#496679"
+        ],
+        [
+            "blue bell",
+            "#9999CC"
+        ],
+        [
+            "blue chalk",
+            "#F1E9FF"
+        ],
+        [
+            "blue charcoal",
+            "#010D1A"
+        ],
+        [
+            "blue chill",
+            "#0C8990"
+        ],
+        [
+            "blue diamond",
+            "#380474"
+        ],
+        [
+            "blue dianne",
+            "#204852"
+        ],
+        [
+            "blue gem",
+            "#2C0E8C"
+        ],
+        [
+            "blue haze",
+            "#BFBED8"
+        ],
+        [
+            "blue lagoon",
+            "#017987"
+        ],
+        [
+            "blue marguerite",
+            "#7666C6"
+        ],
+        [
+            "blue ribbon",
+            "#0066FF"
+        ],
+        [
+            "blue romance",
+            "#D2F6DE"
+        ],
+        [
+            "blue smoke",
+            "#748881"
+        ],
+        [
+            "blue stone",
+            "#016162"
+        ],
+        [
+            "blue violet",
+            "#6456B7"
+        ],
+        [
+            "blue whale",
+            "#042E4C"
+        ],
+        [
+            "blue zodiac",
+            "#13264D"
+        ],
+        [
+            "blumine",
+            "#18587A"
+        ],
+        [
+            "blush",
+            "#B44668"
+        ],
+        [
+            "blush pink",
+            "#FF6FFF"
+        ],
+        [
+            "bombay",
+            "#AFB1B8"
+        ],
+        [
+            "bon jour",
+            "#E5E0E1"
+        ],
+        [
+            "bondi blue",
+            "#0095B6"
+        ],
+        [
+            "bone",
+            "#E4D1C0"
+        ],
+        [
+            "bordeaux",
+            "#5C0120"
+        ],
+        [
+            "bossanova",
+            "#4E2A5A"
+        ],
+        [
+            "boston blue",
+            "#3B91B4"
+        ],
+        [
+            "botticelli",
+            "#C7DDE5"
+        ],
+        [
+            "bottle green",
+            "#093624"
+        ],
+        [
+            "boulder",
+            "#7A7A7A"
+        ],
+        [
+            "bouquet",
+            "#AE809E"
+        ],
+        [
+            "bourbon",
+            "#BA6F1E"
+        ],
+        [
+            "bracken",
+            "#4A2A04"
+        ],
+        [
+            "brandy",
+            "#DEC196"
+        ],
+        [
+            "brandy punch",
+            "#CD8429"
+        ],
+        [
+            "brandy rose",
+            "#BB8983"
+        ],
+        [
+            "breaker bay",
+            "#5DA19F"
+        ],
+        [
+            "brick red",
+            "#C62D42"
+        ],
+        [
+            "bridal heath",
+            "#FFFAF4"
+        ],
+        [
+            "bridesmaid",
+            "#FEF0EC"
+        ],
+        [
+            "bright gray",
+            "#3C4151"
+        ],
+        [
+            "bright green",
+            "#66FF00"
+        ],
+        [
+            "bright red",
+            "#B10000"
+        ],
+        [
+            "bright sun",
+            "#FED33C"
+        ],
+        [
+            "bright turquoise",
+            "#08E8DE"
+        ],
+        [
+            "brilliant rose",
+            "#F653A6"
+        ],
+        [
+            "brink pink",
+            "#FB607F"
+        ],
+        [
+            "bronco",
+            "#ABA196"
+        ],
+        [
+            "bronze",
+            "#3F2109"
+        ],
+        [
+            "bronze olive",
+            "#4E420C"
+        ],
+        [
+            "bronzetone",
+            "#4D400F"
+        ],
+        [
+            "broom",
+            "#FFEC13"
+        ],
+        [
+            "brown",
+            "#964B00"
+        ],
+        [
+            "brown bramble",
+            "#592804"
+        ],
+        [
+            "brown derby",
+            "#492615"
+        ],
+        [
+            "brown pod",
+            "#401801"
+        ],
+        [
+            "brown rust",
+            "#AF593E"
+        ],
+        [
+            "brown tumbleweed",
+            "#37290E"
+        ],
+        [
+            "bubbles",
+            "#E7FEFF"
+        ],
+        [
+            "buccaneer",
+            "#622F30"
+        ],
+        [
+            "bud",
+            "#A8AE9C"
+        ],
+        [
+            "buddha gold",
+            "#C1A004"
+        ],
+        [
+            "buff",
+            "#F0DC82"
+        ],
+        [
+            "bulgarian rose",
+            "#480607"
+        ],
+        [
+            "bull shot",
+            "#864D1E"
+        ],
+        [
+            "bunker",
+            "#0D1117"
+        ],
+        [
+            "bunting",
+            "#151F4C"
+        ],
+        [
+            "burgundy",
+            "#900020"
+        ],
+        [
+            "burnham",
+            "#002E20"
+        ],
+        [
+            "burning orange",
+            "#FF7034"
+        ],
+        [
+            "burning sand",
+            "#D99376"
+        ],
+        [
+            "burnt maroon",
+            "#420303"
+        ],
+        [
+            "burnt orange",
+            "#CC5500"
+        ],
+        [
+            "burnt sienna",
+            "#E97451"
+        ],
+        [
+            "burnt umber",
+            "#8A3324"
+        ],
+        [
+            "bush",
+            "#0D2E1C"
+        ],
+        [
+            "buttercup",
+            "#F3AD16"
+        ],
+        [
+            "buttered rum",
+            "#A1750D"
+        ],
+        [
+            "butterfly bush",
+            "#624E9A"
+        ],
+        [
+            "buttermilk",
+            "#FFF1B5"
+        ],
+        [
+            "buttery white",
+            "#FFFCEA"
+        ],
+        [
+            "cab sav",
+            "#4D0A18"
+        ],
+        [
+            "cabaret",
+            "#D94972"
+        ],
+        [
+            "cabbage pont",
+            "#3F4C3A"
+        ],
+        [
+            "cactus",
+            "#587156"
+        ],
+        [
+            "cadet blue",
+            "#A9B2C3"
+        ],
+        [
+            "cadillac",
+            "#B04C6A"
+        ],
+        [
+            "cafe royale",
+            "#6F440C"
+        ],
+        [
+            "calico",
+            "#E0C095"
+        ],
+        [
+            "california",
+            "#FE9D04"
+        ],
+        [
+            "calypso",
+            "#31728D"
+        ],
+        [
+            "camarone",
+            "#00581A"
+        ],
+        [
+            "camelot",
+            "#893456"
+        ],
+        [
+            "cameo",
+            "#D9B99B"
+        ],
+        [
+            "camouflage",
+            "#3C3910"
+        ],
+        [
+            "camouflage green",
+            "#78866B"
+        ],
+        [
+            "can can",
+            "#D591A4"
+        ],
+        [
+            "canary",
+            "#F3FB62"
+        ],
+        [
+            "candlelight",
+            "#FCD917"
+        ],
+        [
+            "candy corn",
+            "#FBEC5D"
+        ],
+        [
+            "cannon black",
+            "#251706"
+        ],
+        [
+            "cannon pink",
+            "#894367"
+        ],
+        [
+            "cape cod",
+            "#3C4443"
+        ],
+        [
+            "cape honey",
+            "#FEE5AC"
+        ],
+        [
+            "cape palliser",
+            "#A26645"
+        ],
+        [
+            "caper",
+            "#DCEDB4"
+        ],
+        [
+            "caramel",
+            "#FFDDAF"
+        ],
+        [
+            "cararra",
+            "#EEEEE8"
+        ],
+        [
+            "cardin green",
+            "#01361C"
+        ],
+        [
+            "cardinal",
+            "#C41E3A"
+        ],
+        [
+            "cardinal pink",
+            "#8C055E"
+        ],
+        [
+            "careys pink",
+            "#D29EAA"
+        ],
+        [
+            "caribbean green",
+            "#00CC99"
+        ],
+        [
+            "carissma",
+            "#EA88A8"
+        ],
+        [
+            "carla",
+            "#F3FFD8"
+        ],
+        [
+            "carmine",
+            "#960018"
+        ],
+        [
+            "carnaby tan",
+            "#5C2E01"
+        ],
+        [
+            "carnation",
+            "#F95A61"
+        ],
+        [
+            "carnation pink",
+            "#FFA6C9"
+        ],
+        [
+            "carousel pink",
+            "#F9E0ED"
+        ],
+        [
+            "carrot orange",
+            "#ED9121"
+        ],
+        [
+            "casablanca",
+            "#F8B853"
+        ],
+        [
+            "casal",
+            "#2F6168"
+        ],
+        [
+            "cascade",
+            "#8BA9A5"
+        ],
+        [
+            "cashmere",
+            "#E6BEA5"
+        ],
+        [
+            "casper",
+            "#ADBED1"
+        ],
+        [
+            "castro",
+            "#52001F"
+        ],
+        [
+            "catalina blue",
+            "#062A78"
+        ],
+        [
+            "catskill white",
+            "#EEF6F7"
+        ],
+        [
+            "cavern pink",
+            "#E3BEBE"
+        ],
+        [
+            "cedar",
+            "#3E1C14"
+        ],
+        [
+            "cedar wood finish",
+            "#711A00"
+        ],
+        [
+            "celadon",
+            "#ACE1AF"
+        ],
+        [
+            "celery",
+            "#B8C25D"
+        ],
+        [
+            "celeste",
+            "#D1D2CA"
+        ],
+        [
+            "cello",
+            "#1E385B"
+        ],
+        [
+            "celtic",
+            "#163222"
+        ],
+        [
+            "cement",
+            "#8D7662"
+        ],
+        [
+            "ceramic",
+            "#FCFFF9"
+        ],
+        [
+            "cerise",
+            "#DA3287"
+        ],
+        [
+            "cerise red",
+            "#DE3163"
+        ],
+        [
+            "cerulean",
+            "#02A4D3"
+        ],
+        [
+            "cerulean blue",
+            "#2A52BE"
+        ],
+        [
+            "chablis",
+            "#FFF4F3"
+        ],
+        [
+            "chalet green",
+            "#516E3D"
+        ],
+        [
+            "chalky",
+            "#EED794"
+        ],
+        [
+            "chambray",
+            "#354E8C"
+        ],
+        [
+            "chamois",
+            "#EDDCB1"
+        ],
+        [
+            "champagne",
+            "#FAECCC"
+        ],
+        [
+            "chantilly",
+            "#F8C3DF"
+        ],
+        [
+            "charade",
+            "#292937"
+        ],
+        [
+            "chardon",
+            "#FFF3F1"
+        ],
+        [
+            "chardonnay",
+            "#FFCD8C"
+        ],
+        [
+            "charlotte",
+            "#BAEEF9"
+        ],
+        [
+            "charm",
+            "#D47494"
+        ],
+        [
+            "chartreuse",
+            "#7FFF00"
+        ],
+        [
+            "chartreuse yellow",
+            "#DFFF00"
+        ],
+        [
+            "chateau green",
+            "#40A860"
+        ],
+        [
+            "chatelle",
+            "#BDB3C7"
+        ],
+        [
+            "chathams blue",
+            "#175579"
+        ],
+        [
+            "chelsea cucumber",
+            "#83AA5D"
+        ],
+        [
+            "chelsea gem",
+            "#9E5302"
+        ],
+        [
+            "chenin",
+            "#DFCD6F"
+        ],
+        [
+            "cherokee",
+            "#FCDA98"
+        ],
+        [
+            "cherry pie",
+            "#2A0359"
+        ],
+        [
+            "cherrywood",
+            "#651A14"
+        ],
+        [
+            "cherub",
+            "#F8D9E9"
+        ],
+        [
+            "chestnut",
+            "#B94E48"
+        ],
+        [
+            "chestnut rose",
+            "#CD5C5C"
+        ],
+        [
+            "chetwode blue",
+            "#8581D9"
+        ],
+        [
+            "chicago",
+            "#5D5C58"
+        ],
+        [
+            "chiffon",
+            "#F1FFC8"
+        ],
+        [
+            "chilean fire",
+            "#F77703"
+        ],
+        [
+            "chilean heath",
+            "#FFFDE6"
+        ],
+        [
+            "china ivory",
+            "#FCFFE7"
+        ],
+        [
+            "chino",
+            "#CEC7A7"
+        ],
+        [
+            "chinook",
+            "#A8E3BD"
+        ],
+        [
+            "chocolate",
+            "#370202"
+        ],
+        [
+            "christalle",
+            "#33036B"
+        ],
+        [
+            "christi",
+            "#67A712"
+        ],
+        [
+            "christine",
+            "#E7730A"
+        ],
+        [
+            "chrome white",
+            "#E8F1D4"
+        ],
+        [
+            "cinder",
+            "#0E0E18"
+        ],
+        [
+            "cinderella",
+            "#FDE1DC"
+        ],
+        [
+            "cinnabar",
+            "#E34234"
+        ],
+        [
+            "cinnamon",
+            "#7B3F00"
+        ],
+        [
+            "cioccolato",
+            "#55280C"
+        ],
+        [
+            "citrine white",
+            "#FAF7D6"
+        ],
+        [
+            "citron",
+            "#9EA91F"
+        ],
+        [
+            "citrus",
+            "#A1C50A"
+        ],
+        [
+            "clairvoyant",
+            "#480656"
+        ],
+        [
+            "clam shell",
+            "#D4B6AF"
+        ],
+        [
+            "claret",
+            "#7F1734"
+        ],
+        [
+            "classic rose",
+            "#FBCCE7"
+        ],
+        [
+            "clay ash",
+            "#BDC8B3"
+        ],
+        [
+            "clay creek",
+            "#8A8360"
+        ],
+        [
+            "clear day",
+            "#E9FFFD"
+        ],
+        [
+            "clementine",
+            "#E96E00"
+        ],
+        [
+            "clinker",
+            "#371D09"
+        ],
+        [
+            "cloud",
+            "#C7C4BF"
+        ],
+        [
+            "cloud burst",
+            "#202E54"
+        ],
+        [
+            "cloudy",
+            "#ACA59F"
+        ],
+        [
+            "clover",
+            "#384910"
+        ],
+        [
+            "cobalt",
+            "#0047AB"
+        ],
+        [
+            "cocoa bean",
+            "#481C1C"
+        ],
+        [
+            "cocoa brown",
+            "#301F1E"
+        ],
+        [
+            "coconut cream",
+            "#F8F7DC"
+        ],
+        [
+            "cod gray",
+            "#0B0B0B"
+        ],
+        [
+            "coffee",
+            "#706555"
+        ],
+        [
+            "coffee bean",
+            "#2A140E"
+        ],
+        [
+            "cognac",
+            "#9F381D"
+        ],
+        [
+            "cola",
+            "#3F2500"
+        ],
+        [
+            "cold purple",
+            "#ABA0D9"
+        ],
+        [
+            "cold turkey",
+            "#CEBABA"
+        ],
+        [
+            "colonial white",
+            "#FFEDBC"
+        ],
+        [
+            "comet",
+            "#5C5D75"
+        ],
+        [
+            "como",
+            "#517C66"
+        ],
+        [
+            "conch",
+            "#C9D9D2"
+        ],
+        [
+            "concord",
+            "#7C7B7A"
+        ],
+        [
+            "concrete",
+            "#F2F2F2"
+        ],
+        [
+            "confetti",
+            "#E9D75A"
+        ],
+        [
+            "congo brown",
+            "#593737"
+        ],
+        [
+            "congress blue",
+            "#02478E"
+        ],
+        [
+            "conifer",
+            "#ACDD4D"
+        ],
+        [
+            "contessa",
+            "#C6726B"
+        ],
+        [
+            "copper",
+            "#B87333"
+        ],
+        [
+            "copper canyon",
+            "#7E3A15"
+        ],
+        [
+            "copper rose",
+            "#996666"
+        ],
+        [
+            "copper rust",
+            "#944747"
+        ],
+        [
+            "copperfield",
+            "#DA8A67"
+        ],
+        [
+            "coral",
+            "#FF7F50"
+        ],
+        [
+            "coral red",
+            "#FF4040"
+        ],
+        [
+            "coral reef",
+            "#C7BCA2"
+        ],
+        [
+            "coral tree",
+            "#A86B6B"
+        ],
+        [
+            "corduroy",
+            "#606E68"
+        ],
+        [
+            "coriander",
+            "#C4D0B0"
+        ],
+        [
+            "cork",
+            "#40291D"
+        ],
+        [
+            "corn",
+            "#E7BF05"
+        ],
+        [
+            "corn field",
+            "#F8FACD"
+        ],
+        [
+            "corn harvest",
+            "#8B6B0B"
+        ],
+        [
+            "cornflower",
+            "#93CCEA"
+        ],
+        [
+            "cornflower blue",
+            "#6495ED"
+        ],
+        [
+            "cornflower lilac",
+            "#FFB0AC"
+        ],
+        [
+            "corvette",
+            "#FAD3A2"
+        ],
+        [
+            "cosmic",
+            "#76395D"
+        ],
+        [
+            "cosmos",
+            "#FFD8D9"
+        ],
+        [
+            "costa del sol",
+            "#615D30"
+        ],
+        [
+            "cotton candy",
+            "#FFB7D5"
+        ],
+        [
+            "cotton seed",
+            "#C2BDB6"
+        ],
+        [
+            "county green",
+            "#01371A"
+        ],
+        [
+            "cowboy",
+            "#4D282D"
+        ],
+        [
+            "crail",
+            "#B95140"
+        ],
+        [
+            "cranberry",
+            "#DB5079"
+        ],
+        [
+            "crater brown",
+            "#462425"
+        ],
+        [
+            "cream",
+            "#FFFDD0"
+        ],
+        [
+            "cream brulee",
+            "#FFE5A0"
+        ],
+        [
+            "cream can",
+            "#F5C85C"
+        ],
+        [
+            "creole",
+            "#1E0F04"
+        ],
+        [
+            "crete",
+            "#737829"
+        ],
+        [
+            "crimson",
+            "#DC143C"
+        ],
+        [
+            "crocodile",
+            "#736D58"
+        ],
+        [
+            "crown of thorns",
+            "#771F1F"
+        ],
+        [
+            "crowshead",
+            "#1C1208"
+        ],
+        [
+            "cruise",
+            "#B5ECDF"
+        ],
+        [
+            "crusoe",
+            "#004816"
+        ],
+        [
+            "crusta",
+            "#FD7B33"
+        ],
+        [
+            "cumin",
+            "#924321"
+        ],
+        [
+            "cumulus",
+            "#FDFFD5"
+        ],
+        [
+            "cupid",
+            "#FBBEDA"
+        ],
+        [
+            "curious blue",
+            "#2596D1"
+        ],
+        [
+            "cutty sark",
+            "#507672"
+        ],
+        [
+            "cyan / aqua",
+            "#00FFFF"
+        ],
+        [
+            "cyprus",
+            "#003E40"
+        ],
+        [
+            "daintree",
+            "#012731"
+        ],
+        [
+            "dairy cream",
+            "#F9E4BC"
+        ],
+        [
+            "daisy bush",
+            "#4F2398"
+        ],
+        [
+            "dallas",
+            "#6E4B26"
+        ],
+        [
+            "dandelion",
+            "#FED85D"
+        ],
+        [
+            "danube",
+            "#6093D1"
+        ],
+        [
+            "dark blue",
+            "#0000C8"
+        ],
+        [
+            "dark burgundy",
+            "#770F05"
+        ],
+        [
+            "dark ebony",
+            "#3C2005"
+        ],
+        [
+            "dark fern",
+            "#0A480D"
+        ],
+        [
+            "dark tan",
+            "#661010"
+        ],
+        [
+            "dawn",
+            "#A6A29A"
+        ],
+        [
+            "dawn pink",
+            "#F3E9E5"
+        ],
+        [
+            "de york",
+            "#7AC488"
+        ],
+        [
+            "deco",
+            "#D2DA97"
+        ],
+        [
+            "deep blue",
+            "#220878"
+        ],
+        [
+            "deep blush",
+            "#E47698"
+        ],
+        [
+            "deep bronze",
+            "#4A3004"
+        ],
+        [
+            "deep cerulean",
+            "#007BA7"
+        ],
+        [
+            "deep cove",
+            "#051040"
+        ],
+        [
+            "deep fir",
+            "#002900"
+        ],
+        [
+            "deep forest green",
+            "#182D09"
+        ],
+        [
+            "deep koamaru",
+            "#1B127B"
+        ],
+        [
+            "deep oak",
+            "#412010"
+        ],
+        [
+            "deep sapphire",
+            "#082567"
+        ],
+        [
+            "deep sea",
+            "#01826B"
+        ],
+        [
+            "deep sea green",
+            "#095859"
+        ],
+        [
+            "deep teal",
+            "#003532"
+        ],
+        [
+            "del rio",
+            "#B09A95"
+        ],
+        [
+            "dell",
+            "#396413"
+        ],
+        [
+            "delta",
+            "#A4A49D"
+        ],
+        [
+            "deluge",
+            "#7563A8"
+        ],
+        [
+            "denim",
+            "#1560BD"
+        ],
+        [
+            "derby",
+            "#FFEED8"
+        ],
+        [
+            "desert",
+            "#AE6020"
+        ],
+        [
+            "desert sand",
+            "#EDC9AF"
+        ],
+        [
+            "desert storm",
+            "#F8F8F7"
+        ],
+        [
+            "dew",
+            "#EAFFFE"
+        ],
+        [
+            "di serria",
+            "#DB995E"
+        ],
+        [
+            "diesel",
+            "#130000"
+        ],
+        [
+            "dingley",
+            "#5D7747"
+        ],
+        [
+            "disco",
+            "#871550"
+        ],
+        [
+            "dixie",
+            "#E29418"
+        ],
+        [
+            "dodger blue",
+            "#1E90FF"
+        ],
+        [
+            "dolly",
+            "#F9FF8B"
+        ],
+        [
+            "dolphin",
+            "#646077"
+        ],
+        [
+            "domino",
+            "#8E775E"
+        ],
+        [
+            "don juan",
+            "#5D4C51"
+        ],
+        [
+            "donkey brown",
+            "#A69279"
+        ],
+        [
+            "dorado",
+            "#6B5755"
+        ],
+        [
+            "double colonial white",
+            "#EEE3AD"
+        ],
+        [
+            "double pearl lusta",
+            "#FCF4D0"
+        ],
+        [
+            "double spanish white",
+            "#E6D7B9"
+        ],
+        [
+            "dove gray",
+            "#6D6C6C"
+        ],
+        [
+            "downriver",
+            "#092256"
+        ],
+        [
+            "downy",
+            "#6FD0C5"
+        ],
+        [
+            "driftwood",
+            "#AF8751"
+        ],
+        [
+            "drover",
+            "#FDF7AD"
+        ],
+        [
+            "dull lavender",
+            "#A899E6"
+        ],
+        [
+            "dune",
+            "#383533"
+        ],
+        [
+            "dust storm",
+            "#E5CCC9"
+        ],
+        [
+            "dusty gray",
+            "#A8989B"
+        ],
+        [
+            "eagle",
+            "#B6BAA4"
+        ],
+        [
+            "earls green",
+            "#C9B93B"
+        ],
+        [
+            "early dawn",
+            "#FFF9E6"
+        ],
+        [
+            "east bay",
+            "#414C7D"
+        ],
+        [
+            "east side",
+            "#AC91CE"
+        ],
+        [
+            "eastern blue",
+            "#1E9AB0"
+        ],
+        [
+            "ebb",
+            "#E9E3E3"
+        ],
+        [
+            "ebony",
+            "#0C0B1D"
+        ],
+        [
+            "ebony clay",
+            "#26283B"
+        ],
+        [
+            "eclipse",
+            "#311C17"
+        ],
+        [
+            "ecru white",
+            "#F5F3E5"
+        ],
+        [
+            "ecstasy",
+            "#FA7814"
+        ],
+        [
+            "eden",
+            "#105852"
+        ],
+        [
+            "edgewater",
+            "#C8E3D7"
+        ],
+        [
+            "edward",
+            "#A2AEAB"
+        ],
+        [
+            "egg sour",
+            "#FFF4DD"
+        ],
+        [
+            "egg white",
+            "#FFEFC1"
+        ],
+        [
+            "eggplant",
+            "#614051"
+        ],
+        [
+            "el paso",
+            "#1E1708"
+        ],
+        [
+            "el salva",
+            "#8F3E33"
+        ],
+        [
+            "electric lime",
+            "#CCFF00"
+        ],
+        [
+            "electric violet",
+            "#8B00FF"
+        ],
+        [
+            "elephant",
+            "#123447"
+        ],
+        [
+            "elf green",
+            "#088370"
+        ],
+        [
+            "elm",
+            "#1C7C7D"
+        ],
+        [
+            "emerald",
+            "#50C878"
+        ],
+        [
+            "eminence",
+            "#6C3082"
+        ],
+        [
+            "emperor",
+            "#514649"
+        ],
+        [
+            "empress",
+            "#817377"
+        ],
+        [
+            "endeavour",
+            "#0056A7"
+        ],
+        [
+            "energy yellow",
+            "#F8DD5C"
+        ],
+        [
+            "english holly",
+            "#022D15"
+        ],
+        [
+            "english walnut",
+            "#3E2B23"
+        ],
+        [
+            "envy",
+            "#8BA690"
+        ],
+        [
+            "equator",
+            "#E1BC64"
+        ],
+        [
+            "espresso",
+            "#612718"
+        ],
+        [
+            "eternity",
+            "#211A0E"
+        ],
+        [
+            "eucalyptus",
+            "#278A5B"
+        ],
+        [
+            "eunry",
+            "#CFA39D"
+        ],
+        [
+            "evening sea",
+            "#024E46"
+        ],
+        [
+            "everglade",
+            "#1C402E"
+        ],
+        [
+            "faded jade",
+            "#427977"
+        ],
+        [
+            "fair pink",
+            "#FFEFEC"
+        ],
+        [
+            "falcon",
+            "#7F626D"
+        ],
+        [
+            "fall green",
+            "#ECEBBD"
+        ],
+        [
+            "falu red",
+            "#801818"
+        ],
+        [
+            "fantasy",
+            "#FAF3F0"
+        ],
+        [
+            "fedora",
+            "#796A78"
+        ],
+        [
+            "feijoa",
+            "#9FDD8C"
+        ],
+        [
+            "fern",
+            "#63B76C"
+        ],
+        [
+            "fern frond",
+            "#657220"
+        ],
+        [
+            "fern green",
+            "#4F7942"
+        ],
+        [
+            "ferra",
+            "#704F50"
+        ],
+        [
+            "festival",
+            "#FBE96C"
+        ],
+        [
+            "feta",
+            "#F0FCEA"
+        ],
+        [
+            "fiery orange",
+            "#B35213"
+        ],
+        [
+            "finch",
+            "#626649"
+        ],
+        [
+            "finlandia",
+            "#556D56"
+        ],
+        [
+            "finn",
+            "#692D54"
+        ],
+        [
+            "fiord",
+            "#405169"
+        ],
+        [
+            "fire",
+            "#AA4203"
+        ],
+        [
+            "fire bush",
+            "#E89928"
+        ],
+        [
+            "firefly",
+            "#0E2A30"
+        ],
+        [
+            "flame pea",
+            "#DA5B38"
+        ],
+        [
+            "flamenco",
+            "#FF7D07"
+        ],
+        [
+            "flamingo",
+            "#F2552A"
+        ],
+        [
+            "flax",
+            "#EEDC82"
+        ],
+        [
+            "flax smoke",
+            "#7B8265"
+        ],
+        [
+            "flesh",
+            "#FFCBA4"
+        ],
+        [
+            "flint",
+            "#6F6A61"
+        ],
+        [
+            "flirt",
+            "#A2006D"
+        ],
+        [
+            "flush mahogany",
+            "#CA3435"
+        ],
+        [
+            "flush orange",
+            "#FF7F00"
+        ],
+        [
+            "foam",
+            "#D8FCFA"
+        ],
+        [
+            "fog",
+            "#D7D0FF"
+        ],
+        [
+            "foggy gray",
+            "#CBCAB6"
+        ],
+        [
+            "forest green",
+            "#228B22"
+        ],
+        [
+            "forget me not",
+            "#FFF1EE"
+        ],
+        [
+            "fountain blue",
+            "#56B4BE"
+        ],
+        [
+            "frangipani",
+            "#FFDEB3"
+        ],
+        [
+            "french gray",
+            "#BDBDC6"
+        ],
+        [
+            "french lilac",
+            "#ECC7EE"
+        ],
+        [
+            "french pass",
+            "#BDEDFD"
+        ],
+        [
+            "french rose",
+            "#F64A8A"
+        ],
+        [
+            "fresh eggplant",
+            "#990066"
+        ],
+        [
+            "friar gray",
+            "#807E79"
+        ],
+        [
+            "fringy flower",
+            "#B1E2C1"
+        ],
+        [
+            "froly",
+            "#F57584"
+        ],
+        [
+            "frost",
+            "#EDF5DD"
+        ],
+        [
+            "frosted mint",
+            "#DBFFF8"
+        ],
+        [
+            "frostee",
+            "#E4F6E7"
+        ],
+        [
+            "fruit salad",
+            "#4F9D5D"
+        ],
+        [
+            "fuchsia blue",
+            "#7A58C1"
+        ],
+        [
+            "fuchsia pink",
+            "#C154C1"
+        ],
+        [
+            "fuego",
+            "#BEDE0D"
+        ],
+        [
+            "fuel yellow",
+            "#ECA927"
+        ],
+        [
+            "fun blue",
+            "#1959A8"
+        ],
+        [
+            "fun green",
+            "#016D39"
+        ],
+        [
+            "fuscous gray",
+            "#54534D"
+        ],
+        [
+            "fuzzy wuzzy brown",
+            "#C45655"
+        ],
+        [
+            "gable green",
+            "#163531"
+        ],
+        [
+            "gallery",
+            "#EFEFEF"
+        ],
+        [
+            "galliano",
+            "#DCB20C"
+        ],
+        [
+            "gamboge",
+            "#E49B0F"
+        ],
+        [
+            "geebung",
+            "#D18F1B"
+        ],
+        [
+            "genoa",
+            "#15736B"
+        ],
+        [
+            "geraldine",
+            "#FB8989"
+        ],
+        [
+            "geyser",
+            "#D4DFE2"
+        ],
+        [
+            "ghost",
+            "#C7C9D5"
+        ],
+        [
+            "gigas",
+            "#523C94"
+        ],
+        [
+            "gimblet",
+            "#B8B56A"
+        ],
+        [
+            "gin",
+            "#E8F2EB"
+        ],
+        [
+            "gin fizz",
+            "#FFF9E2"
+        ],
+        [
+            "givry",
+            "#F8E4BF"
+        ],
+        [
+            "glacier",
+            "#80B3C4"
+        ],
+        [
+            "glade green",
+            "#61845F"
+        ],
+        [
+            "go ben",
+            "#726D4E"
+        ],
+        [
+            "goblin",
+            "#3D7D52"
+        ],
+        [
+            "gold",
+            "#FFD700"
+        ],
+        [
+            "gold drop",
+            "#F18200"
+        ],
+        [
+            "gold sand",
+            "#E6BE8A"
+        ],
+        [
+            "gold tips",
+            "#DEBA13"
+        ],
+        [
+            "golden bell",
+            "#E28913"
+        ],
+        [
+            "golden dream",
+            "#F0D52D"
+        ],
+        [
+            "golden fizz",
+            "#F5FB3D"
+        ],
+        [
+            "golden glow",
+            "#FDE295"
+        ],
+        [
+            "golden grass",
+            "#DAA520"
+        ],
+        [
+            "golden sand",
+            "#F0DB7D"
+        ],
+        [
+            "golden tainoi",
+            "#FFCC5C"
+        ],
+        [
+            "goldenrod",
+            "#FCD667"
+        ],
+        [
+            "gondola",
+            "#261414"
+        ],
+        [
+            "gordons green",
+            "#0B1107"
+        ],
+        [
+            "gorse",
+            "#FFF14F"
+        ],
+        [
+            "gossamer",
+            "#069B81"
+        ],
+        [
+            "gossip",
+            "#D2F8B0"
+        ],
+        [
+            "gothic",
+            "#6D92A1"
+        ],
+        [
+            "governor bay",
+            "#2F3CB3"
+        ],
+        [
+            "grain brown",
+            "#E4D5B7"
+        ],
+        [
+            "grandis",
+            "#FFD38C"
+        ],
+        [
+            "granite green",
+            "#8D8974"
+        ],
+        [
+            "granny apple",
+            "#D5F6E3"
+        ],
+        [
+            "granny smith",
+            "#84A0A0"
+        ],
+        [
+            "granny smith apple",
+            "#9DE093"
+        ],
+        [
+            "grape",
+            "#381A51"
+        ],
+        [
+            "graphite",
+            "#251607"
+        ],
+        [
+            "gravel",
+            "#4A444B"
+        ],
+        [
+            "gray",
+            "#808080"
+        ],
+        [
+            "gray asparagus",
+            "#465945"
+        ],
+        [
+            "gray chateau",
+            "#A2AAB3"
+        ],
+        [
+            "gray nickel",
+            "#C3C3BD"
+        ],
+        [
+            "gray nurse",
+            "#E7ECE6"
+        ],
+        [
+            "gray olive",
+            "#A9A491"
+        ],
+        [
+            "gray suit",
+            "#C1BECD"
+        ],
+        [
+            "green",
+            "#00FF00"
+        ],
+        [
+            "green haze",
+            "#01A368"
+        ],
+        [
+            "green house",
+            "#24500F"
+        ],
+        [
+            "green kelp",
+            "#25311C"
+        ],
+        [
+            "green leaf",
+            "#436A0D"
+        ],
+        [
+            "green mist",
+            "#CBD3B0"
+        ],
+        [
+            "green pea",
+            "#1D6142"
+        ],
+        [
+            "green smoke",
+            "#A4AF6E"
+        ],
+        [
+            "green spring",
+            "#B8C1B1"
+        ],
+        [
+            "green vogue",
+            "#032B52"
+        ],
+        [
+            "green waterloo",
+            "#101405"
+        ],
+        [
+            "green white",
+            "#E8EBE0"
+        ],
+        [
+            "green yellow",
+            "#ADFF2F"
+        ],
+        [
+            "grenadier",
+            "#D54600"
+        ],
+        [
+            "guardsman red",
+            "#BA0101"
+        ],
+        [
+            "gulf blue",
+            "#051657"
+        ],
+        [
+            "gulf stream",
+            "#80B3AE"
+        ],
+        [
+            "gull gray",
+            "#9DACB7"
+        ],
+        [
+            "gum leaf",
+            "#B6D3BF"
+        ],
+        [
+            "gumbo",
+            "#7CA1A6"
+        ],
+        [
+            "gun powder",
+            "#414257"
+        ],
+        [
+            "gunsmoke",
+            "#828685"
+        ],
+        [
+            "gurkha",
+            "#9A9577"
+        ],
+        [
+            "hacienda",
+            "#98811B"
+        ],
+        [
+            "hairy heath",
+            "#6B2A14"
+        ],
+        [
+            "haiti",
+            "#1B1035"
+        ],
+        [
+            "half and half",
+            "#FFFEE1"
+        ],
+        [
+            "half baked",
+            "#85C4CC"
+        ],
+        [
+            "half colonial white",
+            "#FDF6D3"
+        ],
+        [
+            "half dutch white",
+            "#FEF7DE"
+        ],
+        [
+            "half spanish white",
+            "#FEF4DB"
+        ],
+        [
+            "hampton",
+            "#E5D8AF"
+        ],
+        [
+            "harlequin",
+            "#3FFF00"
+        ],
+        [
+            "harp",
+            "#E6F2EA"
+        ],
+        [
+            "harvest gold",
+            "#E0B974"
+        ],
+        [
+            "havelock blue",
+            "#5590D9"
+        ],
+        [
+            "hawaiian tan",
+            "#9D5616"
+        ],
+        [
+            "hawkes blue",
+            "#D4E2FC"
+        ],
+        [
+            "heath",
+            "#541012"
+        ],
+        [
+            "heather",
+            "#B7C3D0"
+        ],
+        [
+            "heathered gray",
+            "#B6B095"
+        ],
+        [
+            "heavy metal",
+            "#2B3228"
+        ],
+        [
+            "heliotrope",
+            "#DF73FF"
+        ],
+        [
+            "hemlock",
+            "#5E5D3B"
+        ],
+        [
+            "hemp",
+            "#907874"
+        ],
+        [
+            "hibiscus",
+            "#B6316C"
+        ],
+        [
+            "highland",
+            "#6F8E63"
+        ],
+        [
+            "hillary",
+            "#ACA586"
+        ],
+        [
+            "himalaya",
+            "#6A5D1B"
+        ],
+        [
+            "hint of green",
+            "#E6FFE9"
+        ],
+        [
+            "hint of red",
+            "#FBF9F9"
+        ],
+        [
+            "hint of yellow",
+            "#FAFDE4"
+        ],
+        [
+            "hippie blue",
+            "#589AAF"
+        ],
+        [
+            "hippie green",
+            "#53824B"
+        ],
+        [
+            "hippie pink",
+            "#AE4560"
+        ],
+        [
+            "hit gray",
+            "#A1ADB5"
+        ],
+        [
+            "hit pink",
+            "#FFAB81"
+        ],
+        [
+            "hokey pokey",
+            "#C8A528"
+        ],
+        [
+            "hoki",
+            "#65869F"
+        ],
+        [
+            "holly",
+            "#011D13"
+        ],
+        [
+            "hollywood cerise",
+            "#F400A1"
+        ],
+        [
+            "honey flower",
+            "#4F1C70"
+        ],
+        [
+            "honeysuckle",
+            "#EDFC84"
+        ],
+        [
+            "hopbush",
+            "#D06DA1"
+        ],
+        [
+            "horizon",
+            "#5A87A0"
+        ],
+        [
+            "horses neck",
+            "#604913"
+        ],
+        [
+            "hot cinnamon",
+            "#D2691E"
+        ],
+        [
+            "hot pink",
+            "#FF69B4"
+        ],
+        [
+            "hot toddy",
+            "#B38007"
+        ],
+        [
+            "humming bird",
+            "#CFF9F3"
+        ],
+        [
+            "hunter green",
+            "#161D10"
+        ],
+        [
+            "hurricane",
+            "#877C7B"
+        ],
+        [
+            "husk",
+            "#B7A458"
+        ],
+        [
+            "ice cold",
+            "#B1F4E7"
+        ],
+        [
+            "iceberg",
+            "#DAF4F0"
+        ],
+        [
+            "illusion",
+            "#F6A4C9"
+        ],
+        [
+            "inch worm",
+            "#B0E313"
+        ],
+        [
+            "indian khaki",
+            "#C3B091"
+        ],
+        [
+            "indian tan",
+            "#4D1E01"
+        ],
+        [
+            "indigo",
+            "#4F69C6"
+        ],
+        [
+            "indochine",
+            "#C26B03"
+        ],
+        [
+            "international klein blue",
+            "#002FA7"
+        ],
+        [
+            "international orange",
+            "#FF4F00"
+        ],
+        [
+            "irish coffee",
+            "#5F3D26"
+        ],
+        [
+            "iroko",
+            "#433120"
+        ],
+        [
+            "iron",
+            "#D4D7D9"
+        ],
+        [
+            "ironside gray",
+            "#676662"
+        ],
+        [
+            "ironstone",
+            "#86483C"
+        ],
+        [
+            "island spice",
+            "#FFFCEE"
+        ],
+        [
+            "ivory",
+            "#FFFFF0"
+        ],
+        [
+            "jacaranda",
+            "#2E0329"
+        ],
+        [
+            "jacarta",
+            "#3A2A6A"
+        ],
+        [
+            "jacko bean",
+            "#2E1905"
+        ],
+        [
+            "jacksons purple",
+            "#20208D"
+        ],
+        [
+            "jade",
+            "#00A86B"
+        ],
+        [
+            "jaffa",
+            "#EF863F"
+        ],
+        [
+            "jagged ice",
+            "#C2E8E5"
+        ],
+        [
+            "jagger",
+            "#350E57"
+        ],
+        [
+            "jaguar",
+            "#080110"
+        ],
+        [
+            "jambalaya",
+            "#5B3013"
+        ],
+        [
+            "janna",
+            "#F4EBD3"
+        ],
+        [
+            "japanese laurel",
+            "#0A6906"
+        ],
+        [
+            "japanese maple",
+            "#780109"
+        ],
+        [
+            "japonica",
+            "#D87C63"
+        ],
+        [
+            "java",
+            "#1FC2C2"
+        ],
+        [
+            "jazzberry jam",
+            "#A50B5E"
+        ],
+        [
+            "jelly bean",
+            "#297B9A"
+        ],
+        [
+            "jet stream",
+            "#B5D2CE"
+        ],
+        [
+            "jewel",
+            "#126B40"
+        ],
+        [
+            "jon",
+            "#3B1F1F"
+        ],
+        [
+            "jonquil",
+            "#EEFF9A"
+        ],
+        [
+            "jordy blue",
+            "#8AB9F1"
+        ],
+        [
+            "judge gray",
+            "#544333"
+        ],
+        [
+            "jumbo",
+            "#7C7B82"
+        ],
+        [
+            "jungle green",
+            "#29AB87"
+        ],
+        [
+            "jungle mist",
+            "#B4CFD3"
+        ],
+        [
+            "juniper",
+            "#6D9292"
+        ],
+        [
+            "just right",
+            "#ECCDB9"
+        ],
+        [
+            "kabul",
+            "#5E483E"
+        ],
+        [
+            "kaitoke green",
+            "#004620"
+        ],
+        [
+            "kangaroo",
+            "#C6C8BD"
+        ],
+        [
+            "karaka",
+            "#1E1609"
+        ],
+        [
+            "karry",
+            "#FFEAD4"
+        ],
+        [
+            "kashmir blue",
+            "#507096"
+        ],
+        [
+            "kelp",
+            "#454936"
+        ],
+        [
+            "kenyan copper",
+            "#7C1C05"
+        ],
+        [
+            "keppel",
+            "#3AB09E"
+        ],
+        [
+            "key lime pie",
+            "#BFC921"
+        ],
+        [
+            "khaki",
+            "#F0E68C"
+        ],
+        [
+            "kidnapper",
+            "#E1EAD4"
+        ],
+        [
+            "kilamanjaro",
+            "#240C02"
+        ],
+        [
+            "killarney",
+            "#3A6A47"
+        ],
+        [
+            "kimberly",
+            "#736C9F"
+        ],
+        [
+            "kingfisher daisy",
+            "#3E0480"
+        ],
+        [
+            "kobi",
+            "#E79FC4"
+        ],
+        [
+            "kokoda",
+            "#6E6D57"
+        ],
+        [
+            "korma",
+            "#8F4B0E"
+        ],
+        [
+            "koromiko",
+            "#FFBD5F"
+        ],
+        [
+            "kournikova",
+            "#FFE772"
+        ],
+        [
+            "kumera",
+            "#886221"
+        ],
+        [
+            "la palma",
+            "#368716"
+        ],
+        [
+            "la rioja",
+            "#B3C110"
+        ],
+        [
+            "las palmas",
+            "#C6E610"
+        ],
+        [
+            "laser",
+            "#C8B568"
+        ],
+        [
+            "laser lemon",
+            "#FFFF66"
+        ],
+        [
+            "laurel",
+            "#749378"
+        ],
+        [
+            "lavender",
+            "#B57EDC"
+        ],
+        [
+            "lavender blush",
+            "#FFF0F5"
+        ],
+        [
+            "lavender gray",
+            "#BDBBD7"
+        ],
+        [
+            "lavender magenta",
+            "#EE82EE"
+        ],
+        [
+            "lavender pink",
+            "#FBAED2"
+        ],
+        [
+            "lavender purple",
+            "#967BB6"
+        ],
+        [
+            "lavender rose",
+            "#FBA0E3"
+        ],
+        [
+            "leather",
+            "#967059"
+        ],
+        [
+            "lemon",
+            "#FDE910"
+        ],
+        [
+            "lemon chiffon",
+            "#FFFACD"
+        ],
+        [
+            "lemon ginger",
+            "#AC9E22"
+        ],
+        [
+            "lemon grass",
+            "#9B9E8F"
+        ],
+        [
+            "light apricot",
+            "#FDD5B1"
+        ],
+        [
+            "light orchid",
+            "#E29CD2"
+        ],
+        [
+            "light wisteria",
+            "#C9A0DC"
+        ],
+        [
+            "lightning yellow",
+            "#FCC01E"
+        ],
+        [
+            "lilac",
+            "#C8A2C8"
+        ],
+        [
+            "lilac bush",
+            "#9874D3"
+        ],
+        [
+            "lily",
+            "#C8AABF"
+        ],
+        [
+            "lily white",
+            "#E7F8FF"
+        ],
+        [
+            "lima",
+            "#76BD17"
+        ],
+        [
+            "lime",
+            "#BFFF00"
+        ],
+        [
+            "limeade",
+            "#6F9D02"
+        ],
+        [
+            "limed ash",
+            "#747D63"
+        ],
+        [
+            "limed oak",
+            "#AC8A56"
+        ],
+        [
+            "limed spruce",
+            "#394851"
+        ],
+        [
+            "linen",
+            "#FAF0E6"
+        ],
+        [
+            "link water",
+            "#D9E4F5"
+        ],
+        [
+            "lipstick",
+            "#AB0563"
+        ],
+        [
+            "lisbon brown",
+            "#423921"
+        ],
+        [
+            "livid brown",
+            "#4D282E"
+        ],
+        [
+            "loafer",
+            "#EEF4DE"
+        ],
+        [
+            "loblolly",
+            "#BDC9CE"
+        ],
+        [
+            "lochinvar",
+            "#2C8C84"
+        ],
+        [
+            "lochmara",
+            "#007EC7"
+        ],
+        [
+            "locust",
+            "#A8AF8E"
+        ],
+        [
+            "log cabin",
+            "#242A1D"
+        ],
+        [
+            "logan",
+            "#AAA9CD"
+        ],
+        [
+            "lola",
+            "#DFCFDB"
+        ],
+        [
+            "london hue",
+            "#BEA6C3"
+        ],
+        [
+            "lonestar",
+            "#6D0101"
+        ],
+        [
+            "lotus",
+            "#863C3C"
+        ],
+        [
+            "loulou",
+            "#460B41"
+        ],
+        [
+            "lucky",
+            "#AF9F1C"
+        ],
+        [
+            "lucky point",
+            "#1A1A68"
+        ],
+        [
+            "lunar green",
+            "#3C493A"
+        ],
+        [
+            "luxor gold",
+            "#A7882C"
+        ],
+        [
+            "lynch",
+            "#697E9A"
+        ],
+        [
+            "mabel",
+            "#D9F7FF"
+        ],
+        [
+            "macaroni and cheese",
+            "#FFB97B"
+        ],
+        [
+            "madang",
+            "#B7F0BE"
+        ],
+        [
+            "madison",
+            "#09255D"
+        ],
+        [
+            "madras",
+            "#3F3002"
+        ],
+        [
+            "magenta / fuchsia",
+            "#FF00FF"
+        ],
+        [
+            "magic mint",
+            "#AAF0D1"
+        ],
+        [
+            "magnolia",
+            "#F8F4FF"
+        ],
+        [
+            "mahogany",
+            "#4E0606"
+        ],
+        [
+            "mai tai",
+            "#B06608"
+        ],
+        [
+            "maize",
+            "#F5D5A0"
+        ],
+        [
+            "makara",
+            "#897D6D"
+        ],
+        [
+            "mako",
+            "#444954"
+        ],
+        [
+            "malachite",
+            "#0BDA51"
+        ],
+        [
+            "malibu",
+            "#7DC8F7"
+        ],
+        [
+            "mallard",
+            "#233418"
+        ],
+        [
+            "malta",
+            "#BDB2A1"
+        ],
+        [
+            "mamba",
+            "#8E8190"
+        ],
+        [
+            "manatee",
+            "#8D90A1"
+        ],
+        [
+            "mandalay",
+            "#AD781B"
+        ],
+        [
+            "mandy",
+            "#E25465"
+        ],
+        [
+            "mandys pink",
+            "#F2C3B2"
+        ],
+        [
+            "mango tango",
+            "#E77200"
+        ],
+        [
+            "manhattan",
+            "#F5C999"
+        ],
+        [
+            "mantis",
+            "#74C365"
+        ],
+        [
+            "mantle",
+            "#8B9C90"
+        ],
+        [
+            "manz",
+            "#EEEF78"
+        ],
+        [
+            "mardi gras",
+            "#350036"
+        ],
+        [
+            "marigold",
+            "#B98D28"
+        ],
+        [
+            "marigold yellow",
+            "#FBE870"
+        ],
+        [
+            "mariner",
+            "#286ACD"
+        ],
+        [
+            "maroon",
+            "#800000"
+        ],
+        [
+            "maroon flush",
+            "#C32148"
+        ],
+        [
+            "maroon oak",
+            "#520C17"
+        ],
+        [
+            "marshland",
+            "#0B0F08"
+        ],
+        [
+            "martini",
+            "#AFA09E"
+        ],
+        [
+            "martinique",
+            "#363050"
+        ],
+        [
+            "marzipan",
+            "#F8DB9D"
+        ],
+        [
+            "masala",
+            "#403B38"
+        ],
+        [
+            "matisse",
+            "#1B659D"
+        ],
+        [
+            "matrix",
+            "#B05D54"
+        ],
+        [
+            "matterhorn",
+            "#4E3B41"
+        ],
+        [
+            "mauve",
+            "#E0B0FF"
+        ],
+        [
+            "mauvelous",
+            "#F091A9"
+        ],
+        [
+            "maverick",
+            "#D8C2D5"
+        ],
+        [
+            "medium carmine",
+            "#AF4035"
+        ],
+        [
+            "medium purple",
+            "#9370DB"
+        ],
+        [
+            "medium red violet",
+            "#BB3385"
+        ],
+        [
+            "melanie",
+            "#E4C2D5"
+        ],
+        [
+            "melanzane",
+            "#300529"
+        ],
+        [
+            "melon",
+            "#FEBAAD"
+        ],
+        [
+            "melrose",
+            "#C7C1FF"
+        ],
+        [
+            "mercury",
+            "#E5E5E5"
+        ],
+        [
+            "merino",
+            "#F6F0E6"
+        ],
+        [
+            "merlin",
+            "#413C37"
+        ],
+        [
+            "merlot",
+            "#831923"
+        ],
+        [
+            "metallic bronze",
+            "#49371B"
+        ],
+        [
+            "metallic copper",
+            "#71291D"
+        ],
+        [
+            "meteor",
+            "#D07D12"
+        ],
+        [
+            "meteorite",
+            "#3C1F76"
+        ],
+        [
+            "mexican red",
+            "#A72525"
+        ],
+        [
+            "mid gray",
+            "#5F5F6E"
+        ],
+        [
+            "midnight",
+            "#011635"
+        ],
+        [
+            "midnight blue",
+            "#003366"
+        ],
+        [
+            "midnight moss",
+            "#041004"
+        ],
+        [
+            "mikado",
+            "#2D2510"
+        ],
+        [
+            "milan",
+            "#FAFFA4"
+        ],
+        [
+            "milano red",
+            "#B81104"
+        ],
+        [
+            "milk punch",
+            "#FFF6D4"
+        ],
+        [
+            "millbrook",
+            "#594433"
+        ],
+        [
+            "mimosa",
+            "#F8FDD3"
+        ],
+        [
+            "mindaro",
+            "#E3F988"
+        ],
+        [
+            "mine shaft",
+            "#323232"
+        ],
+        [
+            "mineral green",
+            "#3F5D53"
+        ],
+        [
+            "ming",
+            "#36747D"
+        ],
+        [
+            "minsk",
+            "#3F307F"
+        ],
+        [
+            "mint green",
+            "#98FF98"
+        ],
+        [
+            "mint julep",
+            "#F1EEC1"
+        ],
+        [
+            "mint tulip",
+            "#C4F4EB"
+        ],
+        [
+            "mirage",
+            "#161928"
+        ],
+        [
+            "mischka",
+            "#D1D2DD"
+        ],
+        [
+            "mist gray",
+            "#C4C4BC"
+        ],
+        [
+            "mobster",
+            "#7F7589"
+        ],
+        [
+            "moccaccino",
+            "#6E1D14"
+        ],
+        [
+            "mocha",
+            "#782D19"
+        ],
+        [
+            "mojo",
+            "#C04737"
+        ],
+        [
+            "mona lisa",
+            "#FFA194"
+        ],
+        [
+            "monarch",
+            "#8B0723"
+        ],
+        [
+            "mondo",
+            "#4A3C30"
+        ],
+        [
+            "mongoose",
+            "#B5A27F"
+        ],
+        [
+            "monsoon",
+            "#8A8389"
+        ],
+        [
+            "monte carlo",
+            "#83D0C6"
+        ],
+        [
+            "monza",
+            "#C7031E"
+        ],
+        [
+            "moody blue",
+            "#7F76D3"
+        ],
+        [
+            "moon glow",
+            "#FCFEDA"
+        ],
+        [
+            "moon mist",
+            "#DCDDCC"
+        ],
+        [
+            "moon raker",
+            "#D6CEF6"
+        ],
+        [
+            "morning glory",
+            "#9EDEE0"
+        ],
+        [
+            "morocco brown",
+            "#441D00"
+        ],
+        [
+            "mortar",
+            "#504351"
+        ],
+        [
+            "mosque",
+            "#036A6E"
+        ],
+        [
+            "moss green",
+            "#ADDFAD"
+        ],
+        [
+            "mountain meadow",
+            "#1AB385"
+        ],
+        [
+            "mountain mist",
+            "#959396"
+        ],
+        [
+            "mountbatten pink",
+            "#997A8D"
+        ],
+        [
+            "muddy waters",
+            "#B78E5C"
+        ],
+        [
+            "muesli",
+            "#AA8B5B"
+        ],
+        [
+            "mulberry",
+            "#C54B8C"
+        ],
+        [
+            "mulberry wood",
+            "#5C0536"
+        ],
+        [
+            "mule fawn",
+            "#8C472F"
+        ],
+        [
+            "mulled wine",
+            "#4E4562"
+        ],
+        [
+            "mustard",
+            "#FFDB58"
+        ],
+        [
+            "my pink",
+            "#D69188"
+        ],
+        [
+            "my sin",
+            "#FFB31F"
+        ],
+        [
+            "mystic",
+            "#E2EBED"
+        ],
+        [
+            "nandor",
+            "#4B5D52"
+        ],
+        [
+            "napa",
+            "#ACA494"
+        ],
+        [
+            "narvik",
+            "#EDF9F1"
+        ],
+        [
+            "natural gray",
+            "#8B8680"
+        ],
+        [
+            "navajo white",
+            "#FFDEAD"
+        ],
+        [
+            "navy blue",
+            "#000080"
+        ],
+        [
+            "nebula",
+            "#CBDBD6"
+        ],
+        [
+            "negroni",
+            "#FFE2C5"
+        ],
+        [
+            "neon carrot",
+            "#FF9933"
+        ],
+        [
+            "nepal",
+            "#8EABC1"
+        ],
+        [
+            "neptune",
+            "#7CB7BB"
+        ],
+        [
+            "nero",
+            "#140600"
+        ],
+        [
+            "nevada",
+            "#646E75"
+        ],
+        [
+            "new orleans",
+            "#F3D69D"
+        ],
+        [
+            "new york pink",
+            "#D7837F"
+        ],
+        [
+            "niagara",
+            "#06A189"
+        ],
+        [
+            "night rider",
+            "#1F120F"
+        ],
+        [
+            "night shadz",
+            "#AA375A"
+        ],
+        [
+            "nile blue",
+            "#193751"
+        ],
+        [
+            "nobel",
+            "#B7B1B1"
+        ],
+        [
+            "nomad",
+            "#BAB1A2"
+        ],
+        [
+            "norway",
+            "#A8BD9F"
+        ],
+        [
+            "nugget",
+            "#C59922"
+        ],
+        [
+            "nutmeg",
+            "#81422C"
+        ],
+        [
+            "nutmeg wood finish",
+            "#683600"
+        ],
+        [
+            "oasis",
+            "#FEEFCE"
+        ],
+        [
+            "observatory",
+            "#02866F"
+        ],
+        [
+            "ocean green",
+            "#41AA78"
+        ],
+        [
+            "ochre",
+            "#CC7722"
+        ],
+        [
+            "off green",
+            "#E6F8F3"
+        ],
+        [
+            "off yellow",
+            "#FEF9E3"
+        ],
+        [
+            "oil",
+            "#281E15"
+        ],
+        [
+            "old brick",
+            "#901E1E"
+        ],
+        [
+            "old copper",
+            "#724A2F"
+        ],
+        [
+            "old gold",
+            "#CFB53B"
+        ],
+        [
+            "old lace",
+            "#FDF5E6"
+        ],
+        [
+            "old lavender",
+            "#796878"
+        ],
+        [
+            "old rose",
+            "#C08081"
+        ],
+        [
+            "olive",
+            "#808000"
+        ],
+        [
+            "olive drab",
+            "#6B8E23"
+        ],
+        [
+            "olive green",
+            "#B5B35C"
+        ],
+        [
+            "olive haze",
+            "#8B8470"
+        ],
+        [
+            "olivetone",
+            "#716E10"
+        ],
+        [
+            "olivine",
+            "#9AB973"
+        ],
+        [
+            "onahau",
+            "#CDF4FF"
+        ],
+        [
+            "onion",
+            "#2F270E"
+        ],
+        [
+            "opal",
+            "#A9C6C2"
+        ],
+        [
+            "opium",
+            "#8E6F70"
+        ],
+        [
+            "oracle",
+            "#377475"
+        ],
+        [
+            "orange",
+            "#FF681F"
+        ],
+        [
+            "orange peel",
+            "#FFA000"
+        ],
+        [
+            "orange roughy",
+            "#C45719"
+        ],
+        [
+            "orange white",
+            "#FEFCED"
+        ],
+        [
+            "orchid",
+            "#DA70D6"
+        ],
+        [
+            "orchid white",
+            "#FFFDF3"
+        ],
+        [
+            "oregon",
+            "#9B4703"
+        ],
+        [
+            "orient",
+            "#015E85"
+        ],
+        [
+            "oriental pink",
+            "#C69191"
+        ],
+        [
+            "orinoco",
+            "#F3FBD4"
+        ],
+        [
+            "oslo gray",
+            "#878D91"
+        ],
+        [
+            "ottoman",
+            "#E9F8ED"
+        ],
+        [
+            "outer space",
+            "#2D383A"
+        ],
+        [
+            "outrageous orange",
+            "#FF6037"
+        ],
+        [
+            "oxford blue",
+            "#384555"
+        ],
+        [
+            "oxley",
+            "#779E86"
+        ],
+        [
+            "oyster bay",
+            "#DAFAFF"
+        ],
+        [
+            "oyster pink",
+            "#E9CECD"
+        ],
+        [
+            "paarl",
+            "#A65529"
+        ],
+        [
+            "pablo",
+            "#776F61"
+        ],
+        [
+            "pacific blue",
+            "#009DC4"
+        ],
+        [
+            "pacifika",
+            "#778120"
+        ],
+        [
+            "paco",
+            "#411F10"
+        ],
+        [
+            "padua",
+            "#ADE6C4"
+        ],
+        [
+            "pale canary",
+            "#FFFF99"
+        ],
+        [
+            "pale leaf",
+            "#C0D3B9"
+        ],
+        [
+            "pale oyster",
+            "#988D77"
+        ],
+        [
+            "pale prim",
+            "#FDFEB8"
+        ],
+        [
+            "pale rose",
+            "#FFE1F2"
+        ],
+        [
+            "pale sky",
+            "#6E7783"
+        ],
+        [
+            "pale slate",
+            "#C3BFC1"
+        ],
+        [
+            "palm green",
+            "#09230F"
+        ],
+        [
+            "palm leaf",
+            "#19330E"
+        ],
+        [
+            "pampas",
+            "#F4F2EE"
+        ],
+        [
+            "panache",
+            "#EAF6EE"
+        ],
+        [
+            "pancho",
+            "#EDCDAB"
+        ],
+        [
+            "papaya whip",
+            "#FFEFD5"
+        ],
+        [
+            "paprika",
+            "#8D0226"
+        ],
+        [
+            "paradiso",
+            "#317D82"
+        ],
+        [
+            "parchment",
+            "#F1E9D2"
+        ],
+        [
+            "paris daisy",
+            "#FFF46E"
+        ],
+        [
+            "paris m",
+            "#26056A"
+        ],
+        [
+            "paris white",
+            "#CADCD4"
+        ],
+        [
+            "parsley",
+            "#134F19"
+        ],
+        [
+            "pastel green",
+            "#77DD77"
+        ],
+        [
+            "pastel pink",
+            "#FFD1DC"
+        ],
+        [
+            "patina",
+            "#639A8F"
+        ],
+        [
+            "pattens blue",
+            "#DEF5FF"
+        ],
+        [
+            "paua",
+            "#260368"
+        ],
+        [
+            "pavlova",
+            "#D7C498"
+        ],
+        [
+            "peach",
+            "#FFE5B4"
+        ],
+        [
+            "peach cream",
+            "#FFF0DB"
+        ],
+        [
+            "peach orange",
+            "#FFCC99"
+        ],
+        [
+            "peach schnapps",
+            "#FFDCD6"
+        ],
+        [
+            "peach yellow",
+            "#FADFAD"
+        ],
+        [
+            "peanut",
+            "#782F16"
+        ],
+        [
+            "pear",
+            "#D1E231"
+        ],
+        [
+            "pearl bush",
+            "#E8E0D5"
+        ],
+        [
+            "pearl lusta",
+            "#FCF4DC"
+        ],
+        [
+            "peat",
+            "#716B56"
+        ],
+        [
+            "pelorous",
+            "#3EABBF"
+        ],
+        [
+            "peppermint",
+            "#E3F5E1"
+        ],
+        [
+            "perano",
+            "#A9BEF2"
+        ],
+        [
+            "perfume",
+            "#D0BEF8"
+        ],
+        [
+            "periglacial blue",
+            "#E1E6D6"
+        ],
+        [
+            "periwinkle",
+            "#CCCCFF"
+        ],
+        [
+            "periwinkle gray",
+            "#C3CDE6"
+        ],
+        [
+            "persian blue",
+            "#1C39BB"
+        ],
+        [
+            "persian green",
+            "#00A693"
+        ],
+        [
+            "persian indigo",
+            "#32127A"
+        ],
+        [
+            "persian pink",
+            "#F77FBE"
+        ],
+        [
+            "persian plum",
+            "#701C1C"
+        ],
+        [
+            "persian red",
+            "#CC3333"
+        ],
+        [
+            "persian rose",
+            "#FE28A2"
+        ],
+        [
+            "persimmon",
+            "#FF6B53"
+        ],
+        [
+            "peru tan",
+            "#7F3A02"
+        ],
+        [
+            "pesto",
+            "#7C7631"
+        ],
+        [
+            "petite orchid",
+            "#DB9690"
+        ],
+        [
+            "pewter",
+            "#96A8A1"
+        ],
+        [
+            "pharlap",
+            "#A3807B"
+        ],
+        [
+            "picasso",
+            "#FFF39D"
+        ],
+        [
+            "pickled bean",
+            "#6E4826"
+        ],
+        [
+            "pickled bluewood",
+            "#314459"
+        ],
+        [
+            "picton blue",
+            "#45B1E8"
+        ],
+        [
+            "pig pink",
+            "#FDD7E4"
+        ],
+        [
+            "pigeon post",
+            "#AFBDD9"
+        ],
+        [
+            "pigment indigo",
+            "#4B0082"
+        ],
+        [
+            "pine cone",
+            "#6D5E54"
+        ],
+        [
+            "pine glade",
+            "#C7CD90"
+        ],
+        [
+            "pine green",
+            "#01796F"
+        ],
+        [
+            "pine tree",
+            "#171F04"
+        ],
+        [
+            "pink",
+            "#FFC0CB"
+        ],
+        [
+            "pink flamingo",
+            "#FF66FF"
+        ],
+        [
+            "pink flare",
+            "#E1C0C8"
+        ],
+        [
+            "pink lace",
+            "#FFDDF4"
+        ],
+        [
+            "pink lady",
+            "#FFF1D8"
+        ],
+        [
+            "pink salmon",
+            "#FF91A4"
+        ],
+        [
+            "pink swan",
+            "#BEB5B7"
+        ],
+        [
+            "piper",
+            "#C96323"
+        ],
+        [
+            "pipi",
+            "#FEF4CC"
+        ],
+        [
+            "pippin",
+            "#FFE1DF"
+        ],
+        [
+            "pirate gold",
+            "#BA7F03"
+        ],
+        [
+            "pistachio",
+            "#9DC209"
+        ],
+        [
+            "pixie green",
+            "#C0D8B6"
+        ],
+        [
+            "pizazz",
+            "#FF9000"
+        ],
+        [
+            "pizza",
+            "#C99415"
+        ],
+        [
+            "plantation",
+            "#27504B"
+        ],
+        [
+            "plum",
+            "#843179"
+        ],
+        [
+            "pohutukawa",
+            "#8F021C"
+        ],
+        [
+            "polar",
+            "#E5F9F6"
+        ],
+        [
+            "polo blue",
+            "#8DA8CC"
+        ],
+        [
+            "pomegranate",
+            "#F34723"
+        ],
+        [
+            "pompadour",
+            "#660045"
+        ],
+        [
+            "porcelain",
+            "#EFF2F3"
+        ],
+        [
+            "porsche",
+            "#EAAE69"
+        ],
+        [
+            "port gore",
+            "#251F4F"
+        ],
+        [
+            "portafino",
+            "#FFFFB4"
+        ],
+        [
+            "portage",
+            "#8B9FEE"
+        ],
+        [
+            "portica",
+            "#F9E663"
+        ],
+        [
+            "pot pourri",
+            "#F5E7E2"
+        ],
+        [
+            "potters clay",
+            "#8C5738"
+        ],
+        [
+            "powder ash",
+            "#BCC9C2"
+        ],
+        [
+            "powder blue",
+            "#B0E0E6"
+        ],
+        [
+            "prairie sand",
+            "#9A3820"
+        ],
+        [
+            "prelude",
+            "#D0C0E5"
+        ],
+        [
+            "prim",
+            "#F0E2EC"
+        ],
+        [
+            "primrose",
+            "#EDEA99"
+        ],
+        [
+            "provincial pink",
+            "#FEF5F1"
+        ],
+        [
+            "prussian blue",
+            "#003153"
+        ],
+        [
+            "puce",
+            "#CC8899"
+        ],
+        [
+            "pueblo",
+            "#7D2C14"
+        ],
+        [
+            "puerto rico",
+            "#3FC1AA"
+        ],
+        [
+            "pumice",
+            "#C2CAC4"
+        ],
+        [
+            "pumpkin",
+            "#FF7518"
+        ],
+        [
+            "pumpkin skin",
+            "#B1610B"
+        ],
+        [
+            "punch",
+            "#DC4333"
+        ],
+        [
+            "punga",
+            "#4D3D14"
+        ],
+        [
+            "purple",
+            "#660099"
+        ],
+        [
+            "purple heart",
+            "#652DC1"
+        ],
+        [
+            "purple mountain majesty",
+            "#9678B6"
+        ],
+        [
+            "purple pizzazz",
+            "#FF00CC"
+        ],
+        [
+            "putty",
+            "#E7CD8C"
+        ],
+        [
+            "quarter pearl lusta",
+            "#FFFDF4"
+        ],
+        [
+            "quarter spanish white",
+            "#F7F2E1"
+        ],
+        [
+            "quicksand",
+            "#BD978E"
+        ],
+        [
+            "quill gray",
+            "#D6D6D1"
+        ],
+        [
+            "quincy",
+            "#623F2D"
+        ],
+        [
+            "racing green",
+            "#0C1911"
+        ],
+        [
+            "radical red",
+            "#FF355E"
+        ],
+        [
+            "raffia",
+            "#EADAB8"
+        ],
+        [
+            "rainee",
+            "#B9C8AC"
+        ],
+        [
+            "rajah",
+            "#F7B668"
+        ],
+        [
+            "rangitoto",
+            "#2E3222"
+        ],
+        [
+            "rangoon green",
+            "#1C1E13"
+        ],
+        [
+            "raven",
+            "#727B89"
+        ],
+        [
+            "raw sienna",
+            "#D27D46"
+        ],
+        [
+            "raw umber",
+            "#734A12"
+        ],
+        [
+            "razzle dazzle rose",
+            "#FF33CC"
+        ],
+        [
+            "razzmatazz",
+            "#E30B5C"
+        ],
+        [
+            "rebel",
+            "#3C1206"
+        ],
+        [
+            "red",
+            "#FF0000"
+        ],
+        [
+            "red beech",
+            "#7B3801"
+        ],
+        [
+            "red berry",
+            "#8E0000"
+        ],
+        [
+            "red damask",
+            "#DA6A41"
+        ],
+        [
+            "red devil",
+            "#860111"
+        ],
+        [
+            "red orange",
+            "#FF3F34"
+        ],
+        [
+            "red oxide",
+            "#6E0902"
+        ],
+        [
+            "red ribbon",
+            "#ED0A3F"
+        ],
+        [
+            "red robin",
+            "#80341F"
+        ],
+        [
+            "red stage",
+            "#D05F04"
+        ],
+        [
+            "red violet",
+            "#C71585"
+        ],
+        [
+            "redwood",
+            "#5D1E0F"
+        ],
+        [
+            "reef",
+            "#C9FFA2"
+        ],
+        [
+            "reef gold",
+            "#9F821C"
+        ],
+        [
+            "regal blue",
+            "#013F6A"
+        ],
+        [
+            "regent gray",
+            "#86949F"
+        ],
+        [
+            "regent st blue",
+            "#AAD6E6"
+        ],
+        [
+            "remy",
+            "#FEEBF3"
+        ],
+        [
+            "reno sand",
+            "#A86515"
+        ],
+        [
+            "resolution blue",
+            "#002387"
+        ],
+        [
+            "revolver",
+            "#2C1632"
+        ],
+        [
+            "rhino",
+            "#2E3F62"
+        ],
+        [
+            "rice cake",
+            "#FFFEF0"
+        ],
+        [
+            "rice flower",
+            "#EEFFE2"
+        ],
+        [
+            "rich gold",
+            "#A85307"
+        ],
+        [
+            "rio grande",
+            "#BBD009"
+        ],
+        [
+            "ripe lemon",
+            "#F4D81C"
+        ],
+        [
+            "ripe plum",
+            "#410056"
+        ],
+        [
+            "riptide",
+            "#8BE6D8"
+        ],
+        [
+            "river bed",
+            "#434C59"
+        ],
+        [
+            "rob roy",
+            "#EAC674"
+        ],
+        [
+            "robin egg blue",
+            "#00CCCC"
+        ],
+        [
+            "rock",
+            "#4D3833"
+        ],
+        [
+            "rock blue",
+            "#9EB1CD"
+        ],
+        [
+            "rock spray",
+            "#BA450C"
+        ],
+        [
+            "rodeo dust",
+            "#C9B29B"
+        ],
+        [
+            "rolling stone",
+            "#747D83"
+        ],
+        [
+            "roman",
+            "#DE6360"
+        ],
+        [
+            "roman coffee",
+            "#795D4C"
+        ],
+        [
+            "romance",
+            "#FFFEFD"
+        ],
+        [
+            "romantic",
+            "#FFD2B7"
+        ],
+        [
+            "ronchi",
+            "#ECC54E"
+        ],
+        [
+            "roof terracotta",
+            "#A62F20"
+        ],
+        [
+            "rope",
+            "#8E4D1E"
+        ],
+        [
+            "rose",
+            "#FF007F"
+        ],
+        [
+            "rose bud",
+            "#FBB2A3"
+        ],
+        [
+            "rose bud cherry",
+            "#800B47"
+        ],
+        [
+            "rose fog",
+            "#E7BCB4"
+        ],
+        [
+            "rose of sharon",
+            "#BF5500"
+        ],
+        [
+            "rose white",
+            "#FFF6F5"
+        ],
+        [
+            "rosewood",
+            "#65000B"
+        ],
+        [
+            "roti",
+            "#C6A84B"
+        ],
+        [
+            "rouge",
+            "#A23B6C"
+        ],
+        [
+            "royal blue",
+            "#4169E1"
+        ],
+        [
+            "royal heath",
+            "#AB3472"
+        ],
+        [
+            "royal purple",
+            "#6B3FA0"
+        ],
+        [
+            "rum",
+            "#796989"
+        ],
+        [
+            "rum swizzle",
+            "#F9F8E4"
+        ],
+        [
+            "russet",
+            "#80461B"
+        ],
+        [
+            "russett",
+            "#755A57"
+        ],
+        [
+            "rust",
+            "#B7410E"
+        ],
+        [
+            "rustic red",
+            "#480404"
+        ],
+        [
+            "rusty nail",
+            "#86560A"
+        ],
+        [
+            "saddle",
+            "#4C3024"
+        ],
+        [
+            "saddle brown",
+            "#583401"
+        ],
+        [
+            "saffron",
+            "#F4C430"
+        ],
+        [
+            "saffron mango",
+            "#F9BF58"
+        ],
+        [
+            "sage",
+            "#9EA587"
+        ],
+        [
+            "sahara",
+            "#B7A214"
+        ],
+        [
+            "sahara sand",
+            "#F1E788"
+        ],
+        [
+            "sail",
+            "#B8E0F9"
+        ],
+        [
+            "salem",
+            "#097F4B"
+        ],
+        [
+            "salmon",
+            "#FF8C69"
+        ],
+        [
+            "salomie",
+            "#FEDB8D"
+        ],
+        [
+            "salt box",
+            "#685E6E"
+        ],
+        [
+            "saltpan",
+            "#F1F7F2"
+        ],
+        [
+            "sambuca",
+            "#3A2010"
+        ],
+        [
+            "san felix",
+            "#0B6207"
+        ],
+        [
+            "san juan",
+            "#304B6A"
+        ],
+        [
+            "san marino",
+            "#456CAC"
+        ],
+        [
+            "sand dune",
+            "#826F65"
+        ],
+        [
+            "sandal",
+            "#AA8D6F"
+        ],
+        [
+            "sandrift",
+            "#AB917A"
+        ],
+        [
+            "sandstone",
+            "#796D62"
+        ],
+        [
+            "sandwisp",
+            "#F5E7A2"
+        ],
+        [
+            "sandy beach",
+            "#FFEAC8"
+        ],
+        [
+            "sandy brown",
+            "#F4A460"
+        ],
+        [
+            "sangria",
+            "#92000A"
+        ],
+        [
+            "sanguine brown",
+            "#8D3D38"
+        ],
+        [
+            "santa fe",
+            "#B16D52"
+        ],
+        [
+            "santas gray",
+            "#9FA0B1"
+        ],
+        [
+            "sapling",
+            "#DED4A4"
+        ],
+        [
+            "sapphire",
+            "#2F519E"
+        ],
+        [
+            "saratoga",
+            "#555B10"
+        ],
+        [
+            "satin linen",
+            "#E6E4D4"
+        ],
+        [
+            "sauvignon",
+            "#FFF5F3"
+        ],
+        [
+            "sazerac",
+            "#FFF4E0"
+        ],
+        [
+            "scampi",
+            "#675FA6"
+        ],
+        [
+            "scandal",
+            "#CFFAF4"
+        ],
+        [
+            "scarlet",
+            "#FF2400"
+        ],
+        [
+            "scarlet gum",
+            "#431560"
+        ],
+        [
+            "scarlett",
+            "#950015"
+        ],
+        [
+            "scarpa flow",
+            "#585562"
+        ],
+        [
+            "schist",
+            "#A9B497"
+        ],
+        [
+            "school bus yellow",
+            "#FFD800"
+        ],
+        [
+            "schooner",
+            "#8B847E"
+        ],
+        [
+            "science blue",
+            "#0066CC"
+        ],
+        [
+            "scooter",
+            "#2EBFD4"
+        ],
+        [
+            "scorpion",
+            "#695F62"
+        ],
+        [
+            "scotch mist",
+            "#FFFBDC"
+        ],
+        [
+            "screamin green",
+            "#66FF66"
+        ],
+        [
+            "sea buckthorn",
+            "#FBA129"
+        ],
+        [
+            "sea green",
+            "#2E8B57"
+        ],
+        [
+            "sea mist",
+            "#C5DBCA"
+        ],
+        [
+            "sea nymph",
+            "#78A39C"
+        ],
+        [
+            "sea pink",
+            "#ED989E"
+        ],
+        [
+            "seagull",
+            "#80CCEA"
+        ],
+        [
+            "seance",
+            "#731E8F"
+        ],
+        [
+            "seashell",
+            "#F1F1F1"
+        ],
+        [
+            "seashell peach",
+            "#FFF5EE"
+        ],
+        [
+            "seaweed",
+            "#1B2F11"
+        ],
+        [
+            "selago",
+            "#F0EEFD"
+        ],
+        [
+            "selective yellow",
+            "#FFBA00"
+        ],
+        [
+            "sepia",
+            "#704214"
+        ],
+        [
+            "sepia black",
+            "#2B0202"
+        ],
+        [
+            "sepia skin",
+            "#9E5B40"
+        ],
+        [
+            "serenade",
+            "#FFF4E8"
+        ],
+        [
+            "shadow",
+            "#837050"
+        ],
+        [
+            "shadow green",
+            "#9AC2B8"
+        ],
+        [
+            "shady lady",
+            "#AAA5A9"
+        ],
+        [
+            "shakespeare",
+            "#4EABD1"
+        ],
+        [
+            "shalimar",
+            "#FBFFBA"
+        ],
+        [
+            "shamrock",
+            "#33CC99"
+        ],
+        [
+            "shark",
+            "#25272C"
+        ],
+        [
+            "sherpa blue",
+            "#004950"
+        ],
+        [
+            "sherwood green",
+            "#02402C"
+        ],
+        [
+            "shilo",
+            "#E8B9B3"
+        ],
+        [
+            "shingle fawn",
+            "#6B4E31"
+        ],
+        [
+            "ship cove",
+            "#788BBA"
+        ],
+        [
+            "ship gray",
+            "#3E3A44"
+        ],
+        [
+            "shiraz",
+            "#B20931"
+        ],
+        [
+            "shocking",
+            "#E292C0"
+        ],
+        [
+            "shocking pink",
+            "#FC0FC0"
+        ],
+        [
+            "shuttle gray",
+            "#5F6672"
+        ],
+        [
+            "siam",
+            "#646A54"
+        ],
+        [
+            "sidecar",
+            "#F3E7BB"
+        ],
+        [
+            "silk",
+            "#BDB1A8"
+        ],
+        [
+            "silver",
+            "#C0C0C0"
+        ],
+        [
+            "silver chalice",
+            "#ACACAC"
+        ],
+        [
+            "silver rust",
+            "#C9C0BB"
+        ],
+        [
+            "silver sand",
+            "#BFC1C2"
+        ],
+        [
+            "silver tree",
+            "#66B58F"
+        ],
+        [
+            "sinbad",
+            "#9FD7D3"
+        ],
+        [
+            "siren",
+            "#7A013A"
+        ],
+        [
+            "sirocco",
+            "#718080"
+        ],
+        [
+            "sisal",
+            "#D3CBBA"
+        ],
+        [
+            "skeptic",
+            "#CAE6DA"
+        ],
+        [
+            "sky blue",
+            "#76D7EA"
+        ],
+        [
+            "slate gray",
+            "#708090"
+        ],
+        [
+            "smalt",
+            "#003399"
+        ],
+        [
+            "smalt blue",
+            "#51808F"
+        ],
+        [
+            "smoky",
+            "#605B73"
+        ],
+        [
+            "snow drift",
+            "#F7FAF7"
+        ],
+        [
+            "snow flurry",
+            "#E4FFD1"
+        ],
+        [
+            "snowy mint",
+            "#D6FFDB"
+        ],
+        [
+            "snuff",
+            "#E2D8ED"
+        ],
+        [
+            "soapstone",
+            "#FFFBF9"
+        ],
+        [
+            "soft amber",
+            "#D1C6B4"
+        ],
+        [
+            "soft peach",
+            "#F5EDEF"
+        ],
+        [
+            "solid pink",
+            "#893843"
+        ],
+        [
+            "solitaire",
+            "#FEF8E2"
+        ],
+        [
+            "solitude",
+            "#EAF6FF"
+        ],
+        [
+            "sorbus",
+            "#FD7C07"
+        ],
+        [
+            "sorrell brown",
+            "#CEB98F"
+        ],
+        [
+            "soya bean",
+            "#6A6051"
+        ],
+        [
+            "spanish green",
+            "#819885"
+        ],
+        [
+            "spectra",
+            "#2F5A57"
+        ],
+        [
+            "spice",
+            "#6A442E"
+        ],
+        [
+            "spicy mix",
+            "#885342"
+        ],
+        [
+            "spicy mustard",
+            "#74640D"
+        ],
+        [
+            "spicy pink",
+            "#816E71"
+        ],
+        [
+            "spindle",
+            "#B6D1EA"
+        ],
+        [
+            "spray",
+            "#79DEEC"
+        ],
+        [
+            "spring green",
+            "#00FF7F"
+        ],
+        [
+            "spring leaves",
+            "#578363"
+        ],
+        [
+            "spring rain",
+            "#ACCBB1"
+        ],
+        [
+            "spring sun",
+            "#F6FFDC"
+        ],
+        [
+            "spring wood",
+            "#F8F6F1"
+        ],
+        [
+            "sprout",
+            "#C1D7B0"
+        ],
+        [
+            "spun pearl",
+            "#AAABB7"
+        ],
+        [
+            "squirrel",
+            "#8F8176"
+        ],
+        [
+            "st tropaz",
+            "#2D569B"
+        ],
+        [
+            "stack",
+            "#8A8F8A"
+        ],
+        [
+            "star dust",
+            "#9F9F9C"
+        ],
+        [
+            "stark white",
+            "#E5D7BD"
+        ],
+        [
+            "starship",
+            "#ECF245"
+        ],
+        [
+            "steel blue",
+            "#4682B4"
+        ],
+        [
+            "steel gray",
+            "#262335"
+        ],
+        [
+            "stiletto",
+            "#9C3336"
+        ],
+        [
+            "stonewall",
+            "#928573"
+        ],
+        [
+            "storm dust",
+            "#646463"
+        ],
+        [
+            "storm gray",
+            "#717486"
+        ],
+        [
+            "stratos",
+            "#000741"
+        ],
+        [
+            "straw",
+            "#D4BF8D"
+        ],
+        [
+            "strikemaster",
+            "#956387"
+        ],
+        [
+            "stromboli",
+            "#325D52"
+        ],
+        [
+            "studio",
+            "#714AB2"
+        ],
+        [
+            "submarine",
+            "#BAC7C9"
+        ],
+        [
+            "sugar cane",
+            "#F9FFF6"
+        ],
+        [
+            "sulu",
+            "#C1F07C"
+        ],
+        [
+            "summer green",
+            "#96BBAB"
+        ],
+        [
+            "sun",
+            "#FBAC13"
+        ],
+        [
+            "sundance",
+            "#C9B35B"
+        ],
+        [
+            "sundown",
+            "#FFB1B3"
+        ],
+        [
+            "sunflower",
+            "#E4D422"
+        ],
+        [
+            "sunglo",
+            "#E16865"
+        ],
+        [
+            "sunglow",
+            "#FFCC33"
+        ],
+        [
+            "sunset orange",
+            "#FE4C40"
+        ],
+        [
+            "sunshade",
+            "#FF9E2C"
+        ],
+        [
+            "supernova",
+            "#FFC901"
+        ],
+        [
+            "surf",
+            "#BBD7C1"
+        ],
+        [
+            "surf crest",
+            "#CFE5D2"
+        ],
+        [
+            "surfie green",
+            "#0C7A79"
+        ],
+        [
+            "sushi",
+            "#87AB39"
+        ],
+        [
+            "suva gray",
+            "#888387"
+        ],
+        [
+            "swamp",
+            "#001B1C"
+        ],
+        [
+            "swamp green",
+            "#ACB78E"
+        ],
+        [
+            "swans down",
+            "#DCF0EA"
+        ],
+        [
+            "sweet corn",
+            "#FBEA8C"
+        ],
+        [
+            "sweet pink",
+            "#FD9FA2"
+        ],
+        [
+            "swirl",
+            "#D3CDC5"
+        ],
+        [
+            "swiss coffee",
+            "#DDD6D5"
+        ],
+        [
+            "sycamore",
+            "#908D39"
+        ],
+        [
+            "tabasco",
+            "#A02712"
+        ],
+        [
+            "tacao",
+            "#EDB381"
+        ],
+        [
+            "tacha",
+            "#D6C562"
+        ],
+        [
+            "tahiti gold",
+            "#E97C07"
+        ],
+        [
+            "tahuna sands",
+            "#EEF0C8"
+        ],
+        [
+            "tall poppy",
+            "#B32D29"
+        ],
+        [
+            "tallow",
+            "#A8A589"
+        ],
+        [
+            "tamarillo",
+            "#991613"
+        ],
+        [
+            "tamarind",
+            "#341515"
+        ],
+        [
+            "tan",
+            "#D2B48C"
+        ],
+        [
+            "tan hide",
+            "#FA9D5A"
+        ],
+        [
+            "tana",
+            "#D9DCC1"
+        ],
+        [
+            "tangaroa",
+            "#03163C"
+        ],
+        [
+            "tangerine",
+            "#F28500"
+        ],
+        [
+            "tango",
+            "#ED7A1C"
+        ],
+        [
+            "tapa",
+            "#7B7874"
+        ],
+        [
+            "tapestry",
+            "#B05E81"
+        ],
+        [
+            "tara",
+            "#E1F6E8"
+        ],
+        [
+            "tarawera",
+            "#073A50"
+        ],
+        [
+            "tasman",
+            "#CFDCCF"
+        ],
+        [
+            "taupe",
+            "#483C32"
+        ],
+        [
+            "taupe gray",
+            "#B3AF95"
+        ],
+        [
+            "tawny port",
+            "#692545"
+        ],
+        [
+            "te papa green",
+            "#1E433C"
+        ],
+        [
+            "tea",
+            "#C1BAB0"
+        ],
+        [
+            "tea green",
+            "#D0F0C0"
+        ],
+        [
+            "teak",
+            "#B19461"
+        ],
+        [
+            "teal",
+            "#008080"
+        ],
+        [
+            "teal blue",
+            "#044259"
+        ],
+        [
+            "temptress",
+            "#3B000B"
+        ],
+        [
+            "tenn",
+            "#CD5700"
+        ],
+        [
+            "tequila",
+            "#FFE6C7"
+        ],
+        [
+            "terracotta",
+            "#E2725B"
+        ],
+        [
+            "texas",
+            "#F8F99C"
+        ],
+        [
+            "texas rose",
+            "#FFB555"
+        ],
+        [
+            "thatch",
+            "#B69D98"
+        ],
+        [
+            "thatch green",
+            "#403D19"
+        ],
+        [
+            "thistle",
+            "#D8BFD8"
+        ],
+        [
+            "thistle green",
+            "#CCCAA8"
+        ],
+        [
+            "thunder",
+            "#33292F"
+        ],
+        [
+            "thunderbird",
+            "#C02B18"
+        ],
+        [
+            "tia maria",
+            "#C1440E"
+        ],
+        [
+            "tiara",
+            "#C3D1D1"
+        ],
+        [
+            "tiber",
+            "#063537"
+        ],
+        [
+            "tickle me pink",
+            "#FC80A5"
+        ],
+        [
+            "tidal",
+            "#F1FFAD"
+        ],
+        [
+            "tide",
+            "#BFB8B0"
+        ],
+        [
+            "timber green",
+            "#16322C"
+        ],
+        [
+            "timberwolf",
+            "#D9D6CF"
+        ],
+        [
+            "titan white",
+            "#F0EEFF"
+        ],
+        [
+            "toast",
+            "#9A6E61"
+        ],
+        [
+            "tobacco brown",
+            "#715D47"
+        ],
+        [
+            "toledo",
+            "#3A0020"
+        ],
+        [
+            "tolopea",
+            "#1B0245"
+        ],
+        [
+            "tom thumb",
+            "#3F583B"
+        ],
+        [
+            "tonys pink",
+            "#E79F8C"
+        ],
+        [
+            "topaz",
+            "#7C778A"
+        ],
+        [
+            "torch red",
+            "#FD0E35"
+        ],
+        [
+            "torea bay",
+            "#0F2D9E"
+        ],
+        [
+            "tory blue",
+            "#1450AA"
+        ],
+        [
+            "tosca",
+            "#8D3F3F"
+        ],
+        [
+            "totem pole",
+            "#991B07"
+        ],
+        [
+            "tower gray",
+            "#A9BDBF"
+        ],
+        [
+            "tradewind",
+            "#5FB3AC"
+        ],
+        [
+            "tranquil",
+            "#E6FFFF"
+        ],
+        [
+            "travertine",
+            "#FFFDE8"
+        ],
+        [
+            "tree poppy",
+            "#FC9C1D"
+        ],
+        [
+            "treehouse",
+            "#3B2820"
+        ],
+        [
+            "trendy green",
+            "#7C881A"
+        ],
+        [
+            "trendy pink",
+            "#8C6495"
+        ],
+        [
+            "trinidad",
+            "#E64E03"
+        ],
+        [
+            "tropical blue",
+            "#C3DDF9"
+        ],
+        [
+            "tropical rain forest",
+            "#00755E"
+        ],
+        [
+            "trout",
+            "#4A4E5A"
+        ],
+        [
+            "true v",
+            "#8A73D6"
+        ],
+        [
+            "tuatara",
+            "#363534"
+        ],
+        [
+            "tuft bush",
+            "#FFDDCD"
+        ],
+        [
+            "tulip tree",
+            "#EAB33B"
+        ],
+        [
+            "tumbleweed",
+            "#DEA681"
+        ],
+        [
+            "tuna",
+            "#353542"
+        ],
+        [
+            "tundora",
+            "#4A4244"
+        ],
+        [
+            "turbo",
+            "#FAE600"
+        ],
+        [
+            "turkish rose",
+            "#B57281"
+        ],
+        [
+            "turmeric",
+            "#CABB48"
+        ],
+        [
+            "turquoise",
+            "#30D5C8"
+        ],
+        [
+            "turquoise blue",
+            "#6CDAE7"
+        ],
+        [
+            "turtle green",
+            "#2A380B"
+        ],
+        [
+            "tuscany",
+            "#BD5E2E"
+        ],
+        [
+            "tusk",
+            "#EEF3C3"
+        ],
+        [
+            "tussock",
+            "#C5994B"
+        ],
+        [
+            "tutu",
+            "#FFF1F9"
+        ],
+        [
+            "twilight",
+            "#E4CFDE"
+        ],
+        [
+            "twilight blue",
+            "#EEFDFF"
+        ],
+        [
+            "twine",
+            "#C2955D"
+        ],
+        [
+            "tyrian purple",
+            "#66023C"
+        ],
+        [
+            "ultramarine",
+            "#120A8F"
+        ],
+        [
+            "valencia",
+            "#D84437"
+        ],
+        [
+            "valentino",
+            "#350E42"
+        ],
+        [
+            "valhalla",
+            "#2B194F"
+        ],
+        [
+            "van cleef",
+            "#49170C"
+        ],
+        [
+            "vanilla",
+            "#D1BEA8"
+        ],
+        [
+            "vanilla ice",
+            "#F3D9DF"
+        ],
+        [
+            "varden",
+            "#FFF6DF"
+        ],
+        [
+            "venetian red",
+            "#72010F"
+        ],
+        [
+            "venice blue",
+            "#055989"
+        ],
+        [
+            "venus",
+            "#928590"
+        ],
+        [
+            "verdigris",
+            "#5D5E37"
+        ],
+        [
+            "verdun green",
+            "#495400"
+        ],
+        [
+            "vermilion",
+            "#FF4D00"
+        ],
+        [
+            "vesuvius",
+            "#B14A0B"
+        ],
+        [
+            "victoria",
+            "#534491"
+        ],
+        [
+            "vida loca",
+            "#549019"
+        ],
+        [
+            "viking",
+            "#64CCDB"
+        ],
+        [
+            "vin rouge",
+            "#983D61"
+        ],
+        [
+            "viola",
+            "#CB8FA9"
+        ],
+        [
+            "violent violet",
+            "#290C5E"
+        ],
+        [
+            "violet",
+            "#240A40"
+        ],
+        [
+            "violet eggplant",
+            "#991199"
+        ],
+        [
+            "violet red",
+            "#F7468A"
+        ],
+        [
+            "viridian",
+            "#40826D"
+        ],
+        [
+            "viridian green",
+            "#678975"
+        ],
+        [
+            "vis vis",
+            "#FFEFA1"
+        ],
+        [
+            "vista blue",
+            "#8FD6B4"
+        ],
+        [
+            "vista white",
+            "#FCF8F7"
+        ],
+        [
+            "vivid tangerine",
+            "#FF9980"
+        ],
+        [
+            "vivid violet",
+            "#803790"
+        ],
+        [
+            "voodoo",
+            "#533455"
+        ],
+        [
+            "vulcan",
+            "#10121D"
+        ],
+        [
+            "wafer",
+            "#DECBC6"
+        ],
+        [
+            "waikawa gray",
+            "#5A6E9C"
+        ],
+        [
+            "waiouru",
+            "#363C0D"
+        ],
+        [
+            "walnut",
+            "#773F1A"
+        ],
+        [
+            "wasabi",
+            "#788A25"
+        ],
+        [
+            "water leaf",
+            "#A1E9DE"
+        ],
+        [
+            "watercourse",
+            "#056F57"
+        ],
+        [
+            "waterloo ",
+            "#7B7C94"
+        ],
+        [
+            "wattle",
+            "#DCD747"
+        ],
+        [
+            "watusi",
+            "#FFDDCF"
+        ],
+        [
+            "wax flower",
+            "#FFC0A8"
+        ],
+        [
+            "we peep",
+            "#F7DBE6"
+        ],
+        [
+            "web orange",
+            "#FFA500"
+        ],
+        [
+            "wedgewood",
+            "#4E7F9E"
+        ],
+        [
+            "well read",
+            "#B43332"
+        ],
+        [
+            "west coast",
+            "#625119"
+        ],
+        [
+            "west side",
+            "#FF910F"
+        ],
+        [
+            "westar",
+            "#DCD9D2"
+        ],
+        [
+            "wewak",
+            "#F19BAB"
+        ],
+        [
+            "wheat",
+            "#F5DEB3"
+        ],
+        [
+            "wheatfield",
+            "#F3EDCF"
+        ],
+        [
+            "whiskey",
+            "#D59A6F"
+        ],
+        [
+            "whisper",
+            "#F7F5FA"
+        ],
+        [
+            "white",
+            "#FFFFFF"
+        ],
+        [
+            "white ice",
+            "#DDF9F1"
+        ],
+        [
+            "white lilac",
+            "#F8F7FC"
+        ],
+        [
+            "white linen",
+            "#F8F0E8"
+        ],
+        [
+            "white pointer",
+            "#FEF8FF"
+        ],
+        [
+            "white rock",
+            "#EAE8D4"
+        ],
+        [
+            "wild blue yonder",
+            "#7A89B8"
+        ],
+        [
+            "wild rice",
+            "#ECE090"
+        ],
+        [
+            "wild sand",
+            "#F4F4F4"
+        ],
+        [
+            "wild strawberry",
+            "#FF3399"
+        ],
+        [
+            "wild watermelon",
+            "#FD5B78"
+        ],
+        [
+            "wild willow",
+            "#B9C46A"
+        ],
+        [
+            "william",
+            "#3A686C"
+        ],
+        [
+            "willow brook",
+            "#DFECDA"
+        ],
+        [
+            "willow grove",
+            "#65745D"
+        ],
+        [
+            "windsor",
+            "#3C0878"
+        ],
+        [
+            "wine berry",
+            "#591D35"
+        ],
+        [
+            "winter hazel",
+            "#D5D195"
+        ],
+        [
+            "wisp pink",
+            "#FEF4F8"
+        ],
+        [
+            "wisteria",
+            "#9771B5"
+        ],
+        [
+            "wistful",
+            "#A4A6D3"
+        ],
+        [
+            "witch haze",
+            "#FFFC99"
+        ],
+        [
+            "wood bark",
+            "#261105"
+        ],
+        [
+            "woodland",
+            "#4D5328"
+        ],
+        [
+            "woodrush",
+            "#302A0F"
+        ],
+        [
+            "woodsmoke",
+            "#0C0D0F"
+        ],
+        [
+            "woody brown",
+            "#483131"
+        ],
+        [
+            "xanadu",
+            "#738678"
+        ],
+        [
+            "yellow",
+            "#FFFF00"
+        ],
+        [
+            "yellow green",
+            "#C5E17A"
+        ],
+        [
+            "yellow metal",
+            "#716338"
+        ],
+        [
+            "yellow orange",
+            "#FFAE42"
+        ],
+        [
+            "yellow sea",
+            "#FEA904"
+        ],
+        [
+            "your pink",
+            "#FFC3C0"
+        ],
+        [
+            "yukon gold",
+            "#7B6608"
+        ],
+        [
+            "yuma",
+            "#CEC291"
+        ],
+        [
+            "zambezi",
+            "#685558"
+        ],
+        [
+            "zanah",
+            "#DAECD6"
+        ],
+        [
+            "zest",
+            "#E5841B"
+        ],
+        [
+            "zeus",
+            "#292319"
+        ],
+        [
+            "ziggurat",
+            "#BFDBE2"
+        ],
+        [
+            "zinnwaldite",
+            "#EBC2AF"
+        ],
+        [
+            "zircon",
+            "#F4F8FF"
+        ],
+        [
+            "zombie",
+            "#E4D69B"
+        ],
+        [
+            "zorba",
+            "#A59B91"
+        ],
+        [
+            "zuccini",
+            "#044022"
+        ],
+        [
+            "zumthor",
+            "#EDF6FF"
+        ]
+    ]
+}
