@@ -1,0 +1,9 @@
+{
+	"type":
+	{
+		"Air Conditioner":["portable","split","window"],
+		"Refrigerator":["multi-door","side-by-side","single-door"],
+		"Vaccum Cleaner":["canister","hand-held","robot","car"],
+		"Washing Machine":["full-auto","semi-auto","dryer-only"]
+	}
+}
