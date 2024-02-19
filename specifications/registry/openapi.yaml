@@ -588,6 +588,10 @@ components:
         subscriber_id:
           type: string
           example: sit.grab.in
+        unique_key_id:
+          description: A unique number for tracking NP's key pairs.
+          example: "nova-some-uuid"
+          type: string
         callback_url:
           type: string
           description: it should be relative to subscriber_id mentioned domain. In below example with subscriber _id as abc.com, regsitry will call https://abc.com/ondc/onboarding/on_subscribe
