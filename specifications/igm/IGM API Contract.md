@@ -17,7 +17,7 @@ The Issue & Grievance Management (IGM) for ONDC is a mechanism via which issues 
 View the document [here](https://docs.google.com/document/d/135OCfsi5jQ7wh4H_LOoMxb0T0ZrWDYy4LTBvpYS6k_w/edit?usp=sharing)
 
 ## API Contract Document
-View the document [here](https://docs.google.com/document/d/1UYGIo1fSOcA4ypnk5FuaCgUgNnu9dBQt/edit?usp=sharing)
+View the document [here](https://docs.google.com/document/d/1ZUS5hvS2M-TafyjAdcTY6X51VKbb9IO1fPaSquQfA0Y/edit?usp=sharing)
 
 ## SwaggerHub
 Access the SwaggerHub [here](https://app.swaggerhub.com/apis/ONDC/ONDC-Protocol-IGM/1.0.0)
